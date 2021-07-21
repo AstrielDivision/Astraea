@@ -1,5 +1,9 @@
 {
     "extends": [
         "@hidden-umbrella/eslint-config"
-    ]
+    ],
+    "rules": {
+        "no-void": "off",
+        "@typescript-eslint/strict-boolean-expressions": "off"
+    }
 }

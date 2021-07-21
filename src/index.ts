@@ -1,3 +1,5 @@
-import arrow from './lib/arrow'
+import Client from './lib/Structures/client'
 
-export { arrow }
+const client = new Client()
+
+void client.start()

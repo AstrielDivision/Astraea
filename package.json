@@ -1,19 +1,17 @@
 {
-  "name": "template",
-  "version": "0.0.0",
+  "name": "north",
+  "version": "1.0.0",
   "main": "dist/src/index",
   "author": "ArtieFuzzz#8298",
   "license": "MIT",
-  "private": false,
-  "description": "A template",
-  "typings": "dist/src/index.d.ts",
+  "private": true,
+  "description": "Discord bot using @sapphiredev/framework",
   "scripts": {
     "lint": "eslint src --ext ts",
     "lint:fix": "eslint src --ext ts --fix",
     "build": "yarn clean && yarn build:ts",
     "build:ts": "tsc -p ./",
     "clean": "rimraf ./dist && mkdir dist",
-    "doc:gen": "typedoc",
     "prepare": "husky install .github/husky",
     "commit": "git-cz"
   },
@@ -21,6 +19,8 @@
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
     "@hidden-umbrella/eslint-config": "^1.0.0",
+    "@types/app-root-path": "^1.2.4",
+    "@types/convict": "^6.1.1",
     "@types/jest": "^26.0.24",
     "@types/node": "^16.3.3",
     "cz-conventional-changelog": "^3.3.0",
@@ -29,31 +29,13 @@
     "jest": "^27.0.6",
     "rimraf": "^3.0.2",
     "standard-version": "^9.3.1",
-    "ts-jest": "^27.0.3",
     "ts-node": "^10.1.0",
-    "typedoc": "^0.21.4",
     "typescript": "^4.3.5"
   },
   "engines": {
     "node": ">=15",
     "npm": ">=6"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/hidden-umbrella/template.git"
-  },
-  "bugs": {
-    "url": "https://github.com/hidden-umbrella/template/issues"
-  },
-  "files": [
-    "dist",
-    "!dist/*.tsbuildinfo"
-  ],
-  "keywords": [
-    "nothing",
-    "much",
-    "yet"
-  ],
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
@@ -69,5 +51,14 @@
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
-  "dependencies": {}
+  "dependencies": {
+    "@aero/centra": "^1.0.6",
+    "@sapphire/decorators": "^2.2.0",
+    "@sapphire/discord.js-utilities": "^2.0.2",
+    "@sapphire/framework": "^2.0.0-pr-218.ee962943.0",
+    "@sapphire/utilities": "^2.0.1",
+    "app-root-path": "^3.0.0",
+    "convict": "^6.2.0",
+    "discord.js": "^12.5.3"
+  }
 }
