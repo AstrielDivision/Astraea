@@ -1,0 +1,5 @@
+{
+    "extends": [
+        "@hidden-umbrella/eslint-config"
+    ]
+}

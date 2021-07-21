@@ -1,0 +1,73 @@
+{
+  "name": "template",
+  "version": "0.0.0",
+  "main": "dist/src/index",
+  "author": "ArtieFuzzz#8298",
+  "license": "MIT",
+  "private": false,
+  "description": "A template",
+  "typings": "dist/src/index.d.ts",
+  "scripts": {
+    "lint": "eslint src --ext ts",
+    "lint:fix": "eslint src --ext ts --fix",
+    "build": "yarn clean && yarn build:ts",
+    "build:ts": "tsc -p ./",
+    "clean": "rimraf ./dist && mkdir dist",
+    "doc:gen": "typedoc",
+    "prepare": "husky install .github/husky",
+    "commit": "git-cz"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
+    "@hidden-umbrella/eslint-config": "^1.0.0",
+    "@types/jest": "^26.0.24",
+    "@types/node": "^16.3.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.31.0",
+    "husky": "^7.0.0",
+    "jest": "^27.0.6",
+    "rimraf": "^3.0.2",
+    "standard-version": "^9.3.1",
+    "ts-jest": "^27.0.3",
+    "ts-node": "^10.1.0",
+    "typedoc": "^0.21.4",
+    "typescript": "^4.3.5"
+  },
+  "engines": {
+    "node": ">=15",
+    "npm": ">=6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hidden-umbrella/template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hidden-umbrella/template/issues"
+  },
+  "files": [
+    "dist",
+    "!dist/*.tsbuildinfo"
+  ],
+  "keywords": [
+    "nothing",
+    "much",
+    "yet"
+  ],
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,120 @@
+name: CD
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      prNumber:
+        description: The number of the PR that is being deployed
+        required: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+      - name: Install
+        run: yarn
+      - name: Cache Dependencies
+        uses: actions/cache@v2.1.6
+        id: cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+      - name: Install Dependencies if Cache Miss
+        if: ${{ !steps.cache.outputs.cache-hit }}
+        run: yarn --frozen-lockfile
+      - name: Build
+        run: yarn build
+      - name: Test
+        run: yarn jest
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org/
+      - name: Install
+        run: yarn
+      - name: Cache Dependencies
+        uses: actions/cache@v2.1.6
+        id: cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+      - name: Install Dependencies if Cache Miss
+        if: ${{ !steps.cache.outputs.cache-hit }}
+        run: yarn --frozen-lockfile
+      - name: Build
+        run: yarn build
+      - name: "Push to NPM Registry"
+        run: |
+         TAG=$([[ ${{ github.event_name }} == 'push' ]] && echo 'nightly' || echo 'pr-${{ github.event.inputs.prNumber }}')
+
+         yarn standard-version --skip.commit --skip.tag --skip.changelog --prerelease "${TAG}.$(git rev-parse --verify --short HEAD)"
+
+         npm publish --tag ${TAG} --dry-run
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+      - name: Install
+        run: yarn
+      - name: Cache Dependencies
+        uses: actions/cache@v2.1.6
+        id: cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+      - name: Install Dependencies if Cache Miss
+        if: ${{ !steps.cache.outputs.cache-hit }}
+        run: yarn --frozen-lockfile
+      - name: Build Docs
+        run: yarn doc:gen
+      - name: Push docs
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          REPO="https://${GIT_USER}:${GIT_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          
+
+          git clone $REPO doc -b docs
+
+          rm -rfv doc/assets/*
+          rm -rfv doc/interfaces/*
+          rm -rfv doc/*.html
+
+          rsync -vaI LICENSE doc/
+          rsync -vaI README.md doc/
+          rsync -vaI docs/ doc/
+
+          cd doc
+
+          git add --all .
+          
+          git config --global user.name "${GIT_USER}"
+          git config --global user.email "${GIT_EMAIL}"
+          
+          git commit -m "docs: Generated for ${GITHUB_SHA}"
+          git push origin docs
+        env:
+          GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+          GIT_USER: ${{ secrets.GIT_USER }}
+          GIT_EMAIL: ${{ secrets.GIT_EMAIL }}
