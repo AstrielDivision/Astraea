@@ -7,6 +7,14 @@
   resolved "https://registry.yarnpkg.com/@aero/centra/-/centra-1.0.6.tgz#0151359a4c6a9054d36fa6c31353b2fd3d860e6f"
   integrity sha512-e7sUh/VjugT8LsHb4/hcbmhaVVi9deWWPQnlMnU0RAnF8+iCdGdCcKvoHnDNl/ELykwjpbKpBYbWPx0yKZaDpw==
 
+"@aero/ksoft@^4.0.0-rc1":
+  version "4.0.0-rc1"
+  resolved "https://registry.yarnpkg.com/@aero/ksoft/-/ksoft-4.0.0-rc1.tgz#1cfc603877dd18c71ce0ffa142629f7ca0f11b63"
+  integrity sha512-eu+DqhTW8SJtio20umpWxxd8fn2Wzko8sCfm1isg94M812J/orN6sPx71VmUNZbGPcYfGji9syN8V+AfnhF0RA==
+  dependencies:
+    "@aero/centra" "^1.0.6"
+    flatted "^2.0.1"
+
 "@babel/code-frame@7.12.11":
   version "7.12.11"
   resolved "https://registry.npmjs.org/@babel/code-frame/-/code-frame-7.12.11.tgz"
@@ -1255,6 +1263,13 @@ at-least-node@^1.0.0:
   resolved "https://registry.yarnpkg.com/at-least-node/-/at-least-node-1.0.0.tgz#602cd4b46e844ad4effc92a8011a3c46e0238dc2"
   integrity sha512-+q/t7Ekv1EDY2l6Gda6LLiX14rU9TV20Wa3ofeQmwPFZbOMo9DXrLbOjFaaclkXKWidIaopwAObQDqwWtGUjqg==
 
+axios@^0.21.1:
+  version "0.21.1"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
+  integrity sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
+  dependencies:
+    follow-redirects "^1.10.0"
+
 babel-jest@^27.0.6:
   version "27.0.6"
   resolved "https://registry.yarnpkg.com/babel-jest/-/babel-jest-27.0.6.tgz#e99c6e0577da2655118e3608b68761a5a69bd0d8"
@@ -2468,10 +2483,20 @@ flat-cache@^3.0.4:
     flatted "^3.1.0"
     rimraf "^3.0.2"
 
+flatted@^2.0.1:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/flatted/-/flatted-2.0.2.tgz#4575b21e2bcee7434aa9be662f4b7b5f9c2b5138"
+  integrity sha512-r5wGx7YeOwNWNlCA0wQ86zKyDLMQr+/RB8xy74M4hTphfmjlijTSSXGuH8rnvKZnfT9i+75zmd8jcKdMR4O6jA==
+
 flatted@^3.1.0:
   version "3.2.1"
   resolved "https://registry.npmjs.org/flatted/-/flatted-3.2.1.tgz"
   integrity sha512-OMQjaErSFHmHqZe+PSidH5n8j3O0F2DdnVh8JB4j4eUQ2k6KvB0qGfrKIhapvez5JerBbmWkaLYUYWISaESoXg==
+
+follow-redirects@^1.10.0:
+  version "1.14.1"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.1.tgz#d9114ded0a1cfdd334e164e6662ad02bfd91ff43"
+  integrity sha512-HWqDgT7ZEkqRzBvc2s64vSZ/hfOceEol3ac/7tKwzuvEyWx3/4UegXh5oBOIotkGsObyk3xznnSRVADBgWSQVg==
 
 form-data@^3.0.0:
   version "3.0.1"
@@ -5239,6 +5264,14 @@ yargs@^16.0.0, yargs@^16.0.3, yargs@^16.2.0:
     string-width "^4.2.0"
     y18n "^5.0.5"
     yargs-parser "^20.2.2"
+
+yiff@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/yiff/-/yiff-3.1.2.tgz#cb754f1968164dcfacbb53670594dd73e8c33c24"
+  integrity sha512-F31hg2bGcLozNtw7vmD+LM/IRBNWreOzM/Fx1wIlaXOVKE8HS6iBaVw0dQROrFrcWpIftf1uVHrDe4GPWAPMDg==
+  dependencies:
+    axios "^0.21.1"
+    chalk "^4.0.0"
 
 yn@3.1.1:
   version "3.1.1"

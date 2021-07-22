@@ -1,17 +1,28 @@
 import { SapphireClient } from '@sapphire/framework'
 import { Intents } from 'discord.js'
+import { KSoftClient } from '@aero/ksoft'
 import cfg from '../../config'
 
 export default class Client extends SapphireClient {
+	ksoft: KSoftClient
 	constructor () {
 		super({
 			ws: {
 				intents: [Intents.FLAGS.DIRECT_MESSAGES, Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]
 			},
-			defaultPrefix: 'n^',
+			defaultPrefix: cfg.prefix,
 			caseInsensitivePrefixes: true,
-			caseInsensitiveCommands: true
+			caseInsensitiveCommands: true,
+			presence: {
+				status: 'idle',
+				activity: {
+					name: 'The Stars in the midnight sky',
+					type: 'WATCHING'
+				}
+			}
 		})
+
+		this.ksoft = new KSoftClient(cfg.ksoft)
 	}
 
 	public async start (): Promise<Client> {

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 /**
  * Original by: TMUniversal
  * Licensed under the MIT Licensed
@@ -11,6 +10,7 @@ import { join } from 'path'
 interface Configuration {
 	version?: string | number
 	token: string
+	ksoft: string
 	prefix: string
 	owners: Snowflake | Snowflake[]
 }
@@ -75,6 +75,10 @@ const config = convict<Configuration>({
 		format: Array,
 		env: 'CLIENT_OWNERS',
 		default: []
+	},
+	ksoft: {
+		format: String,
+		default: ''
 	}
 })
 

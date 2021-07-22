@@ -1,5 +1,6 @@
 {
 	"token": "",
 	"prefix": "n^",
-	"owners": [""]
+	"owners": [""],
+	"ksoft": "Get your token > https://api.ksoft.si/dashboard/"
 }
