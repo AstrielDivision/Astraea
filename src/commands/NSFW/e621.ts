@@ -11,15 +11,7 @@ import { Args } from '@sapphire/framework'
 	cooldownBucket: 3,
 	cooldownDuration: 3000
 })
-export default class E621Command extends NorthCommand {
-	args: [
-		{
-			id: 'Tags'
-			type: 'string'
-			match: 'content'
-		}
-	]
-
+export default class E621 extends NorthCommand {
 	public async run (message: Message, args: Args): Promise<Message> {
 		const Tags = (await args.restResult('string')).value
 		try {
