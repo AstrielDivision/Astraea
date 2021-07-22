@@ -8,7 +8,11 @@ import { inspect } from 'util'
 @ApplyOptions<NorthCommandOptions>({
 	name: 'eval',
 	description: 'Evaluate javascript on the bot process',
-	hidden: true
+	hidden: true,
+	strategyOptions: {
+		flags: ['silent', 's'],
+		options: ['depth']
+	}
 })
 export default class Eval extends NorthCommand {
 	public async run (message: Message, args: Args): Promise<Message> {
@@ -17,9 +21,13 @@ export default class Eval extends NorthCommand {
 		let silent: boolean, depth: string, exp: string
 
 		exp = await args.rest('string')
-		silent = await args.getFlags('silent', 's')
-		depth = await args.getOption('depth')
+		silent = args.getFlags('silent', 's')
+		depth = args.getOption('depth')
 
+		/**
+		 * Original Author: Raven0
+		 * https://github.com/ArtieFuzzz/Raven0/blob/main/src/commands/Owner/eval.ts
+		 */
 		const embed = new MessageEmbed()
 			.setFooter(message.author.tag, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }))
 		const { success, output, Type }: { success: boolean, output: string, Type: string} = await this.eval(message, exp, depth)
