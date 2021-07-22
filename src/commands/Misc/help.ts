@@ -20,7 +20,7 @@ export default class Help extends NorthCommand {
 	public async run (message: Message, args: Args): Promise<Message> {
 		const command = await args.pickResult('string')
 		if (command.success) return await this.commandHelp(message, command.value)
-		return await message.channel.send(this.mapCommandsToStr())
+		return await this.commands(message)
 	}
 
 	private async commandHelp (message: Message, cmd: string): Promise<Message> {
@@ -33,11 +33,37 @@ export default class Help extends NorthCommand {
 				/* eslint-disable @typescript-eslint/restrict-template-expressions */
 				.setTitle(`Command | ${command.name}`)
 				.setDescription(`**Description:** ${command.description || '`No description`'}\n**In detail:** ${command.detailedDescription || '`No detailed description`'}`)
-				.setFooter(`${message.author.tag}}`, message.author.avatarURL({ dynamic: true }))
+				.setFooter(`${message.author.tag}`, message.author.avatarURL({ dynamic: true }))
 		)
 	}
 
-	private mapCommandsToStr (): string {
-		return this.container.stores.get('commands').map((val) => `${val.name} → ${val.description}`).join('\n')
+	private async commands (message: Message): Promise<Message> {
+		let categories: string[] = []
+
+		let embed = new MessageEmbed()
+
+		// eslint-disable-next-line array-callback-return
+		this.container.stores.get('commands').map((cmd: NorthCommand) => {
+			// eslint-disable-next-line array-callback-return
+			if (categories.includes(cmd.category)) return
+
+			categories.push(cmd.category)
+		})
+
+		categories.forEach((category) => {
+			let commandsLine = ''
+			this.container.stores.get('commands').forEach(cmd => {
+				if ((cmd as NorthCommand).category !== category || (cmd as NorthCommand).hidden) return
+				commandsLine += (`\`${cmd.name}\` `)
+			})
+
+			if (commandsLine.length < 1) return
+
+			embed.addField(category, commandsLine)
+			embed.setTimestamp()
+			// embed.setThumbnail(message.author.avatarURL({ dynamic: true }))
+			embed.setFooter(` - ${this.container.client.user.tag}`, this.container.client.user.avatarURL({ dynamic: true }))
+		})
+		return await message.channel.send(embed)
 	}
 }

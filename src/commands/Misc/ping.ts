@@ -1,12 +1,12 @@
-import { Command, CommandOptions } from '@sapphire/framework'
+import { NorthCommand, NorthCommandOptions } from '../../lib/Structures/Command'
 import { Message } from 'discord.js'
 import { ApplyOptions } from '@sapphire/decorators'
 
-@ApplyOptions<CommandOptions>({
+@ApplyOptions<NorthCommandOptions>({
 	name: 'ping',
 	description: 'Returns bot ping'
 })
-export default class Ping extends Command {
+export default class Ping extends NorthCommand {
 	public async run (message: Message): Promise<Message> {
 		const ping = await message.channel.send('Pong!')
 

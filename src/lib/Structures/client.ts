@@ -1,4 +1,4 @@
-import { LogLevel, SapphireClient } from '@sapphire/framework'
+import { SapphireClient } from '@sapphire/framework'
 import { Intents } from 'discord.js'
 import cfg from '../../config'
 
@@ -10,10 +10,7 @@ export default class Client extends SapphireClient {
 			},
 			defaultPrefix: 'n^',
 			caseInsensitivePrefixes: true,
-			caseInsensitiveCommands: true,
-			logger: {
-				level: LogLevel.Error
-			}
+			caseInsensitiveCommands: true
 		})
 	}
 
