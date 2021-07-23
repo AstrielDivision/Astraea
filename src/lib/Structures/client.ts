@@ -16,7 +16,7 @@ export default class Client extends SapphireClient {
 			presence: {
 				status: 'idle',
 				activity: {
-					name: 'The Stars in the midnight sky',
+					name: `The Stars in the midnight sky | ${cfg.prefix}`,
 					type: 'WATCHING'
 				}
 			}
