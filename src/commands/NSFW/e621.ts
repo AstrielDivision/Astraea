@@ -8,7 +8,7 @@ import { Args } from '@sapphire/framework'
 	name: 'e621',
 	aliases: ['621'],
 	description: 'Returns an Image from e621 with your selected tags',
-	cooldownBucket: 3,
+	cooldownLimit: 3,
 	cooldownDuration: 3000
 })
 export default class E621 extends NorthCommand {

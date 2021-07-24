@@ -7,7 +7,7 @@ import { Image } from '@aero/ksoft'
 	name: 'doge',
 	aliases: ['doge', 'wow'],
 	description: 'Returns an image of doge. Wow',
-	cooldownBucket: 3,
+	cooldownLimit: 3,
 	cooldownDuration: 2000
 })
 export default class DogeWow extends NorthCommand {

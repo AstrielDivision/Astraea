@@ -7,7 +7,7 @@ import { RedditImage } from '@aero/ksoft'
 	name: 'helplesshentai',
 	aliases: ['hh'],
 	description: 'Returns a Image from r/helplesshentai',
-	cooldownBucket: 3,
+	cooldownLimit: 3,
 	cooldownDuration: 2000
 })
 export default class HelplessHentai extends NorthCommand {

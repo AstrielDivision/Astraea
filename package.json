@@ -1,6 +1,6 @@
 {
   "name": "north",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "main": "dist/src/index",
   "author": "ArtieFuzzz#8298",
   "license": "MIT",
@@ -56,7 +56,7 @@
     "@aero/ksoft": "^4.0.0-rc1",
     "@sapphire/decorators": "^2.2.0",
     "@sapphire/discord.js-utilities": "^2.0.2",
-    "@sapphire/framework": "^2.0.0-pr-218.ee962943.0",
+    "@sapphire/framework": "^2.0.0-next.c14ef9b5.0",
     "@sapphire/utilities": "^2.0.1",
     "app-root-path": "^3.0.0",
     "convict": "^6.2.0",

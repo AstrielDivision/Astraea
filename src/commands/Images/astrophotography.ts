@@ -7,8 +7,8 @@ import { RedditImage } from '@aero/ksoft'
 	name: 'astrophotograhy',
 	aliases: ['astronomy', 'astrophotography', 'astro'],
 	description: 'Returns a Image from r/astrophotography',
-	cooldownBucket: 3,
-	cooldownDuration: 2000
+	cooldownLimit: 3,
+	cooldownDelay: 2000
 })
 export default class Astrophotography extends NorthCommand {
 	public async run (message: Message): Promise<Message> {

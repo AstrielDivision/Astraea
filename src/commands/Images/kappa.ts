@@ -6,7 +6,7 @@ import { Image } from '@aero/ksoft'
 @ApplyOptions<NorthCommandOptions>({
 	name: 'kappa',
 	description: 'Returns an image of a cat',
-	cooldownBucket: 3,
+	cooldownLimit: 3,
 	cooldownDuration: 2000
 })
 export default class Fox extends NorthCommand {

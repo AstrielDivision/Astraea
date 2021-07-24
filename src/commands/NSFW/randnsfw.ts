@@ -7,7 +7,7 @@ import { RedditImage } from '@aero/ksoft'
 	name: 'randnsfw',
 	aliases: ['nsfw'],
 	description: 'Returns a random nsfw image or gif from various subreddits',
-	cooldownBucket: 3,
+	cooldownLimit: 3,
 	cooldownDuration: 2000
 })
 export default class RandomNSFW extends NorthCommand {

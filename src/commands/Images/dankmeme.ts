@@ -7,7 +7,7 @@ import { RedditImage } from '@aero/ksoft'
 	name: 'dankmeme',
 	aliases: ['dankmemes'],
 	description: 'Returns a Image from r/dankmemes',
-	cooldownBucket: 3,
+	cooldownLimit: 3,
 	cooldownDuration: 2000
 })
 export default class Dank extends NorthCommand {

@@ -7,7 +7,7 @@ import { RedditImage } from '@aero/ksoft'
 	name: 'facepalm',
 	aliases: ['fp'],
 	description: 'Returns a Image from r/facepalm',
-	cooldownBucket: 3,
+	cooldownLimit: 3,
 	cooldownDuration: 2000
 })
 export default class Facepalm extends NorthCommand {

@@ -6,7 +6,7 @@ import { Image } from '@aero/ksoft'
 @ApplyOptions<NorthCommandOptions>({
 	name: 'neko',
 	description: 'Returns a random image of a neko (These images have been moderated)',
-	cooldownBucket: 3,
+	cooldownLimit: 3,
 	cooldownDuration: 2000
 })
 export default class Neko extends NorthCommand {

@@ -7,7 +7,7 @@ import { RedditImage } from '@aero/ksoft'
 	name: 'foodporn',
 	aliases: ['food'],
 	description: 'Returns a Image from r/foodporn',
-	cooldownBucket: 3,
+	cooldownLimit: 3,
 	cooldownDuration: 2000
 })
 export default class Food extends NorthCommand {

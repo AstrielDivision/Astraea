@@ -6,7 +6,7 @@ import { Image } from '@aero/ksoft'
 @ApplyOptions<NorthCommandOptions>({
 	name: 'hentaigif',
 	description: 'Returns an animated image of hentai',
-	cooldownBucket: 3,
+	cooldownLimit: 3,
 	cooldownDuration: 2000
 })
 export default class HentaiGif extends NorthCommand {

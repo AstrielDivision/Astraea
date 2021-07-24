@@ -7,7 +7,7 @@ import { Image } from '@aero/ksoft'
 	name: 'pepe',
 	aliases: ['pepe', 'frog'],
 	description: 'Returns an image of Pepe the frog',
-	cooldownBucket: 3,
+	cooldownLimit: 3,
 	cooldownDuration: 2000
 })
 export default class Fox extends NorthCommand {

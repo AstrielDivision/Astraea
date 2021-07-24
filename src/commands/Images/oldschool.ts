@@ -6,7 +6,7 @@ import { RedditImage } from '@aero/ksoft'
 @ApplyOptions<NorthCommandOptions>({
 	name: 'oldschool',
 	description: 'Returns a Image from r/oldschool',
-	cooldownBucket: 3,
+	cooldownLimit: 3,
 	cooldownDuration: 2000
 })
 export default class OldSChool extends NorthCommand {

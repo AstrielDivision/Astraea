@@ -14,7 +14,7 @@ import { Message, MessageEmbed } from 'discord.js'
 	description: 'Gives you a list of commands',
 	detailedDescription: 'You may also provide a command, which will return info about that command',
 	preconditions: [],
-	runIn: ['guild']
+	runIn: ['GUILD_TEXT']
 })
 export default class Help extends NorthCommand {
 	public async run (message: Message, args: Args): Promise<Message> {
@@ -53,7 +53,8 @@ export default class Help extends NorthCommand {
 		categories.forEach((category) => {
 			let commandsLine = ''
 			this.container.stores.get('commands').forEach(cmd => {
-				if ((cmd as NorthCommand).category !== category || (cmd as NorthCommand).hidden) return
+				// eslint-disable-next-line @typescript-eslint/no-unnecessary-boolean-literal-compare
+				if ((cmd as NorthCommand).category !== category || (cmd as NorthCommand).hidden === true) return
 				commandsLine += (`\`${cmd.name}\` `)
 			})
 

@@ -7,7 +7,7 @@ import { RedditImage } from '@aero/ksoft'
 	name: 'bigtiddy',
 	aliases: ['booba'],
 	description: 'Returns a Image from r/bigtiddygothgf',
-	cooldownBucket: 3,
+	cooldownLimit: 3,
 	cooldownDuration: 2000
 })
 export default class BigTiddy extends NorthCommand {

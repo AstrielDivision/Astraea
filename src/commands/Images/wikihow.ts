@@ -7,7 +7,7 @@ import { WikiHowImage } from '@aero/ksoft'
 	name: 'wikihow',
 	aliases: ['how'],
 	description: 'Returns a random wikihow article',
-	cooldownBucket: 3,
+	cooldownLimit: 3,
 	cooldownDuration: 2000
 })
 export default class Wikihow extends NorthCommand {

@@ -7,7 +7,7 @@ import { RedditImage } from '@aero/ksoft'
 	name: 'notraps',
 	aliases: ['trap'],
 	description: 'Returns a Image from r/NoTraps',
-	cooldownBucket: 3,
+	cooldownLimit: 3,
 	cooldownDuration: 2000
 })
 export default class NOTRAPS extends NorthCommand {

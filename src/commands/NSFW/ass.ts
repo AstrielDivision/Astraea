@@ -7,7 +7,7 @@ import { Image } from '@aero/ksoft'
 	name: 'ass',
 	aliases: ['butt'],
 	description: 'Returns a random Image of ASS',
-	cooldownBucket: 3,
+	cooldownLimit: 3,
 	cooldownDuration: 2000
 })
 export default class Ass extends NorthCommand {

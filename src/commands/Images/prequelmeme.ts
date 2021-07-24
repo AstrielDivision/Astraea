@@ -6,7 +6,7 @@ import { RedditImage } from '@aero/ksoft'
 @ApplyOptions<NorthCommandOptions>({
 	name: 'prequelmemes',
 	description: 'Returns a Image from r/prequelmemes',
-	cooldownBucket: 3,
+	cooldownLimit: 3,
 	cooldownDuration: 2000
 })
 export default class Comics extends NorthCommand {

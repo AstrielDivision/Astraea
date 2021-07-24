@@ -7,7 +7,7 @@ import { RedditImage } from '@aero/ksoft'
 	name: 'meme',
 	aliases: ['memes'],
 	description: 'Returns a Image from r/memes',
-	cooldownBucket: 3,
+	cooldownLimit: 3,
 	cooldownDuration: 2000
 })
 export default class Illustration extends NorthCommand {

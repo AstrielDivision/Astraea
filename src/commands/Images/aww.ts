@@ -7,7 +7,7 @@ import { Image } from '@aero/ksoft'
 	name: 'aww',
 	aliases: ['awww', 'awwww'],
 	description: 'Returns a Image from r/astrophotography',
-	cooldownBucket: 3,
+	cooldownLimit: 3,
 	cooldownDuration: 2000
 })
 export default class Aww extends NorthCommand {

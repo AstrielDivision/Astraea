@@ -7,7 +7,7 @@ import { Image } from '@aero/ksoft'
 	name: 'birb',
 	aliases: ['bird'],
 	description: 'Returns an image of a bird',
-	cooldownBucket: 3,
+	cooldownLimit: 3,
 	cooldownDuration: 2000
 })
 export default class BirbCommand extends NorthCommand {
