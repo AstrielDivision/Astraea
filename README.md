@@ -3,8 +3,7 @@
 # North
 
 [![CD](https://github.com/hidden-umbrella/north/actions/workflows/CD.yml/badge.svg)](https://github.com/hidden-umbrella/north/actions/workflows/CD.yml)
-<!-->
-[![Depfu](https://badges.depfu.com/badges/debc5d63788928c9b1d50a39079061c1/count.svg)](https://badges.depfu.com/github/hidden-umbrella/template?project_id=28958) <-->
+[![Depfu](https://badges.depfu.com/badges/02ff61f39590258ae458a6a3b9d42441/count.svg)](https://badges.depfu.com/github/hidden-umbrella/north?project_id=29655)
 
 ![GitHub issues](https://img.shields.io/github/issues-raw/hidden-umbrella/north)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/hidden-umbrella/north)

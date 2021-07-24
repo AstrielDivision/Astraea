@@ -6,13 +6,13 @@ import { Image } from '@aero/ksoft'
 @ApplyOptions<NorthCommandOptions>({
 	name: 'fox',
 	aliases: ['foxx'],
-	description: 'Returns an image of a cat',
+	description: 'Returns an image of a fox',
 	cooldownBucket: 3,
 	cooldownDuration: 2000
 })
 export default class Fox extends NorthCommand {
 	public async run (message: Message): Promise<Message> {
-		const { url }: Image = await this.container.client.ksoft.images.random('Foxx', { nsfw: false })
+		const { url }: Image = await this.container.client.ksoft.images.random('fox', { nsfw: false })
 		const embed = new MessageEmbed()
 			.setTitle('Foxx')
 			.setFooter('Powered by api.ksoft.si')
