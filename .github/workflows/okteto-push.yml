@@ -16,14 +16,18 @@ jobs:
       - name: Checkout branch
         uses: actions/checkout@v2
       - name: Login
-        uses: okteto/login@v4.2
+        uses: okteto/login@master
         with:
           token: ${{ secrets.OKTETO_TOKEN }}
       - name: "Create devlopment environments namespace"
         uses: okteto/namespace@master
         with:
           namespace: north-artiefuzzz
-      - name: Push to pod
-        run: |
-          echo -n "${{ secrets.CONFIG }}" | base64 -d > config/main.json
-          okteto push
+      - name: echo Config
+        run: echo -n "${{ secrets.CONFIG }}" | base64 -d > config/main.json
+      - name: Push
+        uses: okteto/push@master
+        with:
+          namespace: north-artiefuzzz
+          name: north
+
