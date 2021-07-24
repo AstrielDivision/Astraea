@@ -8,7 +8,7 @@ import { Image } from '@aero/ksoft'
 	aliases: ['pepe', 'frog'],
 	description: 'Returns an image of Pepe the frog',
 	cooldownLimit: 3,
-	cooldownDuration: 2000
+	cooldownDelay: 2000
 })
 export default class Fox extends NorthCommand {
 	public async run (message: Message): Promise<Message> {

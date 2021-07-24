@@ -8,7 +8,7 @@ import { RedditImage } from '@aero/ksoft'
 	aliases: ['nsfw'],
 	description: 'Returns a random nsfw image or gif from various subreddits',
 	cooldownLimit: 3,
-	cooldownDuration: 2000
+	cooldownDelay: 2000
 })
 export default class RandomNSFW extends NorthCommand {
 	public async run (message: Message): Promise<Message> {

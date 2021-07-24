@@ -9,7 +9,7 @@ import { Args } from '@sapphire/framework'
 	aliases: ['621'],
 	description: 'Returns an Image from e621 with your selected tags',
 	cooldownLimit: 3,
-	cooldownDuration: 3000
+	cooldownDelay: 3000
 })
 export default class E621 extends NorthCommand {
 	public async run (message: Message, args: Args): Promise<Message> {

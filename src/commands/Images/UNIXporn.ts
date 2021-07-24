@@ -8,7 +8,7 @@ import { RedditImage } from '@aero/ksoft'
 	aliases: ['unix', 'linx'],
 	description: 'Returns a Image from r/illustration',
 	cooldownLimit: 3,
-	cooldownDuration: 2000
+	cooldownDelay: 2000
 })
 export default class Illustration extends NorthCommand {
 	public async run (message: Message): Promise<Message> {

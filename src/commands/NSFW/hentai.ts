@@ -8,7 +8,7 @@ import { RedditImage } from '@aero/ksoft'
 	aliases: ['hentai!'],
 	description: 'Returns a Image from r/hentai',
 	cooldownLimit: 3,
-	cooldownDuration: 2000
+	cooldownDelay: 2000
 })
 export default class Hentaii extends NorthCommand {
 	public async run (message: Message): Promise<Message> {

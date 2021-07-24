@@ -8,7 +8,7 @@ import { RedditImage } from '@aero/ksoft'
 	aliases: ['dankmemes'],
 	description: 'Returns a Image from r/dankmemes',
 	cooldownLimit: 3,
-	cooldownDuration: 2000
+	cooldownDelay: 2000
 })
 export default class Dank extends NorthCommand {
 	public async run (message: Message): Promise<Message> {

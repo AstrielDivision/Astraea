@@ -7,7 +7,7 @@ import { RedditImage } from '@aero/ksoft'
 	name: 'oldschool',
 	description: 'Returns a Image from r/oldschool',
 	cooldownLimit: 3,
-	cooldownDuration: 2000
+	cooldownDelay: 2000
 })
 export default class OldSChool extends NorthCommand {
 	public async run (message: Message): Promise<Message> {

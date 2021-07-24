@@ -7,7 +7,7 @@ import { Image } from '@aero/ksoft'
 	name: 'hentaigif',
 	description: 'Returns an animated image of hentai',
 	cooldownLimit: 3,
-	cooldownDuration: 2000
+	cooldownDelay: 2000
 })
 export default class HentaiGif extends NorthCommand {
 	public async run (message: Message): Promise<Message> {

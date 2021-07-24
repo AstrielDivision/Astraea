@@ -8,7 +8,7 @@ import { Image } from '@aero/ksoft'
 	aliases: ['butt'],
 	description: 'Returns a random Image of ASS',
 	cooldownLimit: 3,
-	cooldownDuration: 2000
+	cooldownDelay: 2000
 })
 export default class Ass extends NorthCommand {
 	public async run (message: Message): Promise<Message> {

@@ -8,7 +8,7 @@ import { WikiHowImage } from '@aero/ksoft'
 	aliases: ['how'],
 	description: 'Returns a random wikihow article',
 	cooldownLimit: 3,
-	cooldownDuration: 2000
+	cooldownDelay: 2000
 })
 export default class Wikihow extends NorthCommand {
 	public async run (message: Message): Promise<Message> {

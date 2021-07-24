@@ -8,7 +8,7 @@ import { Image } from '@aero/ksoft'
 	aliases: ['dog'],
 	description: 'Returns an image of a dog',
 	cooldownLimit: 3,
-	cooldownDuration: 2000
+	cooldownDelay: 2000
 })
 export default class Dog extends NorthCommand {
 	public async run (message: Message): Promise<Message> {

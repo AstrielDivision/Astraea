@@ -8,7 +8,7 @@ import { RedditImage } from '@aero/ksoft'
 	aliases: ['booba'],
 	description: 'Returns a Image from r/bigtiddygothgf',
 	cooldownLimit: 3,
-	cooldownDuration: 2000
+	cooldownDelay: 2000
 })
 export default class BigTiddy extends NorthCommand {
 	public async run (message: Message): Promise<Message> {

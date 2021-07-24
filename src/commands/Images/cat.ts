@@ -8,7 +8,7 @@ import { Image } from '@aero/ksoft'
 	aliases: ['cat'],
 	description: 'Returns an image of a cat',
 	cooldownLimit: 3,
-	cooldownDuration: 2000
+	cooldownDelay: 2000
 })
 export default class Cat extends NorthCommand {
 	public async run (message: Message): Promise<Message> {

@@ -8,7 +8,7 @@ import { Image } from '@aero/ksoft'
 	aliases: ['bird'],
 	description: 'Returns an image of a bird',
 	cooldownLimit: 3,
-	cooldownDuration: 2000
+	cooldownDelay: 2000
 })
 export default class BirbCommand extends NorthCommand {
 	public async run (message: Message): Promise<Message> {

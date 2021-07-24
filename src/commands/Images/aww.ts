@@ -8,7 +8,7 @@ import { Image } from '@aero/ksoft'
 	aliases: ['awww', 'awwww'],
 	description: 'Returns a Image from r/astrophotography',
 	cooldownLimit: 3,
-	cooldownDuration: 2000
+	cooldownDelay: 2000
 })
 export default class Aww extends NorthCommand {
 	public async run (message: Message): Promise<Message> {
