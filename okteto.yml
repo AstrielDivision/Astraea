@@ -1,0 +1,7 @@
+name: north
+autocreate: true
+image: node:alpine
+command: apk update && apk add libtool autoconf automake g++ gcc git make && apk add --no-cache bash && git init && yarn && yarn build && yarn global add pm2 && pm2 start . && bash
+forward:
+- 9229:9229
+- 3000:3000

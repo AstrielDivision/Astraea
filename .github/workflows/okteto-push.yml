@@ -1,0 +1,29 @@
+name: Okteto Push
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  login:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+      - name: Login
+        uses: okteto/login@v4.2
+        with:
+          token: ${{ secrets.OKTETO_TOKEN }}
+      - name: "Create devlopment environments namespace"
+        uses: okteto/namespace@master
+        with:
+          namespace: north-artiefuzzz
+      - name: Push to pod
+        run: |
+          echo -n "${{ secrets.CONFIG }}" | base64 -d > config/main.json
+          okteto push
