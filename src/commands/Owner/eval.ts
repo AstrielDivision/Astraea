@@ -8,7 +8,9 @@ import { inspect } from 'util'
 @ApplyOptions<NorthCommandOptions>({
 	name: 'eval',
 	description: 'Evaluate javascript on the bot process',
-	hidden: true
+	hidden: true,
+	flags: ['silent', 's'],
+	options: ['depth']
 })
 export default class Eval extends NorthCommand {
 	public async run (message: Message, args: Args): Promise<Message> {
