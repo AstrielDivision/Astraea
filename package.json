@@ -1,6 +1,6 @@
 {
   "name": "north",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "main": "dist/src/index",
   "author": "ArtieFuzzz#8298",
   "license": "MIT",
@@ -55,11 +55,13 @@
     "@aero/ksoft": "^4.0.0-rc1",
     "@sapphire/decorators": "^2.2.0",
     "@sapphire/discord.js-utilities": "^2.0.2",
-    "@sapphire/framework": "^2.0.0-next.c14ef9b5.0",
+    "@sapphire/framework": "2.0.0-next.9790c48d.0",
+    "@sapphire/plugin-subcommands": "^1.0.6",
     "@sapphire/utilities": "^2.0.1",
     "app-root-path": "^3.0.0",
     "convict": "^6.2.0",
     "discord.js": "^12.5.3",
+    "mongoose": "^5.13.3",
     "yiff": "^3.1.2"
   }
 }
