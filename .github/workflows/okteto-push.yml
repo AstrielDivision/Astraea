@@ -1,4 +1,4 @@
-name: Okteto Push
+name: Continuous Delivery
 
 on:
   push:

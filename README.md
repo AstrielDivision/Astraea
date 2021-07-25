@@ -2,7 +2,7 @@
 
 # North
 
-[![Okteto Push](https://github.com/hidden-umbrella/north/actions/workflows/okteto-push.yml/badge.svg)](https://github.com/hidden-umbrella/north/actions/workflows/okteto-push.yml)
+[![Continuous Delivery](https://github.com/hidden-umbrella/north/actions/workflows/okteto-push.yml/badge.svg)](https://github.com/hidden-umbrella/north/actions/workflows/okteto-push.yml)
 [![Depfu](https://badges.depfu.com/badges/02ff61f39590258ae458a6a3b9d42441/count.svg)](https://badges.depfu.com/github/hidden-umbrella/north?project_id=29655)
 
 ![GitHub issues](https://img.shields.io/github/issues-raw/hidden-umbrella/north)
