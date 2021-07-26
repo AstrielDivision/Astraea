@@ -7,6 +7,7 @@ import { Image } from '@aero/ksoft'
 	name: 'neko',
 	description: 'Returns a random image of a neko (These images have been moderated)',
 	cooldownLimit: 3,
+	nsfw: true,
 	cooldownDelay: 2000
 })
 export default class Neko extends NorthCommand {

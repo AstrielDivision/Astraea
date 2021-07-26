@@ -8,6 +8,7 @@ import { RedditImage } from '@aero/ksoft'
 	aliases: ['femboy', 'femboys', 'femboi', 'fembois'],
 	description: 'Returns a Image from r/FemBoys',
 	cooldownLimit: 3,
+	nsfw: true,
 	cooldownDelay: 2000
 })
 export default class Femboy extends NorthCommand {
