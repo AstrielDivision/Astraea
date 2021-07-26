@@ -24,8 +24,8 @@ export default class MusicManager {
 
 	launchEvents (): void {
 		/* eslint-disable no-console */
-		this.manager.on('nodeConnect', (node) => console.log(`${node.options.identifier} has been connected.`))
-		this.manager.on('nodeError', (node, error) => console.log(`${node.options.identifier} had an error: ${error.message}`))
+		this.manager.on('nodeConnect', (node) => this.client.logger.info(`${node.options.identifier} has been connected.`))
+		this.manager.on('nodeError', (node, error) => this.client.logger.info(`${node.options.identifier} had an error: ${error.message}`))
 
 		this.manager.on('trackStart', (player, track) => {
 			const channel: TextChannel = this.client.channels.cache.get(player.textChannel) as TextChannel
