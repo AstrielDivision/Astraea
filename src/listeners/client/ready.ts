@@ -1,8 +1,8 @@
-import { Listener, EventOptions, Events } from '@sapphire/framework'
+import { Listener, ListenerOptions, Events } from '@sapphire/framework'
 import { ApplyOptions } from '@sapphire/decorators'
 import cfg from '../../config'
 
-@ApplyOptions<EventOptions>({
+@ApplyOptions<ListenerOptions>({
 	once: true,
 	event: Events.ClientReady
 })
