@@ -61,6 +61,7 @@
     "app-root-path": "^3.0.0",
     "convict": "^6.2.0",
     "discord.js": "^12.5.3",
+    "erela.js": "^2.3.3",
     "mongoose": "^5.13.3",
     "yiff": "^3.1.2"
   }
