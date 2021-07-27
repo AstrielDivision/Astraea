@@ -56,13 +56,12 @@
     "@sapphire/pieces": "1",
     "@sapphire/plugin-api": "^2.2.1-next.03bbed6.0",
     "@sapphire/plugin-subcommands": "^1.0.6",
+    "@sapphire/type": "^2.0.11",
     "@sapphire/utilities": "^2.0.1",
     "app-root-path": "^3.0.0",
     "convict": "^6.2.0",
     "discord-api-types": "^0.20.2",
     "discord.js": "^12.5.3",
-    "erela.js": "^2.3.3",
-    "mongoose": "^5.13.3",
     "yiff": "^3.1.2"
   }
 }

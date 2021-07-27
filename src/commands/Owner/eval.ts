@@ -1,85 +1,74 @@
-import { NorthCommand, NorthCommandOptions } from '../../lib/Structures/Command'
-import { Message, MessageEmbed } from 'discord.js'
 import { ApplyOptions } from '@sapphire/decorators'
-import cfg from '../../config'
-import { Args } from '@sapphire/framework'
-import c from '@aero/centra'
+import { Args, Command, CommandOptions } from '@sapphire/framework'
+import { Type } from '@sapphire/type'
+import { codeBlock, isThenable } from '@sapphire/utilities'
+import type { Message } from 'discord.js'
 import { inspect } from 'util'
+import cfg from '../../config'
 
-@ApplyOptions<NorthCommandOptions>({
+@ApplyOptions<CommandOptions>({
 	name: 'eval',
-	description: 'Evaluate javascript on the bot process',
-	hidden: true,
-	flags: ['silent', 's', 'async'],
+	aliases: ['ev'],
+	description: 'Evals any JavaScript code',
+	quotes: [],
+	flags: ['async', 'hidden', 'showHidden', 'silent', 's'],
 	options: ['depth']
 })
-export default class Eval extends NorthCommand {
+export default class extends Command {
 	public async run (message: Message, args: Args): Promise<Message> {
 		if (!cfg.owners.includes(message.author.id)) return await message.channel.send('You\'re not allowed to use this command!')
+		const code = await args.rest('string')
 
-		let silent: boolean, depth: string, exp: string, async: boolean
+		const { result, success, type } = await this.eval(message, code, {
+			async: args.getFlags('async'),
+			depth: Number(args.getOption('depth')) ?? 0,
+			showHidden: args.getFlags('hidden', 'showHidden')
+		})
 
-		exp = await args.rest('string')
-		silent = args.getFlags('silent', 's')
-		async = args.getFlags('async')
-		depth = args.getOption('depth')
+		const output = success ? codeBlock('js', result) : `**ERROR**: ${codeBlock('bash', result)}`
+		if (args.getFlags('silent', 's')) return null
 
-		/**
-		 * Original Author: Raven0
-		 * https://github.com/ArtieFuzzz/Raven0/blob/main/src/commands/Owner/eval.ts
-		 */
-		const embed = new MessageEmbed()
-			.setFooter(message.author.tag, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }))
-		const { success, output, Type }: { success: boolean, output: string, Type: string} = await this.eval(message, exp, depth, async)
+		const typeFooter = `**Type**: ${codeBlock('typescript', type)}`
 
-		if (silent) return null
-
-		if (output.length > 1000) {
-			const { key }: { key: string } = await c('https://hastebin.com', 'POST')
-				.path('documents')
-				.body(output)
-				.json()
-
-			return await message.channel.send(`The output was longer than 2000 characters: https://hastebin.com/${key}`)
-		}
-
-		if (success) {
-			embed.setTitle('Success! | Result')
-			embed.setColor('GREEN')
-			embed.addField('Output:', `\`\`\`js\n${output}\`\`\``)
-			embed.addField('Type:', `\`\`\`ts\n${Type}\`\`\``)
-
-			return await message.channel.send(embed)
-		}
-		if (!success) {
-			embed.setTitle('Error! | Result')
-			embed.setColor('RED')
-			embed.addField('Output:', `\`\`\`js\n${output}\`\`\``)
-			embed.addField('Type:', `\`\`\`ts\n${Type}\`\`\``)
-			return await message.channel.send(embed)
-		}
-	}
-
-	private async eval (message: Message, expression: string, depthOption?: string, asyncFlag?: boolean): Promise<{ success: boolean, output: string, Type: string }> {
-		let success: boolean, output: string, Type: string
-		try {
-			if (asyncFlag) expression = `(async () => {\n${expression}\n})()`
-			// eslint-disable-next-line no-eval
-			output = eval(expression)
-			Type = typeof output
-
-			success = true
-		} catch (err) {
-			if (!Type) Type = typeof err
-			if (err?.stack) this.container.logger.error('[Eval] ERROR!:', err.stack)
-			output = err
-			success = false
-		}
-		if (typeof output !== 'string') {
-			output = inspect(output, {
-				depth: depthOption ? parseInt(depthOption) || 0 : 0
+		if (output.length > 2000) {
+			return await message.channel.send(`Output was too long... sent the result as a file.\n\n${typeFooter}`, {
+				files: [{ attachment: Buffer.from(output), name: 'output.txt' }]
 			})
 		}
-		return { success, output, Type }
+
+		return await message.channel.send(`${output}\n${typeFooter}`)
+	}
+
+	private async eval (message: Message, code: string, flags: { async: boolean, depth: number, showHidden: boolean }): Promise<{ result, success, type }> {
+		if (flags.async) code = `(async () => {\n${code}\n})();`
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
+		const msg = message
+
+		let success = true
+		let result = null
+
+		try {
+			// eslint-disable-next-line no-eval
+			result = eval(code)
+		} catch (error) {
+			// eslint-disable-next-line @typescript-eslint/prefer-optional-chain
+			if (error && error.stack) {
+				this.container.client.logger.error(error)
+			}
+			result = error
+			success = false
+		}
+
+		const type = new Type(result).toString()
+		if (isThenable(result)) result = await result
+
+		if (typeof result !== 'string') {
+			result = inspect(result, {
+				depth: flags.depth,
+				showHidden: flags.showHidden
+			})
+		}
+
+		return { result, success, type }
 	}
 }
