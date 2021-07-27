@@ -1,7 +1,7 @@
 import { NorthCommand, NorthCommandOptions } from '../../lib/Structures/Command'
 import { Message, MessageEmbed } from 'discord.js'
 import { ApplyOptions } from '@sapphire/decorators'
-import config from '../../config'
+import cfg from '../../config'
 import { Args } from '@sapphire/framework'
 import c from '@aero/centra'
 import { inspect } from 'util'
@@ -15,7 +15,7 @@ import { inspect } from 'util'
 })
 export default class Eval extends NorthCommand {
 	public async run (message: Message, args: Args): Promise<Message> {
-		if (!this.isOwner(message.author.id)) return await message.channel.send('You\'re not allowed to execute this command.')
+		if (!cfg.owners.includes(message.author.id)) return await message.channel.send('You\'re not allowed to use this command!')
 
 		let silent: boolean, depth: string, exp: string, async: boolean
 
@@ -30,7 +30,7 @@ export default class Eval extends NorthCommand {
 		 */
 		const embed = new MessageEmbed()
 			.setFooter(message.author.tag, message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }))
-		const { success, output, Type }: { success: boolean, output: string, Type: string} = await this.eval(exp, depth, async)
+		const { success, output, Type }: { success: boolean, output: string, Type: string} = await this.eval(message, exp, depth, async)
 
 		if (silent) return null
 
@@ -60,7 +60,7 @@ export default class Eval extends NorthCommand {
 		}
 	}
 
-	private async eval (expression: string, depthOption?: string, asyncFlag?: boolean): Promise<{ success: boolean, output: string, Type: string }> {
+	private async eval (message: Message, expression: string, depthOption?: string, asyncFlag?: boolean): Promise<{ success: boolean, output: string, Type: string }> {
 		let success: boolean, output: string, Type: string
 		try {
 			if (asyncFlag) expression = `(async () => {\n${expression}\n})()`
@@ -81,9 +81,5 @@ export default class Eval extends NorthCommand {
 			})
 		}
 		return { success, output, Type }
-	}
-
-	private isOwner (id: string): boolean {
-		if (config.owners.includes(id)) return true
 	}
 }
