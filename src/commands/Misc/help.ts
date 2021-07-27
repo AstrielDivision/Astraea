@@ -13,8 +13,7 @@ import { Message, MessageEmbed } from 'discord.js'
 	aliases: ['h'],
 	description: 'Gives you a list of commands',
 	detailedDescription: 'You may also provide a command, which will return info about that command',
-	preconditions: [],
-	runIn: ['GUILD_TEXT']
+	preconditions: []
 })
 export default class Help extends NorthCommand {
 	public async run (message: Message, args: Args): Promise<Message> {
