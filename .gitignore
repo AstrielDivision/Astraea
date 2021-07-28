@@ -1,3 +1,13 @@
+## Modules
 node_modules
 dist
+
+## Configuration
 config/main.json
+
+## Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions

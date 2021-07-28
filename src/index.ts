@@ -1,10 +1,12 @@
 import Client from './lib/Structures/client'
+import Logger from './lib/Structures/Logger'
 import cfg from './config'
 
 const client = new Client({
 	defaultPrefix: cfg.prefix,
 	caseInsensitivePrefixes: true,
-	caseInsensitiveCommands: true
+	caseInsensitiveCommands: true,
+	logger: new Logger('North')
 	/* auth: {
 		id: '',
 		secret: '',

@@ -1,7 +1,7 @@
 {
   "name": "north",
   "version": "1.0.9",
-  "main": "dist/src/index",
+  "main": "dist/index",
   "author": "ArtieFuzzz#8298",
   "license": "MIT",
   "private": true,

@@ -5,7 +5,7 @@ import { Guild } from 'discord.js'
 @ApplyOptions<ListenerOptions>({
 	event: Events.GuildDelete
 })
-export class GuildDelete extends Listener {
+export default class GuildDelete extends Listener {
 	public run (guild: Guild): void {
 		return this.container.logger.info('Left', guild.name + ` (${guild.id})`)
 	}
