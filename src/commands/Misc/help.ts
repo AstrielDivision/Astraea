@@ -51,9 +51,10 @@ export default class Help extends NorthCommand {
 
 		categories.forEach((category) => {
 			let commandsLine = ''
-			this.container.stores.get('commands').forEach(cmd => {
-				// eslint-disable-next-line @typescript-eslint/no-unnecessary-boolean-literal-compare
-				if ((cmd as NorthCommand).category !== category || (cmd as NorthCommand).hidden === true) return
+			this.container.stores.get('commands').forEach((cmd) => {
+				if ((cmd as NorthCommand).category !== category) return
+				if ((cmd as NorthCommand).category === 'Owner') return
+
 				commandsLine += (`\`${cmd.name}\` `)
 			})
 

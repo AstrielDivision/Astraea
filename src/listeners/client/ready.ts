@@ -9,6 +9,6 @@ import cfg from '../../config'
 export default class Ready extends Listener {
 	public run (): void {
 		void this.container.client.user.setPresence({ activity: { name: `The Northern Stars | ${cfg.prefix}`, type: 'WATCHING' }, status: 'idle' })
-		return this.container.logger.info(`Ready! Logged in as ${this.container.client.user?.tag} serving ${this.container.client.guilds.cache.size} Guilds and ${this.container.client.users.cache.size}`)
+		return this.container.logger.info(`Ready! Logged in as ${this.container.client.user?.tag} serving ${this.container.client.guilds.cache.size} Guilds and ${this.container.client.users.cache.size} Users`)
 	}
 }
