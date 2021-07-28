@@ -61,14 +61,24 @@ export default class NorthLogger implements ILogger {
 		this._write(this.colours.error, 'FATAL', message)
 	}
 
-	write (...message: Array<string | number | unknown>): void {
+	write (...message: unknown[]): void {
 		this._write(this.colours.info, 'WRITE', message)
+	}
+
+	/**
+	 * Will not be sent through the Webhook
+	 * @param message Message to log
+	 */
+	console (...message: unknown[]): void {
+		this._write(this.colours.info, 'CONSOLE', message)
 	}
 
 	protected _write (colour: RGB, level: string, ...message: unknown[]): void {
 		process.stdout.write(
 			`[${this.formatRGB(this.colours.foreground, this.processTag)} | ${this.formatRGB(this.colours.foreground, this.namespace)} ${this.formatRGB(this.colours.foreground, 'Logger')} | ${this.formatRGB(colour, level)}]: ${this.formatRGB(colour, message)}${EOL}`
 		)
+
+		if (level === 'CONSOLE') return
 
 		const hook = new WebhookClient(cfg.webhook.id, cfg.webhook.secret)
 
