@@ -1,5 +1,9 @@
 {
 	"token": "",
+	"webhook": {
+		"id": "",
+		"secret": ""
+	  },
 	"prefix": "n^",
 	"owners": [""],
 	"ksoft": "Get your token > https://api.ksoft.si/dashboard/"

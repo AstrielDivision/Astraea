@@ -10,6 +10,10 @@ import { join } from 'path'
 interface Configuration {
 	version?: string | number
 	token: string
+	webhook: {
+		id: Snowflake
+		secret: string
+	}
 	ksoft: string
 	prefix: string
 	owners: Snowflake | Snowflake[]
@@ -62,18 +66,26 @@ const config = convict<Configuration>({
 	token: {
 		format: v => typeof v === 'string' && !!v && v.length < 30,
 		arg: 'token',
-		env: 'CLIENT_TOKEN',
 		default: ''
+	},
+	webhook: {
+		format: 'webhook',
+		id: {
+			format: String,
+			default: ''
+		},
+		secret: {
+			format: String,
+			default: ''
+		}
 	},
 	prefix: {
 		format: String,
-		env: 'CLIENT_PREFIX',
 		arg: 'prefix',
 		default: '.'
 	},
 	owners: {
 		format: Array,
-		env: 'CLIENT_OWNERS',
 		default: []
 	},
 	ksoft: {

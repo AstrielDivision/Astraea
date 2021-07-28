@@ -1,15 +1,22 @@
-import { Logger } from '@sapphire/framework'
+import { ILogger, LogLevel } from '@sapphire/framework'
+import { MessageAttachment, WebhookClient, WebhookMessageOptions, MessageEmbed } from 'discord.js'
 import { EOL } from 'os'
+import cfg from '../../config'
 
 type RGB = [number, number, number]
 
-export default class NorthLogger extends Logger {
-	constructor (private readonly _name: string) {
-		super(null)
-	}
+export default class NorthLogger implements ILogger {
+	private readonly loglevel: LogLevel
+	constructor (private readonly namespace: string) {}
 
 	private formatRGB ([r, g, b]: RGB, ...str): string {
 		return `\x1b[38;2;${r};${g};${b}m${str.join(' ')}\x1b[0m`
+	}
+
+	protected get processTag (): string {
+		if (process.env.SHARDS) return `SHARD ${process.env.SHARDS}`
+		if (process.env.SHARDING_MANAGER) return 'MANAGER'
+		return 'GLOBAL'
 	}
 
 	private readonly colours: {
@@ -19,11 +26,15 @@ export default class NorthLogger extends Logger {
 		warn: RGB
 		foreground: RGB
 	} = {
-		info: [143, 188, 187],
-		debug: [161, 188, 138],
-		error: [191, 97, 106],
-		warn: [235, 203, 139],
-		foreground: [139, 132, 121]
+		info: [204, 249, 207],
+		debug: [137, 161, 188],
+		error: [220, 50, 48],
+		warn: [229, 136, 36],
+		foreground: [89, 74, 80]
+	}
+
+	has (level: LogLevel): boolean {
+		return level >= this.loglevel
 	}
 
 	trace (...message: unknown[]): void {
@@ -50,13 +61,30 @@ export default class NorthLogger extends Logger {
 		this._write(this.colours.error, 'FATAL', message)
 	}
 
-	write (...message: unknown[]): void {
+	write (...message: Array<string | number | unknown>): void {
 		this._write(this.colours.info, 'WRITE', message)
 	}
 
 	protected _write (colour: RGB, level: string, ...message: unknown[]): void {
 		process.stdout.write(
-			`[${this.formatRGB(this.colours.foreground, this._name)} ${this.formatRGB(this.colours.foreground, 'Logger')} | ${this.formatRGB(colour, level)}]: ${this.formatRGB(colour, message)}${EOL}`
+			`[${this.formatRGB(this.colours.foreground, this.processTag)} | ${this.formatRGB(this.colours.foreground, this.namespace)} ${this.formatRGB(this.colours.foreground, 'Logger')} | ${this.formatRGB(colour, level)}]: ${this.formatRGB(colour, message)}${EOL}`
 		)
+
+		const hook = new WebhookClient(cfg.webhook.id, cfg.webhook.secret)
+
+		const embed: MessageEmbed = new MessageEmbed().setTimestamp().setColor('FFFF00').setFooter(this.processTag).setTitle('Logs')
+		const options: WebhookMessageOptions = {
+			embeds: [embed],
+			username: this.namespace + ' Logs',
+			avatarURL: 'https://lazy.devswhofuckdevs.xyz/55vQ3rlwU.png'
+		}
+
+		if (message.length < 2048) {
+			embed.setDescription(message.join(' '))
+		} else {
+			embed.setDescription('Message too long.')
+			options.files = [new MessageAttachment(Buffer.from(message.join(' ')), 'message.txt')]
+		}
+		void hook.send(options).catch(() => null)
 	}
 }
