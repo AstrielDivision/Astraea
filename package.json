@@ -9,11 +9,11 @@
   "scripts": {
     "lint": "eslint src --ext ts",
     "lint:fix": "eslint src --ext ts --fix",
-    "build": "yarn clean && yarn build:ts",
+    "build": "yarn run clean && yarn run build:ts",
     "build:ts": "tsc -p ./",
     "clean": "rimraf ./dist && mkdir dist",
-    "prepare": "husky install .github/husky",
-    "commit": "git-cz"
+    "commit": "yarn dlx git-cz",
+    "postinstall": "husky install .github/husky"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
