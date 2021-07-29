@@ -28,6 +28,6 @@ jobs:
       - name: Push
         uses: okteto/push@master
         with:
-          namespace: north-artiefuzzz
+          namespace: artiefuzzz
           name: north
 
