@@ -585,10 +585,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^16.4.2":
+"@types/node@npm:*":
   version: 16.4.2
   resolution: "@types/node@npm:16.4.2"
   checksum: d9b02aeb2b9633a8f0e18bd9d322a3ff6c937715b96ad1c80b5f941c46a3f97f2419ffabdb44a3c9305e7b82579aef852f0adfa2e755b7ab32d4334a4ca070c7
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^16.4.6":
+  version: 16.4.6
+  resolution: "@types/node@npm:16.4.6"
+  checksum: b5fdec9873bff636e00c26cca4e81ddfae2287f30dc4275f9fb4447dd6794d7210620ea912abe690ec9d21aac5b376578c901213d885153c8acf63af167f9e44
   languageName: node
   linkType: hard
 
@@ -2435,7 +2442,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"husky@npm:^7.0.0":
+"husky@npm:^7.0.1":
   version: 7.0.1
   resolution: "husky@npm:7.0.1"
   bin:
@@ -3318,14 +3325,14 @@ __metadata:
     "@sapphire/utilities": ^2.0.1
     "@types/app-root-path": ^1.2.4
     "@types/convict": ^6.1.1
-    "@types/node": ^16.4.2
+    "@types/node": ^16.4.6
     app-root-path: ^3.0.0
     convict: ^6.2.0
     cz-conventional-changelog: ^3.3.0
     discord-api-types: ^0.20.2
     discord.js: ^12.5.3
     eslint: ^7.31.0
-    husky: ^7.0.0
+    husky: ^7.0.1
     rimraf: ^3.0.2
     typescript: ^4.3.5
     yiff: ^3.1.2

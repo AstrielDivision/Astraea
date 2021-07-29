@@ -13,7 +13,8 @@
     "build:ts": "tsc -p ./",
     "clean": "rimraf ./dist && mkdir dist",
     "commit": "yarn dlx git-cz",
-    "postinstall": "husky install .github/husky"
+    "postinstall": "husky install .github/husky",
+    "upgrade": "yarn upgrade-interactive"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
@@ -21,10 +22,10 @@
     "@hidden-umbrella/eslint-config": "^1.0.1",
     "@types/app-root-path": "^1.2.4",
     "@types/convict": "^6.1.1",
-    "@types/node": "^16.4.2",
+    "@types/node": "^16.4.6",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.31.0",
-    "husky": "^7.0.0",
+    "husky": "^7.0.1",
     "rimraf": "^3.0.2",
     "typescript": "^4.3.5"
   },
