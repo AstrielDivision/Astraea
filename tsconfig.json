@@ -19,5 +19,5 @@
 	},
 	"exclude": ["node_modules"],
 	"include": ["src/**/*.ts"],
-	"files": ["src/lib/Structures/client.d.ts"]
+	"files": ["src/lib/client.d.ts"]
 }

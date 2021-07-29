@@ -19,11 +19,11 @@ jobs:
         uses: okteto/login@master
         with:
           token: ${{ secrets.OKTETO_TOKEN }}
-      - name: Change to North namespace
+      - name: Namespace
         uses: okteto/namespace@master
         with:
-          namespace: north-artiefuzzz
-      - name: configuration
+          namespace: artiefuzzz
+      - name: Configuration
         run: echo -n "${{ secrets.CONFIG }}" | base64 -d > config/main.json
       - name: Push
         uses: okteto/push@master
