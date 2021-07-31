@@ -1,4 +1,4 @@
-name: Astraea
+name: astraea
 image: node:alpine
 sync:
   - .:/north/opt
