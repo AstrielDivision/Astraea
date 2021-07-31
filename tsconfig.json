@@ -13,7 +13,7 @@
 		"strictNullChecks": false,
 		"composite": false,
 		"moduleResolution": "node",
-		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
 		"skipLibCheck": true,
 		"resolveJsonModule": true
 	},

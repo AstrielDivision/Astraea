@@ -538,6 +538,38 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tmware/jitsuyo@npm:^1.6.4":
+  version: 1.6.5
+  resolution: "@tmware/jitsuyo@npm:1.6.5"
+  peerDependencies:
+    acronymresolver: ">= 1.1.7 <2"
+  peerDependenciesMeta:
+    acronymresolver:
+      optional: true
+  checksum: 26fc9d6f47d054e7cd53db890c60c09bc909224c020884bb79f97f25d3330d001d2f0878f742125e99918453bbee54ec4697a956fa40343f4ce8ddce62555306
+  languageName: node
+  linkType: hard
+
+"@tmware/status-rotate@npm:^1.2.5":
+  version: 1.2.5
+  resolution: "@tmware/status-rotate@npm:1.2.5"
+  dependencies:
+    "@tmware/jitsuyo": ^1.6.4
+    "@tmware/variable-parser": ^1.2.2
+    axios: 0.21.1
+    discord-akairo: ^8.1.0
+    discord.js: ^12.5.3
+  checksum: 0183111f7e7b22c88868a896ee8b8da23fbaba9a9f0b3a462202e7e1177a49d2d0afc03770c47082ae7acbd8d8dccc8b9b6e061c3e5d98d1ac4a590087c13bfe
+  languageName: node
+  linkType: hard
+
+"@tmware/variable-parser@npm:^1.2.2":
+  version: 1.2.2
+  resolution: "@tmware/variable-parser@npm:1.2.2"
+  checksum: 66a6aebda63bb96f70deabeaf3d79091658d1df57a2c9575b143ba4fa194fc4d20957a0fa06b90f6d755880004c4aced01027e94af625341e7cc94d95fef3bd2
+  languageName: node
+  linkType: hard
+
 "@tootallnate/once@npm:1":
   version: 1.1.2
   resolution: "@tootallnate/once@npm:1.1.2"
@@ -983,6 +1015,7 @@ __metadata:
     "@sapphire/plugin-subcommands": ^1.0.6
     "@sapphire/type": ^2.0.11
     "@sapphire/utilities": ^2.0.1
+    "@tmware/status-rotate": ^1.2.5
     "@types/app-root-path": ^1.2.4
     "@types/convict": ^6.1.1
     "@types/node": ^16.4.8
@@ -1020,7 +1053,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^0.21.1":
+"axios@npm:0.21.1, axios@npm:^0.21.1":
   version: 0.21.1
   resolution: "axios@npm:0.21.1"
   dependencies:
@@ -1538,6 +1571,13 @@ __metadata:
   dependencies:
     path-type: ^4.0.0
   checksum: fa05e18324510d7283f55862f3161c6759a3f2f8dbce491a2fc14c8324c498286c54282c1f0e933cb930da8419b30679389499b919122952a4f8592362ef4615
+  languageName: node
+  linkType: hard
+
+"discord-akairo@npm:^8.1.0":
+  version: 8.1.0
+  resolution: "discord-akairo@npm:8.1.0"
+  checksum: 372c27f76920a1fbeeff5ca3bb68b2e6a25e09e0f4b4ba5ec6ad7c27e10fd156fdc0d4e1afe4f697dfdb58a8a411afd69f5ab9d06f65081c4328733b19e439c6
   languageName: node
   linkType: hard
 
