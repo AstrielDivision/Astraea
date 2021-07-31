@@ -5,17 +5,17 @@
  */
 import { ApplyOptions } from '@sapphire/decorators'
 import { Args } from '@sapphire/framework'
-import { NorthCommand, NorthCommandOptions } from '../../lib/Structures/Command'
+import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
 import { Message, MessageEmbed } from 'discord.js'
 
-@ApplyOptions<NorthCommandOptions>({
+@ApplyOptions<AstraeaCommandOptions>({
 	name: 'help',
 	aliases: ['h'],
 	description: 'Gives you a list of commands',
 	detailedDescription: 'You may also provide a command, which will return info about that command',
 	preconditions: []
 })
-export default class Help extends NorthCommand {
+export default class Help extends AstraeaCommand {
 	public async run (message: Message, args: Args): Promise<Message> {
 		const command = await args.pickResult('string')
 		if (command.success) return await this.commandHelp(message, command.value)
@@ -42,7 +42,7 @@ export default class Help extends NorthCommand {
 		let embed = new MessageEmbed()
 
 		// eslint-disable-next-line array-callback-return
-		this.container.stores.get('commands').map((cmd: NorthCommand) => {
+		this.container.stores.get('commands').map((cmd: AstraeaCommand) => {
 			// eslint-disable-next-line array-callback-return
 			if (categories.includes(cmd.category)) return
 
@@ -52,8 +52,8 @@ export default class Help extends NorthCommand {
 		categories.forEach((category) => {
 			let commandsLine = ''
 			this.container.stores.get('commands').forEach((cmd) => {
-				if ((cmd as NorthCommand).category !== category) return
-				if ((cmd as NorthCommand).category === 'Owner') return
+				if ((cmd as AstraeaCommand).category !== category) return
+				if ((cmd as AstraeaCommand).category === 'Owner') return
 
 				commandsLine += (`\`${cmd.name}\` `)
 			})

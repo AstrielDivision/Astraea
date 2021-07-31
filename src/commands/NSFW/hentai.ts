@@ -1,9 +1,9 @@
-import { NorthCommand, NorthCommandOptions } from '../../lib/Structures/Command'
+import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
 import { ApplyOptions } from '@sapphire/decorators'
 import { Message, MessageEmbed } from 'discord.js'
 import { RedditImage } from '@aero/ksoft'
 
-@ApplyOptions<NorthCommandOptions>({
+@ApplyOptions<AstraeaCommandOptions>({
 	name: 'hentai',
 	aliases: ['hentai!'],
 	description: 'Returns a Image from r/hentai',
@@ -11,7 +11,7 @@ import { RedditImage } from '@aero/ksoft'
 	nsfw: true,
 	cooldownDelay: 2000
 })
-export default class Hentaii extends NorthCommand {
+export default class Hentaii extends AstraeaCommand {
 	public async run (message: Message): Promise<Message> {
 		const { url, post }: RedditImage = await this.container.client.ksoft.images.reddit('hentai', { span: 'day', removeNSFW: false })
 		const embed = new MessageEmbed()

@@ -1,7 +1,7 @@
 import { Command, CommandOptions, PieceContext } from '@sapphire/framework'
 import { sep } from 'path'
 
-export abstract class NorthCommand extends Command {
+export abstract class AstraeaCommand extends Command {
 	visible?: boolean
 	constructor (Context: PieceContext, options: CommandOptions) {
 		super(Context, options)
@@ -19,5 +19,5 @@ export abstract class NorthCommand extends Command {
 	}
 }
 
-export interface NorthCommandOptions extends CommandOptions {
+export interface AstraeaCommandOptions extends CommandOptions {
 }

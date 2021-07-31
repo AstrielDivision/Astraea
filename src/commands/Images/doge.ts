@@ -1,16 +1,16 @@
-import { NorthCommand, NorthCommandOptions } from '../../lib/Structures/Command'
+import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
 import { ApplyOptions } from '@sapphire/decorators'
 import { Message, MessageEmbed } from 'discord.js'
 import { Image } from '@aero/ksoft'
 
-@ApplyOptions<NorthCommandOptions>({
+@ApplyOptions<AstraeaCommandOptions>({
 	name: 'doge',
 	aliases: ['doge', 'wow'],
 	description: 'Returns an image of doge. Wow',
 	cooldownLimit: 3,
 	cooldownDelay: 2000
 })
-export default class DogeWow extends NorthCommand {
+export default class DogeWow extends AstraeaCommand {
 	public async run (message: Message): Promise<Message> {
 		const { url }: Image = await this.container.client.ksoft.images.random('doge', { nsfw: false })
 		const embed = new MessageEmbed()

@@ -6,7 +6,7 @@ const client = new Client({
 	defaultPrefix: cfg.prefix,
 	caseInsensitivePrefixes: true,
 	caseInsensitiveCommands: true,
-	logger: { instance: new Logger('North') }
+	logger: { instance: new Logger('Astraea') }
 	/* auth: {
 		id: '',
 		secret: '',

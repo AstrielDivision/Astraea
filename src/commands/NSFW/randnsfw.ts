@@ -1,9 +1,9 @@
-import { NorthCommand, NorthCommandOptions } from '../../lib/Structures/Command'
+import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
 import { ApplyOptions } from '@sapphire/decorators'
 import { Message, MessageEmbed } from 'discord.js'
 import { RedditImage } from '@aero/ksoft'
 
-@ApplyOptions<NorthCommandOptions>({
+@ApplyOptions<AstraeaCommandOptions>({
 	name: 'randnsfw',
 	aliases: ['nsfw'],
 	description: 'Returns a random nsfw image or gif from various subreddits',
@@ -11,7 +11,7 @@ import { RedditImage } from '@aero/ksoft'
 	nsfw: true,
 	cooldownDelay: 2000
 })
-export default class RandomNSFW extends NorthCommand {
+export default class RandomNSFW extends AstraeaCommand {
 	public async run (message: Message): Promise<Message> {
 		const { url, post }: RedditImage = await this.container.client.ksoft.images.nsfw(true)
 		const embed = new MessageEmbed()

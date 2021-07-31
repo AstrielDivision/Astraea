@@ -2,7 +2,7 @@ FROM node:alpine
 
 RUN apk update && apk add libtool autoconf automake g++ gcc git make
 
-WORKDIR /opt/build/north
+WORKDIR /opt/Astraea/build
 
 COPY . .
 RUN yarn

@@ -4,7 +4,7 @@
 		"id": "",
 		"secret": ""
 	  },
-	"prefix": "n^",
+	"prefix": "a/",
 	"owners": [""],
 	"ksoft": "Get your token > https://api.ksoft.si/dashboard/"
 }

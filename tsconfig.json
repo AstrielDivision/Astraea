@@ -1,7 +1,7 @@
 {
 	"compilerOptions": {
 		"experimentalDecorators": true,
-		"outDir": "./dist",
+		"outDir": "./build",
 		"allowJs": false,
 		"declaration": false,
 		"baseUrl": "src",

@@ -1,12 +1,12 @@
-import { NorthCommand, NorthCommandOptions } from '../../lib/Structures/Command'
+import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
 import { Message } from 'discord.js'
 import { ApplyOptions } from '@sapphire/decorators'
 
-@ApplyOptions<NorthCommandOptions>({
+@ApplyOptions<AstraeaCommandOptions>({
 	name: 'ping',
 	description: 'Returns bot ping'
 })
-export default class Ping extends NorthCommand {
+export default class Ping extends AstraeaCommand {
 	public async run (message: Message): Promise<Message> {
 		const ping = await message.channel.send('Pong!')
 

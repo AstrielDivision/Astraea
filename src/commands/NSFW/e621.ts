@@ -1,10 +1,10 @@
-import { NorthCommand, NorthCommandOptions } from '../../lib/Structures/Command'
+import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
 import { ApplyOptions } from '@sapphire/decorators'
 import { Message, MessageEmbed } from 'discord.js'
 import Yiff from '../../lib/Structures/Yiff'
 import { Args } from '@sapphire/framework'
 
-@ApplyOptions<NorthCommandOptions>({
+@ApplyOptions<AstraeaCommandOptions>({
 	name: 'e621',
 	aliases: ['621'],
 	description: 'Returns an Image from e621 with your selected tags',
@@ -14,7 +14,7 @@ import { Args } from '@sapphire/framework'
 	cooldownDelay: 5000,
 	options: ['results', 'r']
 })
-export default class E621 extends NorthCommand {
+export default class E621 extends AstraeaCommand {
 	public async run (message: Message, args: Args): Promise<Message> {
 		const Tags = (await args.restResult('string')).value
 		const resOption = args.getOption('results', 'r')

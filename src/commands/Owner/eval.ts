@@ -1,13 +1,13 @@
 import { ApplyOptions } from '@sapphire/decorators'
 import { Args } from '@sapphire/framework'
-import { NorthCommand, NorthCommandOptions } from '../../lib/Structures/Command'
+import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
 import { Type } from '@sapphire/type'
 import { codeBlock, isThenable } from '@sapphire/utilities'
 import type { Message } from 'discord.js'
 import { inspect } from 'util'
 import cfg from '../../config'
 
-@ApplyOptions<NorthCommandOptions>({
+@ApplyOptions<AstraeaCommandOptions>({
 	name: 'eval',
 	aliases: ['ev'],
 	description: 'Evals any JavaScript code',
@@ -15,7 +15,7 @@ import cfg from '../../config'
 	flags: ['async', 'hidden', 'showHidden', 'silent', 's'],
 	options: ['depth']
 })
-export default class extends NorthCommand {
+export default class extends AstraeaCommand {
 	public async run (message: Message, args: Args): Promise<Message> {
 		if (!cfg.owners.includes(message.author.id)) return await message.channel.send('You are not permitted to execute this command')
 		const code = await args.rest('string')

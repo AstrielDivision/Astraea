@@ -966,6 +966,39 @@ __metadata:
   languageName: node
   linkType: hard
 
+"astraea@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "astraea@workspace:."
+  dependencies:
+    "@aero/centra": ^1.0.6
+    "@aero/ksoft": ^4.0.0-rc1
+    "@commitlint/cli": ^12.1.4
+    "@commitlint/config-conventional": ^12.1.4
+    "@hidden-umbrella/eslint-config": ^1.0.1
+    "@sapphire/decorators": ^2.2.0
+    "@sapphire/discord.js-utilities": ^2.0.2
+    "@sapphire/framework": 2.0.0-next.9790c48d.0
+    "@sapphire/pieces": 1
+    "@sapphire/plugin-api": ^2.2.1-next.03bbed6.0
+    "@sapphire/plugin-subcommands": ^1.0.6
+    "@sapphire/type": ^2.0.11
+    "@sapphire/utilities": ^2.0.1
+    "@types/app-root-path": ^1.2.4
+    "@types/convict": ^6.1.1
+    "@types/node": ^16.4.6
+    app-root-path: ^3.0.0
+    convict: ^6.2.0
+    cz-conventional-changelog: ^3.3.0
+    discord-api-types: ^0.20.2
+    discord.js: ^12.5.3
+    eslint: ^7.31.0
+    husky: ^7.0.1
+    rimraf: ^3.0.2
+    typescript: ^4.3.5
+    yiff: ^3.1.2
+  languageName: unknown
+  linkType: soft
+
 "astral-regex@npm:^2.0.0":
   version: 2.0.0
   resolution: "astral-regex@npm:2.0.0"
@@ -3305,39 +3338,6 @@ __metadata:
   checksum: b50e26f2c81c51ddf6b5a04f731ddc2fc409ef114d44b5e2e4a7cfaa2d45cb86f76fea0c3a57a41e106f71c777124f93b4a75fe1c4b3aa4844971a30a30d94c9
   languageName: node
   linkType: hard
-
-"north@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "north@workspace:."
-  dependencies:
-    "@aero/centra": ^1.0.6
-    "@aero/ksoft": ^4.0.0-rc1
-    "@commitlint/cli": ^12.1.4
-    "@commitlint/config-conventional": ^12.1.4
-    "@hidden-umbrella/eslint-config": ^1.0.1
-    "@sapphire/decorators": ^2.2.0
-    "@sapphire/discord.js-utilities": ^2.0.2
-    "@sapphire/framework": 2.0.0-next.9790c48d.0
-    "@sapphire/pieces": 1
-    "@sapphire/plugin-api": ^2.2.1-next.03bbed6.0
-    "@sapphire/plugin-subcommands": ^1.0.6
-    "@sapphire/type": ^2.0.11
-    "@sapphire/utilities": ^2.0.1
-    "@types/app-root-path": ^1.2.4
-    "@types/convict": ^6.1.1
-    "@types/node": ^16.4.6
-    app-root-path: ^3.0.0
-    convict: ^6.2.0
-    cz-conventional-changelog: ^3.3.0
-    discord-api-types: ^0.20.2
-    discord.js: ^12.5.3
-    eslint: ^7.31.0
-    husky: ^7.0.1
-    rimraf: ^3.0.2
-    typescript: ^4.3.5
-    yiff: ^3.1.2
-  languageName: unknown
-  linkType: soft
 
 "npmlog@npm:^4.1.2":
   version: 4.1.2

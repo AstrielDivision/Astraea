@@ -1,10 +1,10 @@
-import { NorthCommand, NorthCommandOptions } from '../../lib/Structures/Command'
+import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
 import { ApplyOptions } from '@sapphire/decorators'
 import { Message, MessageEmbed } from 'discord.js'
 import Yiff from '../../lib/Structures/Yiff'
 import { Args } from '@sapphire/framework'
 
-@ApplyOptions<NorthCommandOptions>({
+@ApplyOptions<AstraeaCommandOptions>({
 	name: 'yiff',
 	aliases: ['yiff', 'floofydev'],
 	description: 'Returns an Image from api.floofy.dev with your selected tags',
@@ -13,7 +13,7 @@ import { Args } from '@sapphire/framework'
 	cooldownDelay: 5000,
 	options: ['results', 'r']
 })
-export default class YiffFloofyDev extends NorthCommand {
+export default class YiffFloofyDev extends AstraeaCommand {
 	public async run (message: Message, args: Args): Promise<Message> {
 		const req: Request = await Yiff.floofy()
 
