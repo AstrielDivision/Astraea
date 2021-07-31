@@ -7,6 +7,6 @@ import { Guild } from 'discord.js'
 })
 export default class GuildDelete extends Listener {
 	public run (guild: Guild): void {
-		return this.container.logger.info('Left', guild.name + ` (${guild.id})`)
+		return this.container.logger.info(`Left ${guild.name} (${guild.id})`)
 	}
 }
