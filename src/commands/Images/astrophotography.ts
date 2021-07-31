@@ -1,7 +1,6 @@
-import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
+import { AstraeaRedditCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
+import { PieceContext } from '@sapphire/framework'
 import { ApplyOptions } from '@sapphire/decorators'
-import { Message, MessageEmbed } from 'discord.js'
-import { RedditImage } from '@aero/ksoft'
 
 @ApplyOptions<AstraeaCommandOptions>({
 	name: 'astrophotograhy',

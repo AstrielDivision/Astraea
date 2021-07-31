@@ -83,5 +83,27 @@
 		  ""
 		],
 		"description": "Astraea RedditCommand"
+	  },
+	  "AstraeaRedditCommand": {
+		"prefix": "AstraeaRedditCommand",
+		"body": [
+		  "import { AstraeaRedditCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'",
+		  "import { PieceContext } from '@sapphire/framework'",
+		  "import { ApplyOptions } from '@sapphire/decorators'",
+		  "",
+		  "@ApplyOptions<AstraeaCommandOptions>({",
+		  "	name: 'solve',",
+		  "	aliases: ['other'],",
+		  "	description: 'Returns a Image from r/random',",
+		  "	nsfw: false",
+		  "})",
+		  "export default class Example extends AstraeaRedditCommand {",
+		  "	constructor (Context: PieceContext, options: AstraeaCommandOptions) {",
+		  "		super({ subreddit: 'reddit', nsfw: false, colour: 'RANDOM' }, Context, options)",
+		  "	}",
+		  "}",
+		  ""
+		],
+		"description": "AstraeaRedditCommand"
 	  }
 }

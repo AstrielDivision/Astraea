@@ -1,7 +1,6 @@
-import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
+import { AstraeaRedditCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
+import { PieceContext } from '@sapphire/framework'
 import { ApplyOptions } from '@sapphire/decorators'
-import { Message, MessageEmbed } from 'discord.js'
-import { RedditImage } from '@aero/ksoft'
 
 @ApplyOptions<AstraeaCommandOptions>({
 	name: 'thigh',
@@ -11,16 +10,8 @@ import { RedditImage } from '@aero/ksoft'
 	nsfw: true,
 	cooldownDelay: 2000
 })
-export default class Thighdeology extends AstraeaCommand {
-	public async run (message: Message): Promise<Message> {
-		const { url, post }: RedditImage = await this.container.client.ksoft.images.reddit('thighdeology', { span: 'day', removeNSFW: false })
-		const embed = new MessageEmbed()
-			.setTitle(post.title)
-			.setFooter(`Powered by api.ksoft.si ${post.author} | Upvotes: ${post.upvotes} | Downvotes ${post.downvotes}`)
-			.setURL(post.link)
-			.setColor('BLACK')
-			.setTimestamp()
-			.setImage(url)
-		return await message.channel.send(embed)
+export default class Thighdeology extends AstraeaRedditCommand {
+	constructor (Context: PieceContext, options: AstraeaCommandOptions) {
+		super({ subreddit: 'thighdeology', nsfw: true, colour: 'BLACK' }, Context, options)
 	}
 }

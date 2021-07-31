@@ -8,7 +8,8 @@ import { Image } from '@aero/ksoft'
 	aliases: ['butt'],
 	description: 'Returns a random Image of ASS',
 	cooldownLimit: 3,
-	cooldownDelay: 2000
+	cooldownDelay: 2000,
+	nsfw: true
 })
 export default class Ass extends AstraeaCommand {
 	public async run (message: Message): Promise<Message> {
