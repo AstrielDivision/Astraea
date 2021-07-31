@@ -9,7 +9,7 @@ import { RedditImage } from '@aero/ksoft'
 })
 export default class Blessed extends AstraeaCommand {
 	public async run (message: Message): Promise<Message> {
-		const { post, url }: RedditImage = await this.container.client.ksoft.images.reddit('astrophotography', { removeNSFW: true, span: 'day' })
+		const { post, url }: RedditImage = await this.container.client.ksoft.images.reddit('blessedimages', { removeNSFW: true, span: 'day' })
 		const embed = new MessageEmbed()
 			.setTitle(post.title)
 			.setFooter(`Powered by api.ksoft.si ${post.author} | Upvotes: ${post.upvotes} | Downvotes ${post.downvotes}`)
