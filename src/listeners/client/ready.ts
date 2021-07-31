@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Listener, ListenerOptions, Events, Store } from '@sapphire/framework'
 import { ApplyOptions } from '@sapphire/decorators'
-import cfg from '../../config'
 
 @ApplyOptions<ListenerOptions>({
 	once: true,
@@ -24,7 +23,6 @@ export default class Ready extends Listener {
 
 	public run (): void {
 		this.printStoreDebugInformation()
-		void this.container.client.user.setPresence({ activity: { name: `The Northern Stars | ${cfg.prefix}`, type: 'WATCHING' }, status: 'idle' })
 		return this.container.logger.info(`Ready! Logged in as ${this.container.client.user?.tag} serving ${this.container.client.guilds.cache.size} Guilds and ${this.container.client.users.cache.size} Users`)
 	}
 }
