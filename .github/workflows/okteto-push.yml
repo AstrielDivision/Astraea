@@ -29,5 +29,5 @@ jobs:
         uses: okteto/push@master
         with:
           namespace: artiefuzzz
-          name: Astraea
+          name: astraea
 
