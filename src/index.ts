@@ -7,18 +7,6 @@ const client = new Client({
 	caseInsensitivePrefixes: true,
 	caseInsensitiveCommands: true,
 	logger: { instance: new Logger('Astraea') }
-	/* auth: {
-		id: '',
-		secret: '',
-		cookie: 'SAPPHIRE_AUTH',
-		redirect: '',
-		scopes: ['identify']
-	},
-	prefix: 'v1/',
-	origin: '*',
-	listenOptions: {
-		port: 80
-	} */
 })
 
 void client.start()

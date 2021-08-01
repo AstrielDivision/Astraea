@@ -17,12 +17,12 @@
     "upgrade": "yarn upgrade-interactive"
   },
   "devDependencies": {
-    "@commitlint/cli": "^12.1.4",
-    "@commitlint/config-conventional": "^12.1.4",
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
     "@hidden-umbrella/eslint-config": "^1.0.1",
     "@types/app-root-path": "^1.2.4",
     "@types/convict": "^6.1.1",
-    "@types/node": "^16.4.8",
+    "@types/node": "^16.4.9",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.32.0",
     "husky": "^7.0.1",
@@ -54,15 +54,11 @@
     "@sapphire/decorators": "^2.2.0",
     "@sapphire/discord.js-utilities": "^2.0.2",
     "@sapphire/framework": "2.0.0-next.9790c48d.0",
-    "@sapphire/pieces": "1.2.5",
-    "@sapphire/plugin-api": "^2.2.1-next.03bbed6.0",
-    "@sapphire/plugin-subcommands": "^1.0.6",
     "@sapphire/type": "^2.0.11",
     "@sapphire/utilities": "^2.0.1",
-    "@tmware/status-rotate": "^1.2.5",
+    "@tmware/status-rotate": "^1.2.6",
     "app-root-path": "^3.0.0",
     "convict": "^6.2.0",
-    "discord-api-types": "^0.20.2",
     "discord.js": "^12.5.3",
     "yiff": "^3.1.2"
   }
