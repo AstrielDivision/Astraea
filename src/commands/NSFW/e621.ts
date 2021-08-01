@@ -1,7 +1,7 @@
 import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
 import { ApplyOptions } from '@sapphire/decorators'
 import { Message, MessageEmbed } from 'discord.js'
-import Yiff from '../../lib/Structures/Yiff'
+import Yiff from '../../lib/yiff.ts'
 import { Args } from '@sapphire/framework'
 
 @ApplyOptions<AstraeaCommandOptions>({
@@ -21,7 +21,9 @@ export default class E621 extends AstraeaCommand {
 		const res = parseInt(resOption)
 		if (!Tags) return await message.channel.send('No tags were specified')
 		if (res > 10) return await message.channel.send('The amount of results is currently limited to 10')
-		const req: YiffStruct[] = await Yiff.e621(Tags, res ?? 1)
+		const yiff = new Yiff()
+
+		const req: YiffStruct[] = await yiff.e621(Tags, res ?? 1)
 
 		for await (let re of req) {
 			const embed = new MessageEmbed()
@@ -54,7 +56,7 @@ interface YiffTags {
 	copyright: string[]
 	artist: string[]
 	invalid: string[]
-	lore: string[]
+	lore?: string[]
 }
 interface YiffStruct {
 	id: number

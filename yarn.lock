@@ -394,6 +394,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sapphire/fetch@npm:^1.0.5":
+  version: 1.0.5
+  resolution: "@sapphire/fetch@npm:1.0.5"
+  dependencies:
+    node-fetch: ^2.6.1
+    tslib: 2.x
+  checksum: 9a945ff5a7765ce4b77117218393a36345e8385a7983c5e3405704e348cfdfcaf245c0e855a5b5bf89e6c479fa956fa4fc67a8b8519dd7f2c16d14eba1f3a360
+  languageName: node
+  linkType: hard
+
 "@sapphire/framework@npm:2.0.0-next.9790c48d.0":
   version: 2.0.0-next.9790c48d.0
   resolution: "@sapphire/framework@npm:2.0.0-next.9790c48d.0"
@@ -901,13 +911,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "astraea@workspace:."
   dependencies:
-    "@aero/centra": ^1.0.6
     "@aero/ksoft": ^4.0.0-rc1
     "@commitlint/cli": ^13.1.0
     "@commitlint/config-conventional": ^13.1.0
     "@hidden-umbrella/eslint-config": ^1.0.1
     "@sapphire/decorators": ^2.2.0
     "@sapphire/discord.js-utilities": ^2.0.2
+    "@sapphire/fetch": ^1.0.5
     "@sapphire/framework": 2.0.0-next.9790c48d.0
     "@sapphire/type": ^2.0.11
     "@sapphire/utilities": ^2.0.1
@@ -923,7 +933,6 @@ __metadata:
     husky: ^7.0.1
     rimraf: ^3.0.2
     typescript: ^4.3.5
-    yiff: ^3.1.2
   languageName: unknown
   linkType: soft
 
@@ -941,7 +950,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:0.21.1, axios@npm:^0.21.1":
+"axios@npm:0.21.1":
   version: 0.21.1
   resolution: "axios@npm:0.21.1"
   dependencies:
@@ -4677,16 +4686,6 @@ typescript@^4.3.5:
     y18n: ^5.0.5
     yargs-parser: ^20.2.2
   checksum: 4ffffa5a82647e5d07840b64bed88c365b901d3d4a4c51745dddb10d177902d85014026d7224aae18c42df9ca3f75a41c5aff556e5342e2f8ffc5177d149cd17
-  languageName: node
-  linkType: hard
-
-"yiff@npm:^3.1.2":
-  version: 3.1.2
-  resolution: "yiff@npm:3.1.2"
-  dependencies:
-    axios: ^0.21.1
-    chalk: ^4.0.0
-  checksum: a6edd9389dd8741dd1190e832874d692ca484dad1df8c63a5ad336734f4927a5f8bd6d482844de73e785a925900b4a18fed88a19881414e0ab404d295d113635
   languageName: node
   linkType: hard
 

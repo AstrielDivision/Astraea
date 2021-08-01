@@ -1,6 +1,6 @@
 {
   "name": "astraea",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "main": "build/index",
   "author": "ArtieFuzzz#8298",
   "license": "MIT",
@@ -49,17 +49,16 @@
     }
   },
   "dependencies": {
-    "@aero/centra": "^1.0.6",
     "@aero/ksoft": "^4.0.0-rc1",
     "@sapphire/decorators": "^2.2.0",
     "@sapphire/discord.js-utilities": "^2.0.2",
+    "@sapphire/fetch": "^1.0.5",
     "@sapphire/framework": "2.0.0-next.9790c48d.0",
     "@sapphire/type": "^2.0.11",
     "@sapphire/utilities": "^2.0.1",
     "@tmware/status-rotate": "^1.2.6",
     "app-root-path": "^3.0.0",
     "convict": "^6.2.0",
-    "discord.js": "^12.5.3",
-    "yiff": "^3.1.2"
+    "discord.js": "^12.5.3"
   }
 }

@@ -1,12 +1,12 @@
 import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
 import { ApplyOptions } from '@sapphire/decorators'
 import { Message, MessageEmbed } from 'discord.js'
-import Yiff from '../../lib/Structures/Yiff'
+import Yiff from '../../lib/yiff.ts/Yiff'
 
 @ApplyOptions<AstraeaCommandOptions>({
 	name: 'yiff',
 	aliases: ['yiff', 'floofydev'],
-	description: 'Returns an Image from api.floofy.dev with your selected tags',
+	description: 'Returns an Image from api.floofy.dev',
 	cooldownLimit: 6,
 	nsfw: true,
 	cooldownDelay: 5000
