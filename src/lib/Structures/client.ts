@@ -19,6 +19,13 @@ export default class Client extends SapphireClient {
 	 */
 	public async start (): Promise<Client> {
 		await super.login(cfg.token)
+		// Start statusUpdater
+		await this.statusUpdater.updateStatus()
+
+		// Automate status change
+		setInterval(() => {
+			void this.statusUpdater.updateStatus()
+		}, 2 * 60 * 1000) // Change status every 2 minutes
 
 		/**
 		 * Add statuses
