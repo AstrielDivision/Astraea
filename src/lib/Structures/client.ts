@@ -1,5 +1,4 @@
 import { SapphireClient, SapphireClientOptions } from '@sapphire/framework'
-// import '@sapphire/plugin-api/register'
 import { KSoftClient } from '@aero/ksoft'
 import StatusUpdater from '@tmware/status-rotate'
 import cfg from '../../config'
@@ -11,11 +10,7 @@ export default class Client extends SapphireClient {
 		super(options)
 
 		this.ksoft = new KSoftClient(cfg.ksoft)
-		this.statusUpdater = new StatusUpdater(this, [
-			{ type: 'LISTENING', name: `Signals from the endless outer space | ${cfg.prefix}` },
-			{ type: 'LISTENING', name: `Music | ${cfg.prefix}` },
-			{ type: 'PLAYING', name: 'あなたは大丈夫？' }
-		])
+		this.statusUpdater = new StatusUpdater(this)
 	}
 
 	/**
@@ -24,6 +19,14 @@ export default class Client extends SapphireClient {
 	 */
 	public async start (): Promise<Client> {
 		await super.login(cfg.token)
+
+		/**
+		 * Add statuses
+		 */
+		await this.statusUpdater.addStatus({ type: 'LISTENING', name: `Signals from the endless outer space | ${cfg.prefix}` })
+		await this.statusUpdater.addStatus({ type: 'LISTENING', name: `Music | ${cfg.prefix}` })
+		await this.statusUpdater.addStatus({ type: 'PLAYING', name: 'あなたは大丈夫？' })
+
 		// Start statusUpdater
 		await this.statusUpdater.updateStatus()
 
