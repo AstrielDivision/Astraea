@@ -75,7 +75,7 @@ export default class NorthLogger implements ILogger {
 
 	protected _write (colour: RGB, level: string, ...message: unknown[]): void {
 		process.stdout.write(
-			`[${this.formatRGB(this.colours.foreground, this.processTag)} | ${this.formatRGB(this.colours.foreground, this.namespace)} ${this.formatRGB(this.colours.foreground, 'Logger')} | ${this.formatRGB(colour, level)}]: ${this.formatRGB(colour, message)}${EOL}`
+			`[${this.formatRGB(this.colours.foreground, this.processTag)} | ${this.formatRGB(this.colours.foreground, new Date().toLocaleString())} | ${this.formatRGB(this.colours.foreground, this.namespace)} ${this.formatRGB(this.colours.foreground, 'Logger')} | ${this.formatRGB(colour, level)}]: ${this.formatRGB(colour, message)}${EOL}`
 		)
 
 		if (level === 'CONSOLE') return
