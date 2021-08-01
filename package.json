@@ -5,7 +5,7 @@
   "author": "ArtieFuzzz#8298",
   "license": "MIT",
   "private": true,
-  "description": "Discord bot using @sapphiredev/framework",
+  "description": "Discord bot using @sapphire/framework",
   "scripts": {
     "lint": "eslint src --ext ts",
     "lint:fix": "eslint src --ext ts --fix",

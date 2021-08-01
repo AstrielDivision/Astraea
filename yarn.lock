@@ -484,7 +484,6 @@ __metadata:
     axios: 0.21.1
     discord-akairo: ^8.1.0
     discord.js: ^12.5.3
-
   checksum: fd5f363c251283999000d1a18a1a0449087550c8e50c35a55d8d2c4d6a3ea1c20804c09c3a43c7d0b9476822637a36449914de03f286fa80b47db6370bae8b97
   languageName: node
   linkType: hard
@@ -942,12 +941,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"at-least-node@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "at-least-node@npm:1.0.0"
-  checksum: 463e2f8e43384f1afb54bc68485c436d7622acec08b6fad269b421cb1d29cebb5af751426793d0961ed243146fe4dc983402f6d5a51b720b277818dbf6f2e49e
-  languageName: node
-  linkType: hard
 "axios@npm:0.21.1, axios@npm:^0.21.1":
   version: 0.21.1
   resolution: "axios@npm:0.21.1"
