@@ -14,7 +14,8 @@
     "clean": "rimraf ./build && mkdir build",
     "commit": "yarn dlx git-cz",
     "postinstall": "husky install .github/husky",
-    "upgrade": "yarn upgrade-interactive"
+    "upgrade": "yarn upgrade-interactive",
+    "contrib:add": "all-contributors add"
   },
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
@@ -23,6 +24,7 @@
     "@types/app-root-path": "^1.2.4",
     "@types/convict": "^6.1.1",
     "@types/node": "^16.4.10",
+    "all-contributors-cli": "^6.20.0",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.32.0",
     "husky": "^7.0.1",
