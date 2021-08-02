@@ -549,10 +549,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^16.4.9":
-  version: 16.4.9
-  resolution: "@types/node@npm:16.4.9"
-  checksum: e51629cd7ad9b24d8b590a6b06044cbd34c421818d16dd6c8f108537c10aab41af5f715ec8c5aad071a1be6ea4189006b6dab8ba5e8967e887083acc7024c1d5
+"@types/node@npm:^16.4.10":
+  version: 16.4.10
+  resolution: "@types/node@npm:16.4.10"
+  checksum: b2b550c2330df479a41b2c166814df6f1be45a62535742ad88a42bc0739897b79c1b2fef716635ae0ccd77c42af9a5e1e7c891215e909e10980c469bceebbfdc
   languageName: node
   linkType: hard
 
@@ -924,7 +924,7 @@ __metadata:
     "@tmware/status-rotate": ^1.2.6
     "@types/app-root-path": ^1.2.4
     "@types/convict": ^6.1.1
-    "@types/node": ^16.4.9
+    "@types/node": ^16.4.10
     app-root-path: ^3.0.0
     convict: ^6.2.0
     cz-conventional-changelog: ^3.3.0
