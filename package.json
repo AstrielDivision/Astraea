@@ -12,7 +12,7 @@
     "build": "yarn clean && yarn build:ts",
     "build:ts": "tsc -p ./",
     "clean": "rimraf ./build && mkdir build",
-    "commit": "yarn dlx git-cz",
+    "commit": "git-cz",
     "postinstall": "husky install .github/husky",
     "upgrade": "yarn upgrade-interactive",
     "contrib:add": "all-contributors add",
