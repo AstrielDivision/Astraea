@@ -13,6 +13,7 @@
     "build:ts": "tsc -p ./",
     "clean": "rimraf ./build && mkdir build",
     "commit": "git-cz",
+    "commit:lint": "commitlint",
     "postinstall": "husky install .github/husky",
     "upgrade": "yarn upgrade-interactive",
     "contrib:add": "all-contributors add",
