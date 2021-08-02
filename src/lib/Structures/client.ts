@@ -10,11 +10,7 @@ export default class Client extends SapphireClient {
 		super(options)
 
 		this.ksoft = new KSoftClient(cfg.ksoft)
-		this.statusUpdater = new StatusUpdater(this, [
-			{ type: 'LISTENING', name: `Signals from the endless outer space | ${cfg.prefix}` },
-			{ type: 'LISTENING', name: `Music | ${cfg.prefix}` },
-			{ type: 'PLAYING', name: 'あなたは大丈夫？' }
-		])
+		this.statusUpdater = new StatusUpdater(this)
 	}
 
 	/**
@@ -23,24 +19,13 @@ export default class Client extends SapphireClient {
 	 */
 	public async start (): Promise<Client> {
 		await super.login(cfg.token)
-		// Start statusUpdater
-		await this.statusUpdater.updateStatus()
-
-		// Automate status change
-		setInterval(() => {
-			void this.statusUpdater.updateStatus()
-		}, 2 * 60 * 1000) // Change status every 2 minutes
 
 		/**
 		 * Add statuses
 		 */
-		/*
-		await this.statusUpdater.addStatus({ type: 'LISTENING', name: `Signals from the endless outer space | ${cfg.prefix}` })
-		await this.statusUpdater.addStatus({ type: 'LISTENING', name: `Music | ${cfg.prefix}` })
-		await this.statusUpdater.addStatus({ type: 'PLAYING', name: 'あなたは大丈夫？' }) */
-
-		// Start statusUpdater
-		await this.statusUpdater.updateStatus()
+		void this.statusUpdater.addStatus({ type: 'LISTENING', name: `Signals from the endless outer space | ${cfg.prefix}` })
+		void this.statusUpdater.addStatus({ type: 'LISTENING', name: `Music | ${cfg.prefix}` })
+		void this.statusUpdater.addStatus({ type: 'PLAYING', name: 'あなたは大丈夫？' })
 
 		// Automate status change
 		setInterval(() => {
