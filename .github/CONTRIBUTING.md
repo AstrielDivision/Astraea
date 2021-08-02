@@ -8,6 +8,8 @@ _You do not have to be a master on the following, but at least have general know
 - [JavaScript]
 - [TypeScript]
 
+## Commits shold be made with `yarn commit`
+
 ## _Before opening a Pull Request_
 
 1. Ask yourself if that will be useful for the project.
