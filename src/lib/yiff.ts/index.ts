@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import request from './request'
 
@@ -7,7 +8,7 @@ export default class {
 			site: 'e621',
 			limit,
 			tags
-		}).catch(err => process.stdout.write(err))
+		}).catch((err: Error) => console.error(err))
 
 		return res
 	}
@@ -15,7 +16,7 @@ export default class {
 	public async floofy (): Promise<any> {
 		const res = await request({
 			site: 'floofy'
-		}).catch(err => process.stdout.write(err))
+		}).catch((err: Error) => console.error(err))
 
 		return res
 	}
