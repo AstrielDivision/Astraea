@@ -7,7 +7,7 @@ export default async function request (options: Config): Promise<unknown> {
 		case 'e621': {
 			if (!options.limit) throw Error('No tags provided')
 			const res = await fetch(
-				`${c.defaults.killswitch}${c.killswitch.e621}?${options.limit ?? 1}&tags=${options.tags}&useragent${c.defaults.useragent}`,
+				`${c.defaults.killswitch}${c.killswitch.e621}?limit=${options.limit}&tags=${options.tags}&useragent${c.defaults.useragent}`,
 				{
 					method: FetchMethods.Get,
 					headers: {
