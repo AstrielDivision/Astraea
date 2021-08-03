@@ -13,6 +13,7 @@ export default class Corona extends AstraeaCommand {
 		const country = (await args.pickResult('string')).value
 
 		const embed = new MessageEmbed()
+			.setFooter('This data may not be accurate')
 
 		if (country) {
 			const res = await CoronaFetch.country(country)
@@ -21,9 +22,12 @@ export default class Corona extends AstraeaCommand {
 			embed.addFields([
 				{ name: 'Active Cases', value: res.active },
 				{ name: 'Today Cases', value: res.todayCases },
+				{ name: 'Cases Per Million', value: res.casesPerOneMillion },
 				{ name: 'Deaths', value: res.deaths },
 				{ name: 'Today Deaths', value: res.todayDeaths },
-				{ name: 'Critical Cases', value: res.critical }
+				{ name: 'Critical Cases', value: res.critical },
+				{ name: 'Total Tests', value: res.tests },
+				{ name: 'Tests Per Million', value: res.testsPerOneMillion }
 			])
 			embed.setThumbnail(res.countryInfo.flag)
 
