@@ -2,12 +2,11 @@ import { SapphireClient, SapphireClientOptions } from '@sapphire/framework'
 import { KSoftClient } from '@aero/ksoft'
 import StatusUpdater from '@tmware/status-rotate'
 import cfg from '../../config'
-import '@sapphire/plugin-api/register'
 
 export default class Client extends SapphireClient {
 	ksoft: KSoftClient
 	statusUpdater: StatusUpdater
-	constructor (options: SapphireClientOptions | unknown) {
+	constructor (options: SapphireClientOptions) {
 		super(options)
 
 		this.ksoft = new KSoftClient(cfg.ksoft)

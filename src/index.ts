@@ -6,12 +6,7 @@ const client = new Client({
 	defaultPrefix: cfg.prefix,
 	caseInsensitivePrefixes: true,
 	caseInsensitiveCommands: true,
-	logger: { instance: new Logger('Astraea') },
-	api: {
-		listenOptions: {
-			port: cfg.api.port
-		}
-	}
+	logger: { instance: new Logger('Astraea') }
 })
 
 void client.start()

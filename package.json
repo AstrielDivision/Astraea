@@ -59,13 +59,11 @@
     "@sapphire/discord.js-utilities": "^2.0.2",
     "@sapphire/fetch": "^1.0.5",
     "@sapphire/framework": "2.0.0-next.eebecfb6.0",
-    "@sapphire/plugin-api": "3.0.0-next.e21fd4a.0",
     "@sapphire/type": "^2.0.11",
     "@sapphire/utilities": "^2.0.1",
     "@tmware/status-rotate": "^1.2.6",
     "app-root-path": "^3.0.0",
     "convict": "^6.2.0",
-    "discord-api-types": "^0.22.0",
     "discord.js": "^12.5.3"
   }
 }
