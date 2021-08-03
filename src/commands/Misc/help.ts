@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 /**
  * Original: https://github.com/gitcord-project/Gitcord/blob/main/src/commands/Info/help.ts
  * Licensed under the MIT License.

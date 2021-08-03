@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import request from './request'
 import { All, Country } from './types'
 

@@ -7,7 +7,7 @@ declare module '@sapphire/framework' {
 		statusUpdater: StatusUpdater
 	}
 	interface ILogger {
-		// eslint-disable-next-line @typescript-eslint/method-signature-style, @typescript-eslint/no-invalid-void-type
+		// eslint-disable-next-line @typescript-eslint/method-signature-style
 		console(...message: unknown[]): void
 	}
 }

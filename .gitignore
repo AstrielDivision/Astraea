@@ -4,6 +4,9 @@ node_modules
 ## Build directory
 build
 
+## ESLint Cache
+.eslintcache
+
 ## Configuration
 config/main.json
 
