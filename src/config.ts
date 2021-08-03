@@ -17,6 +17,9 @@ interface Configuration {
 	ksoft: string
 	prefix: string
 	owners: Snowflake | Snowflake[]
+	api: {
+		port: number
+	}
 }
 
 export interface PackageJson {
@@ -90,6 +93,12 @@ const config = convict<Configuration>({
 	ksoft: {
 		format: String,
 		default: ''
+	},
+	api: {
+		port: {
+			format: Number,
+			default: 80
+		}
 	}
 })
 
