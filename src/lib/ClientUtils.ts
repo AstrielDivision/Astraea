@@ -39,7 +39,7 @@ export default class Utils {
 			headers: {
 				'User-Agent': userAgent
 			}
-		}, type ?? FetchResultTypes.Result)
+		}, type ?? FetchResultTypes.Text)
 
 		return res
 	}
