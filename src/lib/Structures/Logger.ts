@@ -5,7 +5,7 @@ import cfg from '../../config'
 
 type RGB = [number, number, number]
 
-export default class NorthLogger implements ILogger {
+export default class AstraeaLogger implements ILogger {
 	private readonly loglevel: LogLevel
 	constructor (private readonly namespace: string) {}
 
@@ -82,10 +82,10 @@ export default class NorthLogger implements ILogger {
 
 		const hook = new WebhookClient(cfg.webhook.id, cfg.webhook.secret)
 
-		const embed: MessageEmbed = new MessageEmbed().setTimestamp().setColor('FFFF00').setFooter(this.processTag).setTitle('Logs')
+		const embed: MessageEmbed = new MessageEmbed().setTimestamp().setColor('FFFF00').setFooter(this.processTag).setTitle('Log')
 		const options: WebhookMessageOptions = {
 			embeds: [embed],
-			username: this.namespace + ' Logs',
+			username: this.namespace + ' Logger',
 			avatarURL: 'https://lazy.devswhofuckdevs.xyz/55vQ3rlwU.png'
 		}
 

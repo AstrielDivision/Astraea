@@ -48,7 +48,6 @@ export interface PackageJson {
 }
 
 const isWebhook = (v: unknown): boolean =>
-/* eslint-disable @typescript-eslint/no-unsafe-return */
 	typeof v === 'object' &&
   Object.prototype.hasOwnProperty.call(v, 'id') &&
   Object.prototype.hasOwnProperty.call(v, 'secret')

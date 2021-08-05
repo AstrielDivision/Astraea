@@ -3,7 +3,4 @@ export interface Config {
 	site: Sites
 	tags?: string
 	limit?: number
-	killswitch?: {
-		instance?: string
-	}
 }

@@ -1,4 +1,4 @@
-import { fetch, FetchResultTypes } from '@sapphire/fetch'
+import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch'
 import c from './constants'
 import { Config } from './types'
 
@@ -7,8 +7,9 @@ export default async function request (options: Config): Promise<unknown> {
 		case 'e621': {
 			if (!options.limit) throw Error('No tags provided')
 			const res = await fetch(
-				`${options.killswitch.instance ?? c.defaults.killswitch}${c.killswitch.e621}?${options.limit ?? 1}&tags=${options.tags}&useragent${c.defaults.useragent}`,
+				`${c.defaults.killswitch}${c.killswitch.e621}?limit=${options.limit}&tags=${options.tags}&useragent${c.defaults.useragent}`,
 				{
+					method: FetchMethods.Get,
 					headers: {
 						'User-Agent': c.defaults.useragent
 					}
@@ -17,10 +18,10 @@ export default async function request (options: Config): Promise<unknown> {
 			return res
 		}
 		case 'floofy': {
-			if (!options.limit) throw Error('No tags provided')
 			const res = await fetch(
 				`${c.defaults.killswitch}${c.killswitch.floofy}`,
 				{
+					method: FetchMethods.Get,
 					headers: {
 						'User-Agent': c.defaults.useragent
 					}
