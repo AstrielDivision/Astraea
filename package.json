@@ -27,6 +27,7 @@
     "@types/app-root-path": "^1.2.4",
     "@types/convict": "^6.1.1",
     "@types/node": "^16.4.10",
+    "@types/node-fetch": "^2.5.12",
     "all-contributors-cli": "^6.20.0",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.32.0",
