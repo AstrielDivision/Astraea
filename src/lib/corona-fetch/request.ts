@@ -12,7 +12,8 @@ export default async function request (country?: string): Promise<any> {
 					'User-Agent': c.useragent
 				}
 			},
-			FetchResultTypes.JSON)
+			FetchResultTypes.JSON
+		)
 		return res
 	}
 	const res = await fetch(
@@ -23,6 +24,7 @@ export default async function request (country?: string): Promise<any> {
 				'User-Agent': c.useragent
 			}
 		},
-		FetchResultTypes.JSON)
+		FetchResultTypes.JSON
+	)
 	return res
 }

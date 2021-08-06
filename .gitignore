@@ -16,3 +16,6 @@ config/main.json
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
+
+# Logs
+*.log

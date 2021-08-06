@@ -1,4 +1,7 @@
-import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
+import {
+	AstraeaCommand,
+	AstraeaCommandOptions
+} from '../../lib/Structures/Command'
 import { ApplyOptions } from '@sapphire/decorators'
 import { Message, MessageEmbed } from 'discord.js'
 import Yiff from '../../lib/yiff.ts/Yiff'
@@ -15,9 +18,7 @@ export default class YiffFloofyDev extends AstraeaCommand {
 	public async run (message: Message): Promise<Message> {
 		const req: Request = await Yiff.floofy()
 
-		const embed = new MessageEmbed()
-			.setImage(req.url)
-			.setColor('RANDOM')
+		const embed = new MessageEmbed().setImage(req.url).setColor('RANDOM')
 
 		return await message.channel.send(embed)
 	}

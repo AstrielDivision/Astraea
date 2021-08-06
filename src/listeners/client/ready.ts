@@ -13,17 +13,23 @@ export default class Ready extends Listener {
 		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 		const last = stores.pop()!
 
-		for (const store of stores) this.container.logger.console(this.styleStore(store, false))
+		for (const store of stores) {
+			this.container.logger.console(this.styleStore(store, false))
+		}
 		this.container.logger.console(this.styleStore(last, true))
 	}
 
 	private styleStore (store: Store<any>, last: boolean): void {
-		return this.container.logger.console(`${last ? '└─' : '├─'} Loaded ${store.size} ${store.name}.`)
+		return this.container.logger.console(
+			`${last ? '└─' : '├─'} Loaded ${store.size} ${store.name}.`
+		)
 	}
 
 	public run (): void {
 		this.printStoreDebugInformation()
 		void this.container.client.statusUpdater.updateStatus()
-		return this.container.logger.info(`Ready! Logged in as ${this.container.client.user?.tag} serving ${this.container.client.guilds.cache.size} Guilds and ${this.container.client.users.cache.size} Users`)
+		return this.container.logger.info(
+			`Ready! Logged in as ${this.container.client.user?.tag} serving ${this.container.client.guilds.cache.size} Guilds and ${this.container.client.users.cache.size} Users`
+		)
 	}
 }

@@ -17,18 +17,27 @@ export default class Client extends SapphireClient {
 	}
 
 	/**
-	 * Start the Client / Bot
-	 * @returns {Promise<Client>}
-	 */
+   * Start the Client / Bot
+   * @returns {Promise<Client>}
+   */
 	public async start (): Promise<Client> {
 		await super.login(cfg.token)
 
 		/**
-		 * Add statuses
-		 */
-		void this.statusUpdater.addStatus({ type: 'LISTENING', name: `Signals from the endless outer space | ${cfg.prefix}` })
-		void this.statusUpdater.addStatus({ type: 'LISTENING', name: `Music | ${cfg.prefix}` })
-		void this.statusUpdater.addStatus({ type: 'PLAYING', name: 'あなたは大丈夫？' })
+     * Add statuses
+     */
+		void this.statusUpdater.addStatus({
+			type: 'LISTENING',
+			name: `Signals from the endless outer space | ${cfg.prefix}`
+		})
+		void this.statusUpdater.addStatus({
+			type: 'LISTENING',
+			name: `Music | ${cfg.prefix}`
+		})
+		void this.statusUpdater.addStatus({
+			type: 'PLAYING',
+			name: 'あなたは大丈夫？'
+		})
 
 		// Automate status change
 		setInterval(() => {

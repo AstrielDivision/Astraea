@@ -1,11 +1,9 @@
 {
-    "extends": [
-        "@hidden-umbrella/eslint-config"
-    ],
-    "rules": {
-        "no-void": "off",
-        "@typescript-eslint/strict-boolean-expressions": "off",
-        "@typescript-eslint/ban-ts-comment": "off",
-        "@typescript-eslint/prefer-ts-expect-error": "off"
-    }
+  "extends": ["@hidden-umbrella/eslint-config"],
+  "rules": {
+    "no-void": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/prefer-ts-expect-error": "off"
+  }
 }

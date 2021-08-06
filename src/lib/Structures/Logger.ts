@@ -1,5 +1,10 @@
 import { ILogger, LogLevel } from '@sapphire/framework'
-import { MessageAttachment, WebhookClient, WebhookMessageOptions, MessageEmbed } from 'discord.js'
+import {
+	MessageAttachment,
+	WebhookClient,
+	WebhookMessageOptions,
+	MessageEmbed
+} from 'discord.js'
 import { EOL } from 'os'
 import cfg from '../../config'
 
@@ -66,23 +71,42 @@ export default class AstraeaLogger implements ILogger {
 	}
 
 	/**
-	 * Will not be sent through the Webhook
-	 * @param message Message to log
-	 */
+   * Will not be sent through the Webhook
+   * @param message Message to log
+   */
 	console (...message: unknown[]): void {
 		this._write(this.colours.info, 'CONSOLE', message)
 	}
 
 	protected _write (colour: RGB, level: string, ...message: unknown[]): void {
 		process.stdout.write(
-			`[${this.formatRGB(this.colours.foreground, this.processTag)} | ${this.formatRGB(this.colours.foreground, new Date().toLocaleString())} | ${this.formatRGB(this.colours.foreground, this.namespace)} ${this.formatRGB(this.colours.foreground, 'Logger')} | ${this.formatRGB(colour, level)}]: ${this.formatRGB(colour, message)}${EOL}`
+			`[${this.formatRGB(
+				this.colours.foreground,
+				this.processTag
+			)} | ${this.formatRGB(
+				this.colours.foreground,
+				new Date().toLocaleString()
+			)} | ${this.formatRGB(
+				this.colours.foreground,
+				this.namespace
+			)} ${this.formatRGB(
+				this.colours.foreground,
+				'Logger'
+			)} | ${this.formatRGB(colour, level)}]: ${this.formatRGB(
+				colour,
+				message
+			)}${EOL}`
 		)
 
 		if (level === 'CONSOLE') return
 
 		const hook = new WebhookClient(cfg.webhook.id, cfg.webhook.secret)
 
-		const embed: MessageEmbed = new MessageEmbed().setTimestamp().setColor('FFFF00').setFooter(this.processTag).setTitle('Log')
+		const embed: MessageEmbed = new MessageEmbed()
+			.setTimestamp()
+			.setColor('FFFF00')
+			.setFooter(this.processTag)
+			.setTitle('Log')
 		const options: WebhookMessageOptions = {
 			embeds: [embed],
 			username: this.namespace + ' Logger',
@@ -93,7 +117,9 @@ export default class AstraeaLogger implements ILogger {
 			embed.setDescription(message.join(' '))
 		} else {
 			embed.setDescription('Message too long.')
-			options.files = [new MessageAttachment(Buffer.from(message.join(' ')), 'message.txt')]
+			options.files = [
+				new MessageAttachment(Buffer.from(message.join(' ')), 'message.txt')
+			]
 		}
 		void hook.send(options).catch(() => null)
 	}
