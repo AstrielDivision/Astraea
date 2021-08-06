@@ -7,11 +7,10 @@
 ![GitHub issues](https://img.shields.io/github/issues-raw/AstraeaStudios/Astraea)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/AstraeaStudios/Astraea)
 
+> The only Image bot you'll ever need!
+
 </div>
-
-## Features
-
-- Images
+<br>
 
 ## Self Host
 
