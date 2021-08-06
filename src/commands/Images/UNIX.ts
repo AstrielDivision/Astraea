@@ -6,8 +6,8 @@ import { PieceContext } from '@sapphire/framework'
 import { ApplyOptions } from '@sapphire/decorators'
 
 @ApplyOptions<AstraeaCommandOptions>({
-	name: 'unixporn',
-	aliases: ['unix', 'linx'],
+	name: 'unix',
+	aliases: ['linx'],
 	description: 'Returns a Image from r/UNIXPorn',
 	cooldownLimit: 3,
 	cooldownDelay: 2000
