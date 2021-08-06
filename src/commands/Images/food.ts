@@ -3,8 +3,7 @@ import { PieceContext } from '@sapphire/framework'
 import { ApplyOptions } from '@sapphire/decorators'
 
 @ApplyOptions<AstraeaCommandOptions>({
-	name: 'foodporn',
-	aliases: ['food'],
+	name: 'food',
 	description: 'Returns a Image from r/foodporn',
 	cooldownLimit: 3,
 	cooldownDelay: 2000
