@@ -28,8 +28,8 @@ export default class Help extends AstraeaCommand {
 	private async commandHelp (message: Message, cmd: string): Promise<Message> {
 		const commands = this.container.stores.get('commands')
 		const command =
-      commands.get(cmd.toLowerCase()) ??
-      commands.find((cmd) => command?.name.includes(cmd))
+		commands.get(cmd.toLowerCase()) ??
+        commands.find((cmd) => command?.name.includes(cmd))
 		if (typeof command === 'undefined') {
 			return await message.channel.send('Couldn\'t find that command!')
 		}
@@ -39,11 +39,9 @@ export default class Help extends AstraeaCommand {
 			/* eslint-disable @typescript-eslint/restrict-template-expressions */
 				.setTitle(`Command | ${command.name}`)
 				.setDescription(
-					`**Description:** ${
-						command.description || '`No description`'
-					}\n**In detail:** ${
-						command.detailedDescription || '`No detailed description`'
-					}`
+					`**Aliases**: ${command.aliases.join(', ') || '`No aliases`'}
+					**Description:** ${command.description || '`No description`'}
+					**In detail:** ${command.detailedDescription || '`No detailed description`'}`
 				)
 				.setFooter(
 					`${message.author.tag}`,
