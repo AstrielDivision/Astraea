@@ -1,4 +1,7 @@
-import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
+import {
+	AstraeaCommand,
+	AstraeaCommandOptions
+} from '../../lib/Structures/Command'
 import { Message, MessageEmbed } from 'discord.js'
 import { ApplyOptions } from '@sapphire/decorators'
 import { Args } from '@sapphire/framework'
@@ -12,8 +15,7 @@ export default class Corona extends AstraeaCommand {
 	public async run (message: Message, args: Args): Promise<Message> {
 		const country = (await args.pickResult('string')).value
 
-		const embed = new MessageEmbed()
-			.setFooter('This data may not be accurate')
+		const embed = new MessageEmbed().setFooter('This data may not be accurate')
 
 		if (country) {
 			const res = await CoronaFetch.country(country)

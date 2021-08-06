@@ -1,4 +1,7 @@
-import { AstraeaRedditCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
+import {
+	AstraeaRedditCommand,
+	AstraeaCommandOptions
+} from '../../lib/Structures/Command'
 import { PieceContext } from '@sapphire/framework'
 import { ApplyOptions } from '@sapphire/decorators'
 
@@ -12,6 +15,10 @@ import { ApplyOptions } from '@sapphire/decorators'
 })
 export default class Hentai extends AstraeaRedditCommand {
 	constructor (Context: PieceContext, options: AstraeaCommandOptions) {
-		super({ subreddit: 'hentai', nsfw: true, colour: 'PINK' }, Context, options)
+		super(
+			{ subreddit: 'hentai', nsfw: true, colour: 'PINK' },
+			Context,
+			options
+		)
 	}
 }

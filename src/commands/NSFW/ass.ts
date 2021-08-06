@@ -1,4 +1,7 @@
-import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
+import {
+	AstraeaCommand,
+	AstraeaCommandOptions
+} from '../../lib/Structures/Command'
 import { ApplyOptions } from '@sapphire/decorators'
 import { Message, MessageEmbed } from 'discord.js'
 import { Image } from '@aero/ksoft'
@@ -13,7 +16,11 @@ import { Image } from '@aero/ksoft'
 })
 export default class Ass extends AstraeaCommand {
 	public async run (message: Message): Promise<Message> {
-		const { url }: Image = await this.container.client.ksoft.images.random('ass', { nsfw: true })
+		const {
+			url
+		}: Image = await this.container.client.ksoft.images.random('ass', {
+			nsfw: true
+		})
 		const embed = new MessageEmbed()
 			.setTitle('Thicc?')
 			.setFooter('Powered by api.ksoft.si')

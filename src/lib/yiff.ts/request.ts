@@ -14,7 +14,8 @@ export default async function request (options: Config): Promise<unknown> {
 						'User-Agent': c.defaults.useragent
 					}
 				},
-				FetchResultTypes.JSON)
+				FetchResultTypes.JSON
+			)
 			return res
 		}
 		case 'floofy': {
@@ -26,7 +27,8 @@ export default async function request (options: Config): Promise<unknown> {
 						'User-Agent': c.defaults.useragent
 					}
 				},
-				FetchResultTypes.JSON)
+				FetchResultTypes.JSON
+			)
 			return res
 		}
 	}

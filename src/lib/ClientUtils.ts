@@ -34,12 +34,16 @@ export default class Utils {
 	public async Fetch (url: string, type?: FetchResultTypes): Promise<unknown> {
 		if (!url) throw Error('No URL provided')
 
-		const res = await fetch(url, {
-			method: FetchMethods.Get,
-			headers: {
-				'User-Agent': userAgent
-			}
-		}, type ?? FetchResultTypes.Text)
+		const res = await fetch(
+			url,
+			{
+				method: FetchMethods.Get,
+				headers: {
+					'User-Agent': userAgent
+				}
+			},
+			type ?? FetchResultTypes.Text
+		)
 
 		return res
 	}

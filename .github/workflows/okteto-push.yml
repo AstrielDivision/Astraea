@@ -2,7 +2,7 @@ name: Continuous Delivery
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
   workflow_dispatch:
 
@@ -28,4 +28,3 @@ jobs:
         with:
           namespace: artiefuzzz
           name: astraea
-
