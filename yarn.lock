@@ -571,10 +571,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^16.4.12":
-  version: 16.4.12
-  resolution: "@types/node@npm:16.4.12"
-  checksum: 1489aeba890629ca2ed9b8f04fb77f185123810afd3d518cf87c2a18a43a43f7d954550ae3572f3dac7e634f7db67e259ceb7ca25cb584ba0bcc023b0bfca2c9
+"@types/node@npm:^16.4.13":
+  version: 16.4.13
+  resolution: "@types/node@npm:16.4.13"
+  checksum: 071e86a1d196cf72928a7109e99769dffed93db481032b9ca2f52e6f3ced432e2a179849c85e587e67409202e1ed37bffd0c7a31d38adf35a385d327dfe8bd72
   languageName: node
   linkType: hard
 
@@ -975,7 +975,7 @@ __metadata:
     "@tmware/status-rotate": ^1.2.8
     "@types/app-root-path": ^1.2.4
     "@types/convict": ^6.1.1
-    "@types/node": ^16.4.12
+    "@types/node": ^16.4.13
     "@types/node-fetch": ^2.5.12
     all-contributors-cli: ^6.20.0
     app-root-path: ^3.0.0
