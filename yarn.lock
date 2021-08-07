@@ -494,9 +494,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tmware/status-rotate@npm:^1.3.0-dev":
-  version: 1.3.0-dev
-  resolution: "@tmware/status-rotate@npm:1.3.0-dev"
+"@tmware/status-rotate@npm:^1.2.8":
+  version: 1.2.8
+  resolution: "@tmware/status-rotate@npm:1.2.8"
   dependencies:
     "@tmware/jitsuyo": ^1.6.5
     "@tmware/variable-parser": ^1.2.2
@@ -506,7 +506,7 @@ __metadata:
   peerDependenciesMeta:
     discord.js:
       optional: false
-  checksum: 5b86cf6bb251d33d5e0a073c434ce7c88e576e82e0e2349c71664926a4581152f2f37004627e2790476d0924d7e9ef92c32fc101906334699298c75a0cf6495e
+  checksum: af5d370cb657914fab651355f4d559bd5649ca6a581356bbe4f80803be6ad9852ae2a0d8e17178833835b8b338f1aa1c7020fa4514f9d65531b90a2af04a1576
   languageName: node
   linkType: hard
 
@@ -972,7 +972,7 @@ __metadata:
     "@sapphire/framework": 2.0.0-next.eebecfb6.0
     "@sapphire/type": ^2.0.11
     "@sapphire/utilities": ^2.0.1
-    "@tmware/status-rotate": ^1.3.0-dev
+    "@tmware/status-rotate": ^1.2.8
     "@types/app-root-path": ^1.2.4
     "@types/convict": ^6.1.1
     "@types/node": ^16.4.12
