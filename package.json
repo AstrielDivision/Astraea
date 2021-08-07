@@ -23,7 +23,7 @@
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
-    "@hidden-umbrella/eslint-config": "^1.0.1",
+    "@hidden-umbrella/eslint-config": "^1.0.2",
     "@types/app-root-path": "^1.2.4",
     "@types/convict": "^6.1.1",
     "@types/node": "^16.4.13",
