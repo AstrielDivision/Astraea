@@ -6,7 +6,7 @@ import canvas from '../../lib/Canvas-SRA/requests'
 
 @ApplyOptions<AstraeaCommandOptions>({
 	name: 'comrade',
-	aliases: ['russia', 'soviet'],
+	aliases: ['russia', 'soviet', 'russian'],
 	description: 'FOR DA MOTHER LAAAAND!'
 })
 export default class Comrade extends AstraeaCommand {
