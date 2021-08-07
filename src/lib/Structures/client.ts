@@ -26,15 +26,15 @@ export default class Client extends SapphireClient {
 		/**
      * Add statuses
      */
-		void this.statusUpdater.addStatus({
+		this.statusUpdater.addStatus({
 			type: 'LISTENING',
 			name: `Signals from the endless outer space | ${cfg.prefix}`
 		})
-		void this.statusUpdater.addStatus({
+		this.statusUpdater.addStatus({
 			type: 'LISTENING',
 			name: `Music | ${cfg.prefix}`
 		})
-		void this.statusUpdater.addStatus({
+		this.statusUpdater.addStatus({
 			type: 'PLAYING',
 			name: 'あなたは大丈夫？'
 		})
