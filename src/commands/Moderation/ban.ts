@@ -8,7 +8,8 @@ import { Args } from '@sapphire/framework'
 	description: 'Ban a user with or without reason',
 	detailedDescription: 'Using the flags -s or --soft will ban then unban the user',
 	requiredClientPermissions: ['BAN_MEMBERS'],
-	flags: ['s', 'soft']
+	flags: ['s', 'soft'],
+	preconditions: ['GuildTextOnly']
 })
 export default class Ban extends AstraeaCommand {
 	@RequiresPermissions('BAN_MEMBERS')
