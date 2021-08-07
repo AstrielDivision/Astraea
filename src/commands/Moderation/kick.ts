@@ -6,7 +6,8 @@ import { Args } from '@sapphire/framework'
 @ApplyOptions<AstraeaCommandOptions>({
 	name: 'kick',
 	description: 'Kick a user with or without reason',
-	requiredClientPermissions: ['KICK_MEMBERS']
+	requiredClientPermissions: ['KICK_MEMBERS'],
+	preconditions: ['GuildTextOnly']
 })
 export default class Kick extends AstraeaCommand {
 	@RequiresPermissions('KICK_MEMBERS')
