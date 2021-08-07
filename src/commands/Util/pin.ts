@@ -6,7 +6,8 @@ import { Args } from '@sapphire/framework'
 @ApplyOptions<AstraeaCommandOptions>({
 	name: 'pin',
 	description: 'Pin a message via ID',
-	requiredClientPermissions: ['MANAGE_MESSAGES']
+	requiredClientPermissions: ['MANAGE_MESSAGES'],
+	preconditions: ['GuildTextOnly']
 })
 export default class example extends AstraeaCommand {
 	@RequiresPermissions('MANAGE_MESSAGES')
