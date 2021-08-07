@@ -293,9 +293,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hidden-umbrella/eslint-config@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "@hidden-umbrella/eslint-config@npm:1.0.1"
+"@hidden-umbrella/eslint-config@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "@hidden-umbrella/eslint-config@npm:1.0.2"
   dependencies:
     "@typescript-eslint/eslint-plugin": ^4.28.3
     "@typescript-eslint/parser": ^4.28.3
@@ -304,7 +304,10 @@ __metadata:
     eslint-plugin-import: ^2.23.4
     eslint-plugin-node: ^11.1.0
     eslint-plugin-promise: ^5.1.0
-  checksum: f897479e2dcdff9798ef02e0678c6e8b125998b564e340c50789c0bd8ab4045a411384564b4384cbb92caf5ee24822176e8cddd602cb4c6c93ebdc84372f1b78
+  peerDependencies:
+    eslint: ^7.32.0
+    typescript: ^4.3.5
+  checksum: 3a9a6dba5106b5afb00da062179704602477efd0d21d730368547ccd53a487793cb9e1caff27d230a00f6315c08d80f42cb955241c10bd81c2324c525868afef
   languageName: node
   linkType: hard
 
@@ -965,7 +968,7 @@ __metadata:
     "@aero/ksoft": ^4.0.0-rc1
     "@commitlint/cli": ^13.1.0
     "@commitlint/config-conventional": ^13.1.0
-    "@hidden-umbrella/eslint-config": ^1.0.1
+    "@hidden-umbrella/eslint-config": ^1.0.2
     "@sapphire/decorators": ^2.2.0
     "@sapphire/discord.js-utilities": ^2.0.2
     "@sapphire/fetch": ^1.0.5
