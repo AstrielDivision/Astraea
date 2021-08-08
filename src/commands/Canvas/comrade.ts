@@ -1,27 +1,14 @@
-import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
-import { Message, MessageAttachment } from 'discord.js'
+import { AstraeaOverlayCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
+import { PieceContext } from '@sapphire/framework'
 import { ApplyOptions } from '@sapphire/decorators'
-import { Args } from '@sapphire/framework'
-import canvas from '../../lib/Canvas-SRA/requests'
 
 @ApplyOptions<AstraeaCommandOptions>({
 	name: 'comrade',
 	aliases: ['russia', 'soviet', 'russian'],
-	description: 'FOR DA MOTHER LAAAAND!'
+	description: 'Add a soviet flag overlay to your or someone elses profile picture'
 })
-export default class Comrade extends AstraeaCommand {
-	public async run (message: Message, args: Args): Promise<Message> {
-		let buffer
-		const mention = (await args.pickResult('user')).value
-
-		const wait = await message.channel.send('Please wait...')
-
-		buffer = await canvas('comrade', message.author.avatarURL({ format: 'png', size: 256 }))
-		if (mention)buffer = await canvas('comrade', mention.avatarURL({ format: 'png', size: 256 }))
-
-		const image = new MessageAttachment(buffer, 'img.png')
-
-		await message.channel.send({ files: [image] })
-		return await wait.delete()
+export default class Comrade extends AstraeaOverlayCommand {
+	constructor (Context: PieceContext, options: AstraeaCommandOptions) {
+		super({ overlay: 'comrade' }, Context, options)
 	}
 }
