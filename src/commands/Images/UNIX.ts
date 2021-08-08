@@ -7,7 +7,7 @@ import { ApplyOptions } from '@sapphire/decorators'
 
 @ApplyOptions<AstraeaCommandOptions>({
 	name: 'unix',
-	aliases: ['linx'],
+	aliases: ['linux'],
 	description: 'Returns a Image from r/UNIXPorn',
 	cooldownLimit: 3,
 	cooldownDelay: 2000
