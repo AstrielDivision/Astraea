@@ -67,7 +67,6 @@
     "bufferutil": "^4.0.3",
     "convict": "^6.2.0",
     "discord.js": "^12.5.3",
-    "utf-8-validate": "^5.0.5",
-    "zlib-sync": "^0.1.7"
+    "utf-8-validate": "^5.0.5"
   }
 }

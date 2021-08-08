@@ -1,6 +1,6 @@
 FROM node:alpine
 
-RUN apk update && apk add g++ gcc git
+RUN apk update && apk add git
 
 WORKDIR /opt/Astraea/build
 
