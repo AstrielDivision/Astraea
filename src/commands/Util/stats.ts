@@ -16,14 +16,13 @@ export default class Stats extends AstraeaCommand {
 			.setTitle(`${this.container.client.user.username} | ${pkg.version}`)
 			.setThumbnail(this.container.client.user.avatarURL())
 			.setDescription(
-				`\n **Node.js:** ${process.version}` +
-			`\n **TypeScript:** v${ts}` +
-			`\n **Discord.js:** ${djs}` +
-			`\n **Framework:** ${version} \n` +
-			`\n **Memory Usage:** ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB` +
-			`\n **User Count:** ${this.container.client.users.cache.size}` +
-			`\n **Guild Count:** ${this.container.client.guilds.cache.size}` +
-			`\n **Channel Count:** ${this.container.client.channels.cache.size}`
+				`\n**Node.js:** ${process.version}` +
+			`\n**TypeScript:** v${ts}` +
+			`\n**Discord.js:** ${djs}` +
+			`\n**Framework:** ${version} \n` +
+			`\n**Memory Usage:** ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB` +
+			`\n**User Count:** ${this.container.client.users.cache.size}` +
+			`\n**Guild Count:** ${this.container.client.guilds.cache.size}`
 			)
 			.setColor('YELLOW')
 
