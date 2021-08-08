@@ -13,7 +13,7 @@ export default class example extends AstraeaCommand {
 		const string = (await args.restResult('string')).value
 		const decode = args.getFlags('d', 'decode')
 
-		if (!string) return await message.channel.send('You didn\'t provide a string!')
+		if (!string) return await message.channel.send('You didn\'t provide any text!')
 
 		if (decode) {
 			const decoded = Buffer.from(string, 'base64').toString('binary')
