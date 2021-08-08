@@ -992,13 +992,6 @@ __metadata:
     typescript: ^4.3.5
     utf-8-validate: ^5.0.5
     zlib-sync: ^0.1.7
-  dependenciesMeta:
-    bufferutil:
-      optional: true
-    utf-8-validate:
-      optional: true
-    zlib-sync:
-      optional: true
   languageName: unknown
   linkType: soft
 
