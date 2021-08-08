@@ -3,7 +3,7 @@
  * Licensed under the MIT License.
  */
 import { ApplyOptions } from '@sapphire/decorators'
-import { Args } from '@sapphire/framework'
+import { Args, Command } from '@sapphire/framework'
 import {
 	AstraeaCommand,
 	AstraeaCommandOptions
@@ -27,27 +27,29 @@ export default class Help extends AstraeaCommand {
 
 	private async commandHelp (message: Message, cmd: string): Promise<Message> {
 		const commands = this.container.stores.get('commands')
-		const command =
-		commands.get(cmd.toLowerCase()) ??
-        commands.find((cmd) => command?.name.includes(cmd))
+		const command: Command = commands.get(cmd.toLowerCase())
+
 		if (typeof command === 'undefined') {
 			return await message.channel.send('Couldn\'t find that command!')
 		}
-		return await message.channel.send(
-			new MessageEmbed()
-				.setColor(0x1100ff)
-			/* eslint-disable @typescript-eslint/restrict-template-expressions */
-				.setTitle(`Command | ${command.name}`)
-				.setDescription(
-					`**Aliases**: ${command.aliases.join(', ') || '`No aliases`'}
-					**Description:** ${command.description || '`No description`'}
-					**In detail:** ${command.detailedDescription || '`No detailed description`'}`
-				)
-				.setFooter(
-					`${message.author.tag}`,
-					message.author.avatarURL({ dynamic: true })
-				)
-		)
+		const embed = new MessageEmbed()
+			.setColor('dee29a')
+			.setFooter(
+				`${message.author.tag}`,
+				message.author.avatarURL({ dynamic: true })
+			)
+			.setTitle(`Command | ${command.name}`)
+			.addField('Description', command.description)
+
+		if (command.aliases.length > 0) {
+			embed.addField('Aliases', command.aliases.join(', '))
+		}
+
+		if (command.detailedDescription) {
+			embed.addField('Detailed Description', command.detailedDescription)
+		}
+
+		return await message.channel.send(embed)
 	}
 
 	private async commands (message: Message): Promise<Message> {
