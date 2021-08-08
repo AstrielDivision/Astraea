@@ -8,7 +8,7 @@ import {
 	AstraeaCommand,
 	AstraeaCommandOptions
 } from '../../lib/Structures/Command'
-import { Message, MessageEmbed } from 'discord.js'
+import { Message, MessageEmbed, TextChannel } from 'discord.js'
 
 @ApplyOptions<AstraeaCommandOptions>({
 	name: 'help',
@@ -16,7 +16,7 @@ import { Message, MessageEmbed } from 'discord.js'
 	description: 'Gives you a list of commands',
 	detailedDescription:
     'You may also provide a command, which will return info about that command',
-	preconditions: []
+	preconditions: ['GuildTextOnly']
 })
 export default class Help extends AstraeaCommand {
 	public async run (message: Message, args: Args): Promise<Message> {
@@ -70,6 +70,7 @@ export default class Help extends AstraeaCommand {
 			this.container.stores.get('commands').forEach((cmd) => {
 				if ((cmd as AstraeaCommand).category !== category) return
 				if ((cmd as AstraeaCommand).category === 'Owner') return
+				if (!(message.channel as TextChannel).nsfw && (cmd as AstraeaCommand).category === 'NSFW') return
 
 				commandsLine += `\`${cmd.name}\` `
 			})
