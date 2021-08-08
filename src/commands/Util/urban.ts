@@ -15,13 +15,13 @@ export default class example extends AstraeaCommand {
 
 		if (!search) return await message.channel.send('No search provided')
 
-		const list = await Urban(search)
+		const word = await Urban(search)
 		const embed = new MessageEmbed()
-			.setTitle(list.word)
-			.setDescription(list.definition)
-			.addField('Example', list.example)
-			.setURL(list.permalink)
-			.setFooter(`Author: ${list.author} | ID: ${list.defid} | Upvotes: ${list.thumbs_up} | Downvotes: ${list.thumbs_down}`)
+			.setTitle(word.word)
+			.setDescription(word.definition)
+			.addField('Example', word.example)
+			.setURL(word.permalink)
+			.setFooter(`Author: ${word.author} | ID: ${word.defid} | Upvotes: ${word.thumbs_up} | Downvotes: ${word.thumbs_down}`)
 
 		return await message.channel.send(embed)
 	}
