@@ -21,7 +21,7 @@ export default class Ban extends AstraeaCommand {
 
 		if (!member.bannable) return await message.channel.send('You\'re not allowed to ban this user!')
 
-		await member.ban({ reason: reason ?? 'Not Specified', days: 1 })
+		await member.ban({ reason: reason || 'Not Specified', days: 1 })
 
 		if (softBan) {
 			await member.guild.members.unban(member.id)
