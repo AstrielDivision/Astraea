@@ -18,7 +18,7 @@ export default class Kick extends AstraeaCommand {
 
 		if (!member.kickable) return await message.channel.send('You\'re not allowed to kick this user!')
 
-		await member.kick(reason ?? 'Not Specified')
+		await member.kick(reason || 'Not Specified')
 
 		return await message.channel.send(`**Successfully kicked** \`${member.user.tag}\``)
 	}
