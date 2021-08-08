@@ -21,11 +21,7 @@ export default class Purge extends AstraeaCommand {
 		if (amount > 100) return await message.channel.send('I can only purge 100 messages!')
 		if (amount < 1) return await message.channel.send('I can\'t just delete nothing :\\')
 
-		await message.delete()
-
-		const messages = await message.channel.messages.fetch({ limit: amount })
-
-		await (message.channel as TextChannel).bulkDelete(messages.array().slice(0, amount))
+		await (message.channel as TextChannel).bulkDelete(amount + 1, true)
 
 		return await message.channel.send(`Purged **${amount}** messages`).then((msg) => {
 			setTimeout(() => {
