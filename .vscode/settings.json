@@ -5,9 +5,11 @@
     "Astraea",
     "bufferutil",
     "commitlint",
+    "cooldown",
     "ksoft",
     "owoified",
     "owoify",
+    "subreddit",
     "uvuifed",
     "uwuifed"
   ]

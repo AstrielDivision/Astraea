@@ -4,7 +4,8 @@ import { ApplyOptions } from '@sapphire/decorators'
 
 @ApplyOptions<AstraeaCommandOptions>({
 	name: 'glass',
-	description: 'Add a glass overlay to your or someone elses profile picture'
+	description: 'Add a glass overlay to your or someone elses profile picture',
+	usage: 'glass [@user]'
 })
 export default class Glass extends AstraeaOverlayCommand {
 	constructor (Context: PieceContext, options: AstraeaCommandOptions) {

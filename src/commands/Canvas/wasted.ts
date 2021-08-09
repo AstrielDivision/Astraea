@@ -4,7 +4,8 @@ import { ApplyOptions } from '@sapphire/decorators'
 
 @ApplyOptions<AstraeaCommandOptions>({
 	name: 'wasted',
-	description: 'Add a GTA 5 wasted overlay to your or someone elses profile picture'
+	description: 'Add a GTA 5 wasted overlay to your or someone elses profile picture',
+	usage: 'wasted [@user]'
 })
 export default class Wasted extends AstraeaOverlayCommand {
 	constructor (Context: PieceContext, options: AstraeaCommandOptions) {
