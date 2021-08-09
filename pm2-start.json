@@ -10,6 +10,7 @@
 		"merge_logs": true,
 		"output": "./logs/output.log",
 		"error": "./logs/error.log",
-		"autorestart": true
+		"autorestart": true,
+		"interpreter": "node@16.6.1"
 	}]
 }
