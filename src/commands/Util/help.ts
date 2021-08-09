@@ -69,8 +69,9 @@ export default class Help extends AstraeaCommand {
 			let commandsLine = ''
 			this.container.stores.get('commands').forEach((cmd) => {
 				if ((cmd as AstraeaCommand).category !== category) return
-				if ((cmd as AstraeaCommand).category === 'Owner') return
+				if (!this.container.client.util.isOwner(message.author.id) && (cmd as AstraeaCommand).category === 'Owner') return
 				if (!(message.channel as TextChannel).nsfw && (cmd as AstraeaCommand).category === 'NSFW') return
+				if (!(cmd as AstraeaCommand).enabled) return
 
 				commandsLine += `\`${cmd.name}\` `
 			})
