@@ -6,6 +6,7 @@ import { Args } from '@sapphire/framework'
 @ApplyOptions<AstraeaCommandOptions>({
 	name: 'base64',
 	description: 'Encode text to base64 or Decode base64 to text',
+	detailedDescription: 'Use -d or --decode to decoded encoded text',
 	flags: ['d', 'decode']
 })
 export default class example extends AstraeaCommand {
