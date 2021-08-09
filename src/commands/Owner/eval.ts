@@ -8,7 +8,6 @@ import { Type } from '@sapphire/type'
 import { codeBlock, isThenable } from '@sapphire/utilities'
 import type { Message } from 'discord.js'
 import { inspect } from 'util'
-import cfg from '../../config'
 
 @ApplyOptions<AstraeaCommandOptions>({
 	name: 'eval',
@@ -20,7 +19,7 @@ import cfg from '../../config'
 })
 export default class extends AstraeaCommand {
 	public async run (message: Message, args: Args): Promise<Message> {
-		if (!cfg.owners.includes(message.author.id)) {
+		if (!this.container.client.util.isOwner(message.author.id)) {
 			return await message.channel.send(
 				'You are not permitted to execute this command'
 			)
@@ -56,7 +55,7 @@ export default class extends AstraeaCommand {
 		message: Message,
 		code: string,
 		flags: { async: boolean, depth: number, showHidden: boolean }
-	): Promise<{ result, success, type }> {
+	): Promise<{ result: string, success: boolean, type: string }> {
 		if (flags.async) code = `(async () => {\n${code}\n})();`
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
 		const msg = message
