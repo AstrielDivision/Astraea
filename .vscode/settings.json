@@ -1,3 +1,14 @@
 {
-  "typescript.tsdk": "node_modules\\typescript\\lib"
+  "typescript.tsdk": "node_modules\\typescript\\lib",
+  "cSpell.words": [
+    "ArtieFuzzz",
+    "Astraea",
+    "bufferutil",
+    "commitlint",
+    "ksoft",
+    "owoified",
+    "owoify",
+    "uvuifed",
+    "uwuifed"
+  ]
 }
