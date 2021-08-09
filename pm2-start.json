@@ -1,0 +1,16 @@
+{
+	"apps": [{
+		"name": "Astraea",
+		"script": "build/index.js",
+		"instances": "1",
+		"watch": false,
+		"args": [
+			"--color"
+		],
+		"merge_logs": true,
+		"output": "./logs/output.log",
+		"error": "./logs/error.log",
+		"autorestart": true,
+		"interpreter": "node@16.6.1"
+	}]
+}

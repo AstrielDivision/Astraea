@@ -1,7 +1,7 @@
 import { User, Snowflake, Guild } from 'discord.js'
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch'
 import Client from './Structures/client'
-import { pkg } from '../config'
+import cfg, { pkg } from '../config'
 
 const userAgent = `Astraea/v${pkg.version} (github.com/AstraeaStudios/Astraea)`
 
@@ -46,5 +46,15 @@ export default class Utils {
 		)
 
 		return res
+	}
+
+	public isOwner (id: string | Snowflake): boolean {
+		const isOwner = cfg.owners.includes(id)
+
+		if (isOwner) {
+			return true
+		} else {
+			return false
+		}
 	}
 }

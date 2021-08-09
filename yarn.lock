@@ -543,6 +543,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/crypto-js@npm:^4":
+  version: 4.0.2
+  resolution: "@types/crypto-js@npm:4.0.2"
+  checksum: b9d03b6cc1152f0c817b3555e0638d87b62dcc4edfd886d409b50aa68dbe3017727f8fed634b8b4b10b0796e0cdd35379c50abfb28d3226666fdc908844e5934
+  languageName: node
+  linkType: hard
+
 "@types/json-schema@npm:^7.0.7":
   version: 7.0.8
   resolution: "@types/json-schema@npm:7.0.8"
@@ -978,16 +985,19 @@ __metadata:
     "@tmware/status-rotate": ^1.2.8
     "@types/app-root-path": ^1.2.4
     "@types/convict": ^6.1.1
+    "@types/crypto-js": ^4
     "@types/node": ^16.4.13
     "@types/node-fetch": ^2.5.12
     all-contributors-cli: ^6.20.0
     app-root-path: ^3.0.0
     bufferutil: ^4.0.3
     convict: ^6.2.0
+    crypto-js: ^4.1.1
     cz-conventional-changelog: ^3.3.0
     discord.js: ^12.5.3
     eslint: ^7.32.0
     husky: ^7.0.1
+    owoify-js: ^1.0.7
     rimraf: ^3.0.2
     typescript: ^4.3.5
     utf-8-validate: ^5.0.5
@@ -1414,6 +1424,13 @@ __metadata:
     shebang-command: ^2.0.0
     which: ^2.0.1
   checksum: 671cc7c7288c3a8406f3c69a3ae2fc85555c04169e9d611def9a675635472614f1c0ed0ef80955d5b6d4e724f6ced67f0ad1bb006c2ea643488fcfef994d7f52
+  languageName: node
+  linkType: hard
+
+"crypto-js@npm:^4.1.1":
+  version: 4.1.1
+  resolution: "crypto-js@npm:4.1.1"
+  checksum: b3747c12ee3a7632fab3b3e171ea50f78b182545f0714f6d3e7e2858385f0f4101a15f2517e033802ce9d12ba50a391575ff4638c9de3dd9b2c4bc47768d5425
   languageName: node
   linkType: hard
 
@@ -3608,6 +3625,13 @@ __metadata:
   version: 1.0.2
   resolution: "os-tmpdir@npm:1.0.2"
   checksum: 5666560f7b9f10182548bf7013883265be33620b1c1b4a4d405c25be2636f970c5488ff3e6c48de75b55d02bde037249fe5dbfbb4c0fb7714953d56aed062e6d
+  languageName: node
+  linkType: hard
+
+"owoify-js@npm:^1.0.7":
+  version: 1.0.7
+  resolution: "owoify-js@npm:1.0.7"
+  checksum: fcec1155b9fb9c9ff07498fb7f68be16a00d8d9b67529b3b1e50a524e0acd4b6643c0d8414c806f98a7319284f01100eb78f234deb32a1a05547b8f4f4bfda74
   languageName: node
   linkType: hard
 

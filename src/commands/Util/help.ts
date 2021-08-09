@@ -8,7 +8,8 @@ import {
 	AstraeaCommand,
 	AstraeaCommandOptions
 } from '../../lib/Structures/Command'
-import { Message, MessageEmbed } from 'discord.js'
+import { Message, MessageEmbed, TextChannel } from 'discord.js'
+import cfg from '../../config'
 
 @ApplyOptions<AstraeaCommandOptions>({
 	name: 'help',
@@ -16,7 +17,7 @@ import { Message, MessageEmbed } from 'discord.js'
 	description: 'Gives you a list of commands',
 	detailedDescription:
     'You may also provide a command, which will return info about that command',
-	preconditions: []
+	preconditions: ['GuildTextOnly']
 })
 export default class Help extends AstraeaCommand {
 	public async run (message: Message, args: Args): Promise<Message> {
@@ -35,7 +36,7 @@ export default class Help extends AstraeaCommand {
 		const embed = new MessageEmbed()
 			.setColor('dee29a')
 			.setFooter(
-				`${message.author.tag}`,
+				`${message.author.tag} | Parameter Key: <> Required, [] Optional`,
 				message.author.avatarURL({ dynamic: true })
 			)
 			.setTitle(`Command | ${command.name}`)
@@ -47,6 +48,10 @@ export default class Help extends AstraeaCommand {
 
 		if (command.detailedDescription) {
 			embed.addField('Detailed Description', command.detailedDescription)
+		}
+
+		if ((command as AstraeaCommand).usage) {
+			embed.addField('Usage', `${cfg.prefix}${(command as AstraeaCommand).usage}`)
 		}
 
 		return await message.channel.send(embed)
@@ -69,7 +74,10 @@ export default class Help extends AstraeaCommand {
 			let commandsLine = ''
 			this.container.stores.get('commands').forEach((cmd) => {
 				if ((cmd as AstraeaCommand).category !== category) return
-				if ((cmd as AstraeaCommand).category === 'Owner') return
+				if (!this.container.client.util.isOwner(message.author.id) && (cmd as AstraeaCommand).category === 'Owner') return
+				if (!(message.member.hasPermission('BAN_MEMBERS') || message.member.hasPermission('KICK_MEMBERS')) && (cmd as AstraeaCommand).category === 'Moderation') return
+				if (!(message.channel as TextChannel).nsfw && (cmd as AstraeaCommand).category === 'NSFW') return
+				if (!(cmd as AstraeaCommand).enabled) return
 
 				commandsLine += `\`${cmd.name}\` `
 			})

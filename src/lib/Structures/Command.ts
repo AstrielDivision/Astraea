@@ -5,11 +5,11 @@ import { RedditImage } from '@aero/ksoft'
 import { sep } from 'path'
 
 export abstract class AstraeaCommand extends Command {
-	visible?: boolean
-	constructor (Context: PieceContext, options: CommandOptions) {
+	public usage?: string
+	constructor (Context: PieceContext, options: AstraeaCommandOptions) {
 		super(Context, options)
 
-		this.visible = false
+		this.usage = options.usage ?? ''
 	}
 
 	public get category (): string {
@@ -102,4 +102,6 @@ export abstract class AstraeaOverlayCommand extends AstraeaCommand {
 	}
 }
 
-export interface AstraeaCommandOptions extends CommandOptions {}
+export interface AstraeaCommandOptions extends CommandOptions {
+	usage?: string
+}
