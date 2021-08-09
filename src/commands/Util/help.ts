@@ -9,6 +9,7 @@ import {
 	AstraeaCommandOptions
 } from '../../lib/Structures/Command'
 import { Message, MessageEmbed, TextChannel } from 'discord.js'
+import cfg from '../../config'
 
 @ApplyOptions<AstraeaCommandOptions>({
 	name: 'help',
@@ -35,7 +36,7 @@ export default class Help extends AstraeaCommand {
 		const embed = new MessageEmbed()
 			.setColor('dee29a')
 			.setFooter(
-				`${message.author.tag}`,
+				`${message.author.tag} | Parameter Key: <> Required, [] Optional`,
 				message.author.avatarURL({ dynamic: true })
 			)
 			.setTitle(`Command | ${command.name}`)
@@ -47,6 +48,10 @@ export default class Help extends AstraeaCommand {
 
 		if (command.detailedDescription) {
 			embed.addField('Detailed Description', command.detailedDescription)
+		}
+
+		if ((command as AstraeaCommand).usage) {
+			embed.addField('Usage', `${cfg.prefix}${(command as AstraeaCommand).usage}`)
 		}
 
 		return await message.channel.send(embed)
