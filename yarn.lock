@@ -988,6 +988,7 @@ __metadata:
     discord.js: ^12.5.3
     eslint: ^7.32.0
     husky: ^7.0.1
+    owoify-js: ^1.0.7
     rimraf: ^3.0.2
     typescript: ^4.3.5
     utf-8-validate: ^5.0.5
@@ -3618,6 +3619,13 @@ __metadata:
   version: 1.0.2
   resolution: "os-tmpdir@npm:1.0.2"
   checksum: 5666560f7b9f10182548bf7013883265be33620b1c1b4a4d405c25be2636f970c5488ff3e6c48de75b55d02bde037249fe5dbfbb4c0fb7714953d56aed062e6d
+  languageName: node
+  linkType: hard
+
+"owoify-js@npm:^1.0.7":
+  version: 1.0.7
+  resolution: "owoify-js@npm:1.0.7"
+  checksum: fcec1155b9fb9c9ff07498fb7f68be16a00d8d9b67529b3b1e50a524e0acd4b6643c0d8414c806f98a7319284f01100eb78f234deb32a1a05547b8f4f4bfda74
   languageName: node
   linkType: hard
 
