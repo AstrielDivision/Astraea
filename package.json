@@ -3,7 +3,9 @@
   "version": "1.1.8",
   "main": "build/index",
   "author": "ArtieFuzzz#8298",
-  "contributors": ["TMUniversal"],
+  "contributors": [
+    "TMUniversal <me@tmuniversal.eu> (https://tmuniversal.eu/)"
+  ],
   "license": "MIT",
   "private": true,
   "description": "Discord bot using @sapphire/framework",
