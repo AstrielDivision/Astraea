@@ -51,7 +51,7 @@ export default class E621 extends AstraeaCommand {
 }
 
 interface YiffFile {
-	wifth: number
+	width: number
 	height: number
 	url: string
 }
