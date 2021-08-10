@@ -1,7 +1,7 @@
 import { RedditImage } from '@aero/ksoft'
 import { PieceContext } from '@sapphire/framework'
 import { ColorResolvable, Message, MessageEmbed } from 'discord.js'
-import { AstraeaCommand, AstraeaCommandOptions } from 'lib/Structures/Command'
+import { AstraeaCommand, AstraeaCommandOptions } from '../Command'
 
 export abstract class AstraeaRedditCommand extends AstraeaCommand {
 	subreddit: string
