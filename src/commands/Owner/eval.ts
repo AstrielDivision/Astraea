@@ -16,7 +16,7 @@ import { inspect } from 'util'
 	quotes: [],
 	flags: ['async', 'hidden', 'showHidden', 'silent', 's'],
 	options: ['depth'],
-	usage: '<expression | JavaScript> [--async, --hidden | --showhidden, silent | s]'
+	usage: '<expression | JavaScript> [--async, --hidden | --showhidden, --silent | -s]'
 })
 export default class extends AstraeaCommand {
 	public async run (message: Message, args: Args): Promise<Message> {
