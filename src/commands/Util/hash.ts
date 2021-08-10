@@ -8,7 +8,7 @@ import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Comm
 	name: 'hash',
 	description: 'Hash your text in sha1',
 	detailedDescription: 'Hash your text in either sha1, sha256, sha512 or md5',
-	flags: ['sha1', 'sha256', 'sha512', 'md5']
+	flags: ['sha1', 'sha256', 'sha512', 'md5', 'all']
 })
 export default class Hash extends AstraeaCommand {
 	public static hash (str: string, algorithm: 'sha1' | 'sha256' | 'sha512' | 'md5'): string {
@@ -16,17 +16,25 @@ export default class Hash extends AstraeaCommand {
 	}
 
 	public async run (message: Message, args: Args): Promise<Message> {
-		const sha1Flag = args.getFlags('sha1')
-		const sha256Flag = args.getFlags('sha256')
-		const sha512Flag = args.getFlags('sha512')
-		const md5Flag = args.getFlags('md5')
+		let allFlag = args.getFlags('all')
+		let sha1Flag = args.getFlags('sha1')
+		let sha256Flag = args.getFlags('sha256')
+		let sha512Flag = args.getFlags('sha512')
+		let md5Flag = args.getFlags('md5')
 
 		const text = (await args.restResult('string')).value
 
 		if (!text) return await message.channel.send('No text provided!')
 
+		if (allFlag) {
+			sha1Flag = true
+			sha256Flag = true
+			sha512Flag = true
+			md5Flag = true
+		}
+
 		if (!sha1Flag && !sha256Flag && !sha512Flag && !md5Flag) {
-			return await message.channel.send('You must provide at least one of these flags:\n--sha1\n--sha256\n--sha512\n--md5')
+			return await message.channel.send('You must provide at least one of these flags:\n--sha1\n--sha256\n--sha512\n--md5\n--all')
 		}
 
 		/*
