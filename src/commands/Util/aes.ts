@@ -18,13 +18,15 @@ export default class AES extends AstraeaCommand {
 		const secret = args.getOption('s', 'secret')
 
 		if (!text) return await message.channel.send('No text provided')
+		if (!secret) return await message.channel.send('No secret provided. (Hint: Use -s=<randomLetters> or --secret=<randomLetters>)')
+
 		if (decryptFlags) return await this.decrypt(message, text, secret)
-		if (!secret) return await message.channel.send('No secret provided. Use -s=randomLetters or --secret=randomLetters')
 		return await this.encrypt(message, text, secret)
 	}
 
 	private async encrypt (message: Message, input: string, secret: string): Promise<Message> {
 		const encrypted = crypto.AES.encrypt(input, secret)
+
 		return await message.channel.send(encrypted.toString())
 	}
 
