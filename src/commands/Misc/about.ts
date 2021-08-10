@@ -8,6 +8,10 @@ import { pkg } from '../../config'
 	description: 'Discord bot about'
 })
 export default class About extends AstraeaCommand {
+	/**
+	 * * Based on https://github.com/TMUniversal/discord-bot-template/blob/master/src/commands/basic/AboutCommand.ts
+	 * * Licensed under the MIT License
+	 */
 	public async run (message: Message): Promise<Message> {
 		const embed = new MessageEmbed()
 			.setTitle(`${this.container.client.user.username} - About`)
