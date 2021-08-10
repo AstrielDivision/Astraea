@@ -18,7 +18,7 @@ export default class About extends AstraeaCommand {
 			.setDescription(`Hello! I'm ${this.container.client.user.username}.\nI am a Image discord bot with some other things too.\n Need images? I'm the bot you need! :)`)
 			.addFields(
 				{ name: 'Developed by', value: 'ArtieFuzzz#8298 @ [Astraea Studios](https://github.com/AstraeaStudios/Astraea)' },
-				{ name: 'Contributors', value: pkg.contributors.join(', ') },
+				{ name: 'Contributors', value: pkg.contributors.join('\n') },
 				{ name: 'Built With', value: '[Discord.js](https://github.com/discordjs/discord.js)\n [Sapphire/Framework](https://github.com/sapphiredev/framework)' }
 			)
 
