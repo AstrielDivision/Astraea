@@ -1,6 +1,7 @@
-import { AstraeaOverlayCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
-import { PieceContext } from '@sapphire/framework'
 import { ApplyOptions } from '@sapphire/decorators'
+import { PieceContext } from '@sapphire/framework'
+import { AstraeaCommandOptions } from '../../lib/Structures/Command'
+import { AstraeaOverlayCommand } from './Base'
 
 @ApplyOptions<AstraeaCommandOptions>({
 	name: 'triggered',
