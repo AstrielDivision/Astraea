@@ -1,8 +1,8 @@
-import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
-import { Message } from 'discord.js'
 import { ApplyOptions } from '@sapphire/decorators'
 import { Args } from '@sapphire/framework'
 import * as crypto from 'crypto'
+import { Message } from 'discord.js'
+import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
 
 @ApplyOptions<AstraeaCommandOptions>({
 	name: 'hash',
@@ -11,6 +11,10 @@ import * as crypto from 'crypto'
 	flags: ['sha1', 'sha256', 'sha512', 'md5']
 })
 export default class Hash extends AstraeaCommand {
+	private hash (str: string, algorithm: 'sha1' | 'sha256' | 'sha512' | 'md5'): string {
+		return crypto.createHash(algorithm).update(str).digest('hex')
+	}
+
 	public async run (message: Message, args: Args): Promise<Message> {
 		const sha1Flag = args.getFlags('sha1')
 		const sha256Flag = args.getFlags('sha256')
@@ -21,39 +25,17 @@ export default class Hash extends AstraeaCommand {
 
 		if (!text) return await message.channel.send('No text provided!')
 
-		if (sha1Flag) return await this.sha1(message, text)
-		if (sha256Flag) return await this.sha256(message, text)
-		if (sha512Flag) return await this.sha512(message, text)
-		if (md5Flag) return await this.md5(message, text)
+		if (!sha1Flag && !sha256Flag && !sha512Flag && !md5Flag) {
+			return await message.channel.send('You must provide at least one of these flags:\n--sha1\n--sha256\n--sha512\n--md5')
+		}
 
-		return await message.channel.send('You must provide one of these flags:\n--sha1\n--sha256\n--sha512\n--md5')
-	}
+		let response = `Hash value(s) of: ${text}`
 
-	private hash (str: string, algorithm: 'sha1' | 'sha256' | 'sha512' | 'md5'): string {
-		return crypto.createHash(algorithm).update(str).digest('hex')
-	}
+		if (md5Flag) response += `\nMD5: ${this.hash(text, 'md5')}`
+		if (sha1Flag) response += `\nSHA1: ${this.hash(text, 'sha1')}`
+		if (sha256Flag) response += `\nSHA256: ${this.hash(text, 'sha256')}`
+		if (sha512Flag) response += `\nSHA512: ${this.hash(text, 'sha512')}`
 
-	private async sha1 (message: Message, text: string): Promise<Message> {
-		const hashed = this.hash(text, 'sha1')
-
-		return await message.channel.send(hashed)
-	}
-
-	private async sha256 (message: Message, text: string): Promise<Message> {
-		const hashed = this.hash(text, 'sha256')
-
-		return await message.channel.send(hashed)
-	}
-
-	private async sha512 (message: Message, text: string): Promise<Message> {
-		const hashed = this.hash(text, 'sha512')
-
-		return await message.channel.send(hashed)
-	}
-
-	private async md5 (message: Message, text: string): Promise<Message> {
-		const hashed = this.hash(text, 'md5')
-
-		return await message.channel.send(hashed)
+		return await message.channel.send(response)
 	}
 }
