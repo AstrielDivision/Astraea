@@ -25,7 +25,8 @@
 		  "",
 		  "@ApplyOptions<AstraeaCommandOptions>({",
 		  "	name: 'example',",
-		  "	description: 'Solve this'",
+		  "	description: 'Solve this',",
+		  "	usage: '[optional] <required>'",
 		  "})",
 		  "export default class example extends AstraeaCommand {",
 		  "	public async run (message: Message, args: Args): Promise<Message> {",
@@ -58,9 +59,10 @@
 	  "AstraeaRedditCommand": {
 		"prefix": "AstraeaRedditCommand",
 		"body": [
-		  "import { AstraeaRedditCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'",
-		  "import { PieceContext } from '@sapphire/framework'",
 		  "import { ApplyOptions } from '@sapphire/decorators'",
+		  "import { PieceContext } from '@sapphire/framework'",
+		  "import { AstraeaCommandOptions } from '../../lib/Structures/Command'",
+		  "import { AstraeaRedditCommand } from '../../lib/Structures/commands/RedditCommand'",
 		  "",
 		  "@ApplyOptions<AstraeaCommandOptions>({",
 		  "	name: 'solve',",
