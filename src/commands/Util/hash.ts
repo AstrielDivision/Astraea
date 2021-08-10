@@ -11,7 +11,7 @@ import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Comm
 	flags: ['sha1', 'sha256', 'sha512', 'md5']
 })
 export default class Hash extends AstraeaCommand {
-	private hash (str: string, algorithm: 'sha1' | 'sha256' | 'sha512' | 'md5'): string {
+	public static hash (str: string, algorithm: 'sha1' | 'sha256' | 'sha512' | 'md5'): string {
 		return crypto.createHash(algorithm).update(str).digest('hex')
 	}
 
@@ -31,10 +31,10 @@ export default class Hash extends AstraeaCommand {
 
 		let response = `Hash value(s) of: ${text}`
 
-		if (md5Flag) response += `\nMD5: ${this.hash(text, 'md5')}`
-		if (sha1Flag) response += `\nSHA1: ${this.hash(text, 'sha1')}`
-		if (sha256Flag) response += `\nSHA256: ${this.hash(text, 'sha256')}`
-		if (sha512Flag) response += `\nSHA512: ${this.hash(text, 'sha512')}`
+		if (md5Flag) response += `\nMD5: ${Hash.hash(text, 'md5')}`
+		if (sha1Flag) response += `\nSHA1: ${Hash.hash(text, 'sha1')}`
+		if (sha256Flag) response += `\nSHA256: ${Hash.hash(text, 'sha256')}`
+		if (sha512Flag) response += `\nSHA512: ${Hash.hash(text, 'sha512')}`
 
 		return await message.channel.send(response)
 	}
