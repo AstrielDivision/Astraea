@@ -10,7 +10,7 @@ import * as crypto from 'crypto'
 	detailedDescription: 'Hash your text in either sha1, sha256, sha512 or md5',
 	flags: ['sha1', 'sha256', 'sha512', 'md5']
 })
-export default class example extends AstraeaCommand {
+export default class Hash extends AstraeaCommand {
 	public async run (message: Message, args: Args): Promise<Message> {
 		const sha1Flag = args.getFlags('sha1')
 		const sha256Flag = args.getFlags('sha256')

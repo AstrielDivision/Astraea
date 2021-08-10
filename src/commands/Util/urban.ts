@@ -10,7 +10,7 @@ import Urban from '../../lib/UrbanFetch'
 	nsfw: true,
 	usage: '<word>'
 })
-export default class example extends AstraeaCommand {
+export default class UrbanDictionary extends AstraeaCommand {
 	public async run (message: Message, args: Args): Promise<Message> {
 		const search = (await args.pickResult('string')).value
 

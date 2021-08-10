@@ -10,7 +10,7 @@ import { Args } from '@sapphire/framework'
 	flags: ['d', 'decode'],
 	usage: '<text> [-d or --decode]'
 })
-export default class example extends AstraeaCommand {
+export default class Base64 extends AstraeaCommand {
 	public async run (message: Message, args: Args): Promise<Message> {
 		const string = (await args.restResult('string')).value
 		const decode = args.getFlags('d', 'decode')
