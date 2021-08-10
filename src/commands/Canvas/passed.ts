@@ -4,7 +4,8 @@ import { ApplyOptions } from '@sapphire/decorators'
 
 @ApplyOptions<AstraeaCommandOptions>({
 	name: 'passed',
-	description: 'Add a GTA + Respect overlay to your or someone elses profile picture'
+	description: 'Add a GTA + Respect overlay to your or someone elses profile picture',
+	usage: '[@user]'
 })
 export default class Passed extends AstraeaOverlayCommand {
 	constructor (Context: PieceContext, options: AstraeaCommandOptions) {

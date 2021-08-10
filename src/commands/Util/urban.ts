@@ -6,10 +6,11 @@ import Urban from '../../lib/UrbanFetch'
 
 @ApplyOptions<AstraeaCommandOptions>({
 	name: 'urban',
-	description: ' Get definitions of things on the trusty Urban Dictionary',
-	nsfw: true
+	description: 'Get definitions of things on the trusty Urban Dictionary',
+	nsfw: true,
+	usage: '<word>'
 })
-export default class example extends AstraeaCommand {
+export default class UrbanDictionary extends AstraeaCommand {
 	public async run (message: Message, args: Args): Promise<Message> {
 		const search = (await args.pickResult('string')).value
 

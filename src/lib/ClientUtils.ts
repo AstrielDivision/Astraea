@@ -2,6 +2,7 @@ import { User, Snowflake, Guild } from 'discord.js'
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch'
 import Client from './Structures/client'
 import cfg, { pkg } from '../config'
+import { URL } from 'url'
 
 const userAgent = `Astraea/v${pkg.version} (github.com/AstraeaStudios/Astraea)`
 
@@ -31,7 +32,7 @@ export default class Utils {
 		return guild
 	}
 
-	public async Fetch (url: string, type?: FetchResultTypes): Promise<unknown> {
+	public async Fetch (url: string | URL, type?: FetchResultTypes): Promise<unknown> {
 		if (!url) throw Error('No URL provided')
 
 		const res = await fetch(

@@ -7,7 +7,8 @@ import owoify from 'owoify-js'
 @ApplyOptions<AstraeaCommandOptions>({
 	name: 'owoify',
 	description: 'owoify your text',
-	flags: ['uwu', 'uvu']
+	flags: ['uwu', 'uvu'],
+	usage: '<text> [--uwu | --uvu]'
 })
 export default class OwOify extends AstraeaCommand {
 	public async run (message: Message, args: Args): Promise<Message> {

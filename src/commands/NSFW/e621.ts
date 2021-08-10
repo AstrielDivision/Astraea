@@ -16,7 +16,8 @@ import { Args } from '@sapphire/framework'
 	cooldownLimit: 2,
 	nsfw: true,
 	cooldownDelay: 5000,
-	options: ['results', 'r']
+	options: ['results', 'r'],
+	usage: '<tags> [--results=1 or -r=1]'
 })
 export default class E621 extends AstraeaCommand {
 	public async run (message: Message, args: Args): Promise<Message> {
@@ -51,7 +52,7 @@ export default class E621 extends AstraeaCommand {
 }
 
 interface YiffFile {
-	wifth: number
+	width: number
 	height: number
 	url: string
 }

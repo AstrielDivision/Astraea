@@ -6,7 +6,7 @@ import { PieceContext } from '@sapphire/framework'
 import { ApplyOptions } from '@sapphire/decorators'
 
 @ApplyOptions<AstraeaCommandOptions>({
-	name: 'astrophotograhy',
+	name: 'astrophotography',
 	aliases: ['astronomy', 'astrophotography', 'astro'],
 	description: 'Returns a Image from r/astrophotography',
 	cooldownLimit: 3,
