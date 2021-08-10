@@ -9,7 +9,8 @@ import CoronaFetch from '../../lib/corona-fetch/corona'
 
 @ApplyOptions<AstraeaCommandOptions>({
 	name: 'corona',
-	description: 'Get COVID-19 statistics worldwide or by country'
+	description: 'Get COVID-19 statistics worldwide or by country',
+	usage: '[country]'
 })
 export default class Corona extends AstraeaCommand {
 	public async run (message: Message, args: Args): Promise<Message> {

@@ -9,7 +9,8 @@ import { Args } from '@sapphire/framework'
 	requiredClientPermissions: ['MANAGE_MESSAGES'],
 	cooldownDelay: 2000,
 	cooldownLimit: 2,
-	preconditions: ['GuildTextOnly']
+	preconditions: ['GuildTextOnly'],
+	usage: '<amount>'
 })
 export default class Purge extends AstraeaCommand {
 	@RequiresPermissions('MANAGE_MESSAGES')

@@ -7,7 +7,8 @@ import { Args } from '@sapphire/framework'
 	name: 'base64',
 	description: 'Encode text to base64 or Decode base64 to text',
 	detailedDescription: 'Use -d or --decode to decoded encoded text',
-	flags: ['d', 'decode']
+	flags: ['d', 'decode'],
+	usage: '<text> [-d or --decode]'
 })
 export default class example extends AstraeaCommand {
 	public async run (message: Message, args: Args): Promise<Message> {

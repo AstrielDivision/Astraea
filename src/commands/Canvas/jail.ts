@@ -6,7 +6,7 @@ import { ApplyOptions } from '@sapphire/decorators'
 	name: 'jail',
 	aliases: ['jailed'],
 	description: 'Add a jail overlay to your or someone elses profile picture',
-	usage: 'jail [@user]'
+	usage: '[@user]'
 })
 export default class Jail extends AstraeaOverlayCommand {
 	constructor (Context: PieceContext, options: AstraeaCommandOptions) {

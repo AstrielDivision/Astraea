@@ -6,7 +6,8 @@ import { Args } from '@sapphire/framework'
 @ApplyOptions<AstraeaCommandOptions>({
 	name: 'stores',
 	description: 'Enable or disable certain stores',
-	flags: ['c', 'command', 'listener', 'l']
+	flags: ['c', 'command', 'listener', 'l'],
+	usage: '<Store> [--command or -c | --listener or -l]'
 })
 export default class Enable extends AstraeaCommand {
 	public async run (message: Message, args: Args): Promise<Message> {

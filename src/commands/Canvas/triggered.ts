@@ -6,7 +6,7 @@ import { ApplyOptions } from '@sapphire/decorators'
 	name: 'triggered',
 	aliases: ['trigger'],
 	description: 'Add a triggered overlay to your or someone elses profile picture',
-	usage: 'triggered [@user]'
+	usage: '[@user]'
 })
 export default class Triggered extends AstraeaOverlayCommand {
 	constructor (Context: PieceContext, options: AstraeaCommandOptions) {

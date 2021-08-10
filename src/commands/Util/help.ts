@@ -17,7 +17,8 @@ import cfg from '../../config'
 	description: 'Gives you a list of commands',
 	detailedDescription:
     'You may also provide a command, which will return info about that command',
-	preconditions: ['GuildTextOnly']
+	preconditions: ['GuildTextOnly'],
+	usage: '[command]'
 })
 export default class Help extends AstraeaCommand {
 	public async run (message: Message, args: Args): Promise<Message> {

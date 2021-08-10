@@ -7,7 +7,8 @@ import { FetchResultTypes } from '@sapphire/fetch'
 @ApplyOptions<AstraeaCommandOptions>({
 	name: 'djs',
 	aliases: ['docs'],
-	description: 'Search discord.js documentation'
+	description: 'Search discord.js documentation',
+	usage: '<query>'
 })
 export default class example extends AstraeaCommand {
 	public async run (message: Message, args: Args): Promise<Message> {

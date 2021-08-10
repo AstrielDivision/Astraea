@@ -5,7 +5,7 @@ import { ApplyOptions } from '@sapphire/decorators'
 @ApplyOptions<AstraeaCommandOptions>({
 	name: 'rainbow',
 	description: 'Add a rainbow overlay to your or someone elses profile picture',
-	usage: 'rainbow [@user]'
+	usage: '[@user]'
 })
 export default class Rainbow extends AstraeaOverlayCommand {
 	constructor (Context: PieceContext, options: AstraeaCommandOptions) {

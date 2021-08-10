@@ -9,7 +9,7 @@ export abstract class AstraeaCommand extends Command {
 	constructor (Context: PieceContext, options: AstraeaCommandOptions) {
 		super(Context, options)
 
-		this.usage = options.usage ?? ''
+		this.usage = `${this.name} ${options.usage ?? ''}`
 	}
 
 	public get category (): string {
