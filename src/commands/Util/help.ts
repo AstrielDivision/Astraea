@@ -4,12 +4,9 @@
  */
 import { ApplyOptions } from '@sapphire/decorators'
 import { Args, Command } from '@sapphire/framework'
-import {
-	AstraeaCommand,
-	AstraeaCommandOptions
-} from '../../lib/Structures/Command'
 import { Message, MessageEmbed, TextChannel } from 'discord.js'
 import cfg from '../../config'
+import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
 
 @ApplyOptions<AstraeaCommandOptions>({
 	name: 'help',

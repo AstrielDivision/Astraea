@@ -1,7 +1,7 @@
 import { ApplyOptions } from '@sapphire/decorators'
 import { PieceContext } from '@sapphire/framework'
 import { AstraeaCommandOptions } from '../../lib/Structures/Command'
-import { AstraeaOverlayCommand } from './Base'
+import { AstraeaOverlayCommand } from '../../lib/Structures/commands/CanvasCommand'
 
 @ApplyOptions<AstraeaCommandOptions>({
 	name: 'comrade',

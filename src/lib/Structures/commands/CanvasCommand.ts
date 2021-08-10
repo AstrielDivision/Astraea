@@ -1,7 +1,7 @@
 import { Args, PieceContext } from '@sapphire/framework'
 import { Message, MessageAttachment } from 'discord.js'
-import { AstraeaCommand, AstraeaCommandOptions } from 'lib/Structures/Command'
-import canvas from '../../lib/Canvas-SRA/requests'
+import canvas from '../../Canvas-SRA/requests'
+import { AstraeaCommand, AstraeaCommandOptions } from '../Command'
 
 export abstract class AstraeaOverlayCommand extends AstraeaCommand {
 	overlay: 'gay' | 'glass' | 'wasted' | 'passed' | 'jail' | 'comrade' | 'triggered'
