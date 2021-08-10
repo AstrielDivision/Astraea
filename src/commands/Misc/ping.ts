@@ -14,7 +14,7 @@ export default class Ping extends AstraeaCommand {
 		const ping = await message.channel.send('Pong!')
 
 		return await ping.edit(
-			`Ping: ${this.container.client.ws.ping} ms\nHearbeat: ${
+			`Ping: ${this.container.client.ws.ping} ms\nHeartbeat: ${
 				ping.createdTimestamp - message.createdTimestamp
 			} ms`
 		)
