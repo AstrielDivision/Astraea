@@ -31,9 +31,11 @@ export default class RC4Drop extends AstraeaCommand {
 	 * Output: U2FsdGVkX1/64CRgHLq4o4+2uPg=
 	 */
 	private async encrypt (message: Message, input: string, secret: string): Promise<Message> {
-		const encrypted = crypto.RC4Drop.encrypt(input, secret)
+		await message.delete()
 
-		return await message.channel.send(encrypted.toString())
+		const encrypted = crypto.RC4Drop.encrypt(input, secret).toString()
+
+		return await message.channel.send(encrypted)
 	}
 
 	/**
@@ -42,9 +44,10 @@ export default class RC4Drop extends AstraeaCommand {
 	 * Output: ABC
 	 */
 	private async decrypt (message: Message, input: string, secret: string): Promise<Message> {
-		const bytes = crypto.RC4Drop.decrypt(input, secret)
-		const decrypted = bytes.toString(crypto.enc.Utf8)
+		await message.delete()
 
-		return await message.channel.send(decrypted.toString())
+		const decrypted = crypto.RC4Drop.decrypt(input, secret).toString(crypto.enc.Utf8)
+
+		return await message.channel.send(decrypted)
 	}
 }
