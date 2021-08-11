@@ -39,11 +39,13 @@ export default class DES extends AstraeaCommand {
 	 * Output: U2FsdGVkX1/JdlBm8M+tXszBgkrIzCjX (Output may vary)
 	 */
 	private async Encrypt (message: Message, text: string, secret: string, triple?: boolean): Promise<Message> {
-		let encrypted = crypto.DES.encrypt(text, secret).toString()
+		let encrypted: string
 
 		// DES is applied 3 times. It is believed that it is secure in this form
 		if (triple) {
 			encrypted = crypto.TripleDES.encrypt(text, secret).toString()
+		} else {
+			encrypted = crypto.DES.encrypt(text, secret).toString()
 		}
 
 		return await message.channel.send(encrypted)
