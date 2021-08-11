@@ -52,10 +52,10 @@ export default class Hash extends AstraeaCommand {
 			Hash value(s) of: ABC
 			---
 			MD5    : 902fbdd2b1df0c4f70b4a5d23525e932
+			RIPEMD160 : df62d400e51d3582d53c2d89cfeb6e10d32a3ca6
 			SHA1   : 3c01bdbb26f358bab27f267924aa2c9a03fcfdb8
 			SHA256 : b5d4045c3f466fa91fe2cc6abe79232a1a57cdf104f7a26e716e0a1e2789df78
 			SHA512 : 397118fdac8d83ad98813c50759c85b8c47565d8268bf10da483153b747a74743a58a90e85aa9f705ce6984ffc128db567489817e4092d050d8a1cc596ddc119
-			RIPEMD160 : df62d400e51d3582d53c2d89cfeb6e10d32a3ca6
 		*/
 
 		let response = '```md\n' +
@@ -65,9 +65,9 @@ export default class Hash extends AstraeaCommand {
 		/* eslint-disable no-multi-spaces */
 		if (md5Flag)    response += `\nMD5    : ${Hash.hash(text, 'md5')}`
 		if (sha1Flag)   response += `\nSHA1   : ${Hash.hash(text, 'sha1')}`
+		if (ripeMDFlag) response += `\nRIPEMD160 : ${Hash.hash(text, 'ripemd160')}`
 		if (sha256Flag) response += `\nSHA256 : ${Hash.hash(text, 'sha256')}`
 		if (sha512Flag) response += `\nSHA512 : ${Hash.hash(text, 'sha512')}`
-		if (ripeMDFlag) response += `\nRIPEMD160 : ${Hash.hash(text, 'ripemd160')}`
 		/* eslint-enable no-multi-spaces */
 
 		response += '\n```'
