@@ -30,9 +30,9 @@ export default class AES extends AstraeaCommand {
 	 * Output: U2FsdGVkX1+Ocg9Sepezl979pPZ60p54jzzOEeVt98I=
 	 */
 	private async encrypt (message: Message, input: string, secret: string): Promise<Message> {
-		const encrypted = crypto.AES.encrypt(input, secret)
+		const encrypted = crypto.AES.encrypt(input, secret).toString()
 
-		return await message.channel.send(encrypted.toString())
+		return await message.channel.send(encrypted)
 	}
 
 	/**
@@ -42,8 +42,8 @@ export default class AES extends AstraeaCommand {
 	 */
 	private async decrypt (message: Message, input: string, secret: string): Promise<Message> {
 		const bytes = crypto.AES.decrypt(input, secret)
-		const decrypted = bytes.toString(crypto.enc.Utf8)
+		const decrypted = bytes.toString(crypto.enc.Utf8).toString()
 
-		return await message.channel.send(decrypted.toString())
+		return await message.channel.send(decrypted)
 	}
 }

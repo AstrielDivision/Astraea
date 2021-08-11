@@ -30,9 +30,9 @@ export default class Rabbit extends AstraeaCommand {
 	 * Output: U2FsdGVkX1+dH8sIK4GYwBDZ2o0=
 	 */
 	private async encrypt (message: Message, input: string, secret: string): Promise<Message> {
-		const encrypted = crypto.Rabbit.encrypt(input, secret)
+		const encrypted = crypto.Rabbit.encrypt(input, secret).toString()
 
-		return await message.channel.send(encrypted.toString())
+		return await message.channel.send(encrypted)
 	}
 
 	/**
@@ -42,7 +42,7 @@ export default class Rabbit extends AstraeaCommand {
 	 */
 	private async decrypt (message: Message, input: string, secret: string): Promise<Message> {
 		const bytes = crypto.Rabbit.decrypt(input, secret)
-		const decrypted = bytes.toString(crypto.enc.Utf8)
+		const decrypted = bytes.toString(crypto.enc.Utf8).toString()
 
 		return await message.channel.send(decrypted.toString())
 	}

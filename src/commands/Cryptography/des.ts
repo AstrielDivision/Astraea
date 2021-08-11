@@ -65,14 +65,17 @@ export default class DES extends AstraeaCommand {
 	 * Output: ABC
 	 */
 	private async Decrypt (message: Message, text: string, secret: string, triple?: boolean): Promise<Message> {
-		let bytes = crypto.DES.decrypt(text, secret)
-		let decrypted = bytes.toString(crypto.enc.Utf8)
+		let bytes
+		let decrypted: string
 
 		if (triple) {
 			bytes = crypto.TripleDES.decrypt(text, secret)
+			decrypted = bytes.toString(crypto.enc.Utf8).toString()
+		} else {
+			bytes = crypto.DES.decrypt(text, secret)
 			decrypted = bytes.toString(crypto.enc.Utf8)
 		}
 
-		return await message.channel.send(decrypted.toString())
+		return await message.channel.send(decrypted)
 	}
 }
