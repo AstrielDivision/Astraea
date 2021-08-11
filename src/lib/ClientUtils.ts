@@ -1,5 +1,6 @@
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch'
 import { Guild, Snowflake, User } from 'discord.js'
+import { Response } from 'node-fetch'
 import { URL } from 'url'
 import cfg, { pkg } from '../config'
 import Client from './Structures/client'
@@ -16,26 +17,22 @@ export default class Utils {
 		return Math.random().toString(21).substr(2, length)
 	}
 
-	public async findUser (id: string | Snowflake): Promise<User> {
-		const user = await this.client.users.resolve(id)?.fetch()
-
-		if (!user) throw Error('User not found')
-
-		return user
+	public async findUser (id: string | Snowflake): Promise<User | undefined> {
+		return await this.client.users.resolve(id)?.fetch()
 	}
 
-	public async findGuild (id: string | Snowflake): Promise<Guild> {
-		const guild = await this.client.guilds.resolve(id)?.fetch()
-
-		if (!guild) throw Error('Guild not found')
-
-		return guild
+	public async findGuild (id: string | Snowflake): Promise<Guild | undefined> {
+		return await this.client.guilds.resolve(id)?.fetch()
 	}
 
-	public async fetch (url: string | URL, type: FetchResultTypes = FetchResultTypes.JSON): Promise<unknown> {
+	public async fetch<R = unknown>(url: string | URL, type: FetchResultTypes.JSON): Promise<R>
+	public async fetch (url: string | URL, type: FetchResultTypes.Buffer): Promise<Buffer>
+	public async fetch (url: string | URL, type: FetchResultTypes.Text): Promise<string>
+	public async fetch (url: string | URL, type: FetchResultTypes.Result): Promise<Response>
+	public async fetch<R = unknown, T extends FetchResultTypes = FetchResultTypes.JSON>(url: string | URL, type: T): Promise<Response | Buffer | string | R> {
 		if (!url) throw new Error('No URL provided')
 
-		return await fetch(
+		return await fetch<R>(
 			url,
 			{
 				method: FetchMethods.Get,

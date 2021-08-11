@@ -10,8 +10,7 @@ import { FetchResultTypes } from '@sapphire/fetch'
 })
 export default class AnimeBondage extends AstraeaCommand {
 	public async run (message: Message): Promise<Message> {
-		// @ts-ignore
-		const res: { url: string } = await this.container.client.util.fetch('https://shiro.gg/api/images/nsfw/bondage', FetchResultTypes.JSON)
+		const res = await this.container.client.util.fetch<{ url: string }>('https://shiro.gg/api/images/nsfw/bondage', FetchResultTypes.JSON)
 
 		const embed = new MessageEmbed()
 			.setTitle(':smirk: Bondage')

@@ -1,5 +1,5 @@
 import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
-import { Message } from 'discord.js'
+import { Message, MessageEmbed } from 'discord.js'
 import { ApplyOptions } from '@sapphire/decorators'
 import { Args } from '@sapphire/framework'
 import { FetchResultTypes } from '@sapphire/fetch'
@@ -16,8 +16,8 @@ export default class DJS extends AstraeaCommand {
 
 		if (!query) return await message.channel.send('No query provided')
 
-		const data = await this.container.client.util.fetch(`https://djsdocs.sorta.moe/v2/embed?src=stable&q=${encodeURIComponent(query)}`, FetchResultTypes.JSON)
+		const data = await this.container.client.util.fetch<MessageEmbed>(`https://djsdocs.sorta.moe/v2/embed?src=stable&q=${encodeURIComponent(query)}`, FetchResultTypes.JSON)
 
-		return await message.channel.send({ embed: data })
+		return await message.channel.send(data)
 	}
 }
