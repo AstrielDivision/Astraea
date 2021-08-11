@@ -12,7 +12,6 @@ export default async function Define (search: string): Promise<List> {
 	},
 	FetchResultTypes.JSON)
 
-	// @ts-ignore
 	return list[0]
 }
 
