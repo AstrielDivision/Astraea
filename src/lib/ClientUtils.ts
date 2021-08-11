@@ -1,13 +1,13 @@
-import { User, Snowflake, Guild } from 'discord.js'
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch'
-import Client from './Structures/client'
-import cfg, { pkg } from '../config'
+import { Guild, Snowflake, User } from 'discord.js'
 import { URL } from 'url'
+import cfg, { pkg } from '../config'
+import Client from './Structures/client'
 
 const userAgent = `Astraea/v${pkg.version} (github.com/AstraeaStudios/Astraea)`
 
 export default class Utils {
-	client: Client
+	client!: Client
 	constructor (client: Client) {
 		this.client = client
 	}
@@ -16,26 +16,26 @@ export default class Utils {
 		return Math.random().toString(21).substr(2, length)
 	}
 
-	public async findUser (ID: string | Snowflake): Promise<User> {
-		const user = this.client.users.cache.get(ID)
+	public async findUser (id: string | Snowflake): Promise<User> {
+		const user = await this.client.users.resolve(id)?.fetch()
 
 		if (!user) throw Error('User not found')
 
 		return user
 	}
 
-	public async findGuild (ID: string | Snowflake): Promise<Guild> {
-		const guild = this.client.guilds.cache.get(ID)
+	public async findGuild (id: string | Snowflake): Promise<Guild> {
+		const guild = await this.client.guilds.resolve(id)?.fetch()
 
-		if (!guild) throw Error('User not found')
+		if (!guild) throw Error('Guild not found')
 
 		return guild
 	}
 
-	public async Fetch (url: string | URL, type?: FetchResultTypes): Promise<unknown> {
-		if (!url) throw Error('No URL provided')
+	public async fetch (url: string | URL, type: FetchResultTypes = FetchResultTypes.JSON): Promise<unknown> {
+		if (!url) throw new Error('No URL provided')
 
-		const res = await fetch(
+		return await fetch(
 			url,
 			{
 				method: FetchMethods.Get,
@@ -43,19 +43,11 @@ export default class Utils {
 					'User-Agent': userAgent
 				}
 			},
-			type ?? FetchResultTypes.Text
+			type
 		)
-
-		return res
 	}
 
 	public isOwner (id: string | Snowflake): boolean {
-		const isOwner = cfg.owners.includes(id)
-
-		if (isOwner) {
-			return true
-		} else {
-			return false
-		}
+		return cfg.owners.includes(id)
 	}
 }

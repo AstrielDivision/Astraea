@@ -16,7 +16,7 @@ export default class DJS extends AstraeaCommand {
 
 		if (!query) return await message.channel.send('No query provided')
 
-		const data = await this.container.client.util.Fetch(`https://djsdocs.sorta.moe/v2/embed?src=stable&q=${encodeURIComponent(query)}`, FetchResultTypes.JSON)
+		const data = await this.container.client.util.fetch(`https://djsdocs.sorta.moe/v2/embed?src=stable&q=${encodeURIComponent(query)}`, FetchResultTypes.JSON)
 
 		return await message.channel.send({ embed: data })
 	}
