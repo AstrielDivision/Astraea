@@ -6,6 +6,7 @@
 
 ![GitHub issues](https://img.shields.io/github/issues-raw/AstraeaStudios/Astraea)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/AstraeaStudios/Astraea)
+[![Discord Bots](https://top.gg/api/widget/status/609269728455688193.svg)](https://top.gg/bot/609269728455688193)
 
 > The only Image bot you'll ever need!
 
