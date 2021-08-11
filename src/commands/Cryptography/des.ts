@@ -1,8 +1,8 @@
-import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
-import { Message } from 'discord.js'
 import { ApplyOptions } from '@sapphire/decorators'
 import { Args } from '@sapphire/framework'
 import crypto from 'crypto-js'
+import { Message, Permissions } from 'discord.js'
+import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
 
 @ApplyOptions<AstraeaCommandOptions>({
 	name: 'des',
@@ -23,62 +23,51 @@ export default class DES extends AstraeaCommand {
 			return await message.channel.send('No secret provided. (Hint: use --secret=<randomText> or -s=<randomText>)')
 		}
 
-		if (decryptFlag) {
-			return await this.Decrypt(message, text, secret, tripleFlag).catch(
-				async () => await message.channel.send('Decryption unsuccessful!')
-			)
-		}
-		return await this.Encrypt(message, text, secret, tripleFlag)
+		if (message.guild.me.hasPermission(Permissions.FLAGS.MANAGE_MESSAGES)) void message.delete()
+
+		const result = decryptFlag ? this.decrypt(text, secret, tripleFlag) : this.encrypt(text, secret, tripleFlag)
+
+		return await message.channel.send(result)
 	}
 
 	/**
-   * * Normal
-   * ---
-   * Input: ABC
-   * Secret: ABC
-   * Output: U2FsdGVkX18hSOfJV6V+HZyx7Pt6sw9H
-   * ---
-   *  * TripleDES
-   * ---
-   * Input: ABC
-   * Secret: ABC
-   * Output: U2FsdGVkX1/JdlBm8M+tXszBgkrIzCjX (Output may vary)
-   */
-	private async Encrypt (message: Message, text: string, secret: string, triple?: boolean): Promise<Message> {
-		let encrypted: string
-
-		// DES is applied 3 times. It is believed that it is secure in this form
-		if (triple) {
-			encrypted = crypto.TripleDES.encrypt(text, secret).toString()
-		} else {
-			encrypted = crypto.DES.encrypt(text, secret).toString()
-		}
-
-		return await message.channel.send(encrypted)
+	 * * Normal
+	 * ---
+	 * Input: ABC
+	 * Secret: ABC
+	 * Output: U2FsdGVkX18hSOfJV6V+HZyx7Pt6sw9H
+	 * ---
+	 *  * TripleDES
+	 * ---
+	 * Input: ABC
+	 * Secret: ABC
+	 * Output: U2FsdGVkX1/JdlBm8M+tXszBgkrIzCjX (Output may vary)
+	 */
+	private encrypt (text: string, secret: string, triple?: boolean): string {
+		// For TripleDES, DES is applied thrice. It is believed that it is secure in this form
+		return (triple
+			? crypto.TripleDES.encrypt(text, secret)
+			: crypto.DES.encrypt(text, secret)
+		).toString()
 	}
 
 	/**
-   * * Normal
-   * ---
-   * Input: ABC
-   * Secret: ABC
-   * Output: U2FsdGVkX18hSOfJV6V+HZyx7Pt6sw9H
-   * ---
-   * * TripleDES
-   * ---
-   * Input: U2FsdGVkX1/JdlBm8M+tXszBgkrIzCjX
-   * Secret: ABC
-   * Output: ABC
-   */
-	private async Decrypt (message: Message, text: string, secret: string, triple?: boolean): Promise<Message> {
-		let decrypted: string
-
-		if (triple) {
-			decrypted = crypto.TripleDES.decrypt(text, secret).toString(crypto.enc.Utf8)
-		} else {
-			decrypted = crypto.DES.decrypt(text, secret).toString(crypto.enc.Utf8)
-		}
-
-		return await message.channel.send(decrypted)
+	 * * Normal
+	 * ---
+	 * Input: ABC
+	 * Secret: ABC
+	 * Output: U2FsdGVkX18hSOfJV6V+HZyx7Pt6sw9H
+	 * ---
+	 * * TripleDES
+	 * ---
+	 * Input: U2FsdGVkX1/JdlBm8M+tXszBgkrIzCjX
+	 * Secret: ABC
+	 * Output: ABC
+	 */
+	private decrypt (text: string, secret: string, triple?: boolean): string {
+		return (triple
+			? crypto.TripleDES.decrypt(text, secret)
+			: crypto.DES.decrypt(text, secret)
+		).toString()
 	}
 }

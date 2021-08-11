@@ -1,8 +1,8 @@
-import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
-import { Message } from 'discord.js'
 import { ApplyOptions } from '@sapphire/decorators'
 import { Args } from '@sapphire/framework'
 import crypto from 'crypto-js'
+import { Message, Permissions } from 'discord.js'
+import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
 
 @ApplyOptions<AstraeaCommandOptions>({
 	name: 'aes',
@@ -13,48 +13,36 @@ import crypto from 'crypto-js'
 })
 export default class AES extends AstraeaCommand {
 	public async run (message: Message, args: Args): Promise<Message> {
-		const decryptFlags = args.getFlags('d', 'decrypt')
+		const decryptFlag = args.getFlags('d', 'decrypt')
 		const text = (await args.restResult('string')).value
 		const secret = args.getOption('s', 'secret')
 
 		if (!text) return await message.channel.send('No text provided')
-		if (!secret) {
-			return await message.channel.send(
-				'No secret provided. (Hint: Use -s=<randomLetters> or --secret=<randomLetters>)'
-			)
-		}
 
-		if (decryptFlags) {
-			return await this.decrypt(message, text, secret).catch(
-				async () => await message.channel.send('Decryption unsuccessful!')
-			)
-		}
-		return await this.encrypt(message, text, secret)
+		if (!secret) return await message.channel.send('No secret provided. (Hint: Use -s=<randomLetters> or --secret=<randomLetters>)')
+
+		if (message.guild.me.hasPermission(Permissions.FLAGS.MANAGE_MESSAGES)) void message.delete()
+
+		const result = decryptFlag ? this.decrypt(text, secret) : this.encrypt(text, secret)
+
+		return await message.channel.send(result)
 	}
 
 	/**
-   * Input: ABC
-   * Secret: ABC
-   * Output: U2FsdGVkX1+Ocg9Sepezl979pPZ60p54jzzOEeVt98I=
-   */
-	private async encrypt (message: Message, input: string, secret: string): Promise<Message> {
-		await message.delete()
-
-		const encrypted = crypto.AES.encrypt(input, secret).toString()
-
-		return await message.channel.send(encrypted)
+	 * Input: ABC
+	 * Secret: ABC
+	 * Output: U2FsdGVkX1+Ocg9Sepezl979pPZ60p54jzzOEeVt98I=
+	 */
+	private encrypt (input: string, secret: string): string {
+		return crypto.AES.encrypt(input, secret).toString()
 	}
 
 	/**
-   * Input: U2FsdGVkX1+Ocg9Sepezl979pPZ60p54jzzOEeVt98I=
-   * Secret: ABC
-   * Output: ABC
-   */
-	private async decrypt (message: Message, input: string, secret: string): Promise<Message> {
-		await message.delete()
-
-		const decrypted = crypto.AES.decrypt(input, secret).toString(crypto.enc.Utf8).toString()
-
-		return await message.channel.send(decrypted)
+	 * Input: U2FsdGVkX1+Ocg9Sepezl979pPZ60p54jzzOEeVt98I=
+	 * Secret: ABC
+	 * Output: ABC
+	 */
+	private decrypt (input: string, secret: string): string {
+		return crypto.AES.decrypt(input, secret).toString(crypto.enc.Utf8).toString() || 'Decryption Unsuccessful'
 	}
 }
