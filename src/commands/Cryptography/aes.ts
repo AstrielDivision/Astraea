@@ -20,7 +20,7 @@ export default class AES extends AstraeaCommand {
 		if (!text) return await message.channel.send('No text provided')
 		if (!secret) return await message.channel.send('No secret provided. (Hint: Use -s=<randomLetters> or --secret=<randomLetters>)')
 
-		if (decryptFlags) return await this.decrypt(message, text, secret).catch(async () => await message.channel.send('Couldn\'t decrypt this text!'))
+		if (decryptFlags) return await this.decrypt(message, text, secret).catch(async () => await message.channel.send('Decryption unsuccessful!'))
 		return await this.encrypt(message, text, secret)
 	}
 

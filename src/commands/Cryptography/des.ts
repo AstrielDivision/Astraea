@@ -21,7 +21,7 @@ export default class DES extends AstraeaCommand {
 		if (!text) return await message.channel.send('No text provided.')
 		if (!secret) return await message.channel.send('No secret provided. (Hint: use --secret=<randomText> or -s=<randomText>)')
 
-		if (decryptFlag) return await this.Decrypt(message, text, secret, tripleFlag).catch(async () => await message.channel.send('Couldn\'t decrypt this text!'))
+		if (decryptFlag) return await this.Decrypt(message, text, secret, tripleFlag).catch(async () => await message.channel.send('Decryption unsuccessful!'))
 		return await this.Encrypt(message, text, secret, tripleFlag)
 	}
 
