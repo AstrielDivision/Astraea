@@ -7,7 +7,7 @@ import crypto from 'crypto-js'
 @ApplyOptions<AstraeaCommandOptions>({
 	name: 'des',
 	description: 'Encrypt a message with DES or decrypt a DES message',
-	usage: '<text> <--secret=<randomLetters> or -s=<randomLetters> [--triple or -t]>',
+	usage: '<text> <--secret=<randomLetters> or -s=<randomLetters>> [--triple or -t]',
 	options: ['secret', 's'],
 	flags: ['d', 'decrypt', 'triple', 't']
 })
@@ -26,13 +26,13 @@ export default class DES extends AstraeaCommand {
 	}
 
 	/**
-	 * Normal
+	 * * Normal
 	 * ---
 	 * Input: ABC
 	 * Secret: ABC
 	 * Output: U2FsdGVkX18hSOfJV6V+HZyx7Pt6sw9H
 	 * ---
-	 * TripleDES
+	 *  * TripleDES
 	 * ---
 	 * Input: ABC
 	 * Secret: ABC

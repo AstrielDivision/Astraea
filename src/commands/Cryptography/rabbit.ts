@@ -11,7 +11,7 @@ import crypto from 'crypto-js'
 	options: ['secret', 's'],
 	flags: ['d', 'decrypt']
 })
-export default class example extends AstraeaCommand {
+export default class Rabbit extends AstraeaCommand {
 	public async run (message: Message, args: Args): Promise<Message> {
 		const decryptFlags = args.getFlags('d', 'decrypt')
 		const text = (await args.restResult('string')).value
