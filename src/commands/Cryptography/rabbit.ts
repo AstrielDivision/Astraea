@@ -1,8 +1,8 @@
-import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
-import { Message } from 'discord.js'
 import { ApplyOptions } from '@sapphire/decorators'
 import { Args } from '@sapphire/framework'
 import crypto from 'crypto-js'
+import { Message, Permissions } from 'discord.js'
+import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
 
 @ApplyOptions<AstraeaCommandOptions>({
 	name: 'rabbit',
@@ -13,15 +13,18 @@ import crypto from 'crypto-js'
 })
 export default class Rabbit extends AstraeaCommand {
 	public async run (message: Message, args: Args): Promise<Message> {
-		const decryptFlags = args.getFlags('d', 'decrypt')
+		const decryptFlag = args.getFlags('d', 'decrypt')
 		const text = (await args.restResult('string')).value
 		const secret = args.getOption('s', 'secret')
 
 		if (!text) return await message.channel.send('No text provided')
 		if (!secret) return await message.channel.send('No secret provided. (Hint: Use -s=<randomLetters> or --secret=<randomLetters>)')
 
-		if (decryptFlags) return await this.decrypt(message, text, secret).catch(async () => await message.channel.send('Couldn\'t decrypt this text!'))
-		return await this.encrypt(message, text, secret)
+		if (message.guild.me.hasPermission(Permissions.FLAGS.MANAGE_MESSAGES)) void message.delete()
+
+		const result = decryptFlag ? this.decrypt(text, secret) : this.encrypt(text, secret)
+
+		return await message.channel.send(result)
 	}
 
 	/**
@@ -29,12 +32,8 @@ export default class Rabbit extends AstraeaCommand {
 	 * Secret: ABC
 	 * Output: U2FsdGVkX1+dH8sIK4GYwBDZ2o0=
 	 */
-	private async encrypt (message: Message, input: string, secret: string): Promise<Message> {
-		await message.delete()
-
-		const encrypted = crypto.Rabbit.encrypt(input, secret).toString()
-
-		return await message.channel.send(encrypted)
+	private encrypt (input: string, secret: string): string {
+		return crypto.Rabbit.encrypt(input, secret).toString()
 	}
 
 	/**
@@ -42,11 +41,7 @@ export default class Rabbit extends AstraeaCommand {
 	 * Secret: ABC
 	 * Output: ABC
 	 */
-	private async decrypt (message: Message, input: string, secret: string): Promise<Message> {
-		await message.delete()
-
-		const decrypted = crypto.Rabbit.decrypt(input, secret).toString(crypto.enc.Utf8)
-
-		return await message.channel.send(decrypted)
+	private decrypt (input: string, secret: string): string {
+		return crypto.Rabbit.decrypt(input, secret).toString(crypto.enc.Utf8).toString()
 	}
 }
