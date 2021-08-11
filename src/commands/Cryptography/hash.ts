@@ -37,11 +37,7 @@ export default class Hash extends AstraeaCommand {
 		if (!text) return await message.channel.send('No text provided!')
 
 		if (allFlag) {
-			sha1Flag = true
-			sha256Flag = true
-			sha512Flag = true
-			md5Flag = true
-			ripeMDFlag = true
+			sha1Flag = sha256Flag = sha512Flag = md5Flag = ripeMDFlag = true
 		}
 
 		if (!sha1Flag && !sha256Flag && !sha512Flag && !md5Flag && !ripeMDFlag) {
