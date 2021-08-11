@@ -20,7 +20,7 @@
 - Configure the bot by coping or by renaming main.example.json in the config folder to main.json and fill out all the blanks
 - You're now finished! Run the bot with `node .`
 
-Problems with self hosting DM me: ArtieFuzzz#8298
+Problems with self hosting join the support server [here](https://discord.gg/sb9sF2kFg8)
 
 ## License
 
