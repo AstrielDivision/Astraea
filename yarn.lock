@@ -1013,7 +1013,7 @@ __metadata:
     discord.js: ^12.5.3
     eslint: ^7.32.0
     husky: ^7.0.1
-    owoify-js: ^1.0.7
+    owofire: ^1.0.4
     prettier: ^2.3.2
     rimraf: ^3.0.2
     typescript: ^4.3.5
@@ -3645,10 +3645,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"owoify-js@npm:^1.0.7":
-  version: 1.0.7
-  resolution: "owoify-js@npm:1.0.7"
-  checksum: fcec1155b9fb9c9ff07498fb7f68be16a00d8d9b67529b3b1e50a524e0acd4b6643c0d8414c806f98a7319284f01100eb78f234deb32a1a05547b8f4f4bfda74
+"owofire@npm:^1.0.4":
+  version: 1.0.4
+  resolution: "owofire@npm:1.0.4"
+  bin:
+    owofire: cli.js
+  checksum: 77e3bc187f16333dad6d6eb819e7869a40c7f063ba0dc2c99cb9da4f35874be79f0715f2b567c0a4e5b5bcc529d3e7721bb3fefa2258aaa2be7541bbf0d01cbb
   languageName: node
   linkType: hard
 
