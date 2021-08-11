@@ -14,7 +14,7 @@ import cryptoJS from 'crypto-js'
 export default class Hash extends AstraeaCommand {
 	public static hash (str: string, algorithm: 'sha1' | 'sha256' | 'sha512' | 'md5' | 'ripemd160'): string {
 		switch (algorithm) {
-			case 'ripemd160' || 'ripemd': {
+			case 'ripemd160': {
 				return cryptoJS.RIPEMD160(str).toString()
 			}
 
