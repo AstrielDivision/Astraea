@@ -20,16 +20,26 @@ export default class AES extends AstraeaCommand {
 		if (!text) return await message.channel.send('No text provided')
 		if (!secret) return await message.channel.send('No secret provided. (Hint: Use -s=<randomLetters> or --secret=<randomLetters>)')
 
-		if (decryptFlags) return await this.decrypt(message, text, secret)
+		if (decryptFlags) return await this.decrypt(message, text, secret).catch(async () => await message.channel.send('Couldn\'t decrypt this text!'))
 		return await this.encrypt(message, text, secret)
 	}
 
+	/**
+	 * Input: ABC
+	 * Secret: ABC
+	 * Output: U2FsdGVkX1+Ocg9Sepezl979pPZ60p54jzzOEeVt98I=
+	 */
 	private async encrypt (message: Message, input: string, secret: string): Promise<Message> {
 		const encrypted = crypto.AES.encrypt(input, secret)
 
 		return await message.channel.send(encrypted.toString())
 	}
 
+	/**
+	 * Input: U2FsdGVkX1+Ocg9Sepezl979pPZ60p54jzzOEeVt98I=
+	 * Secret: ABC
+	 * Output: ABC
+	 */
 	private async decrypt (message: Message, input: string, secret: string): Promise<Message> {
 		const bytes = crypto.AES.decrypt(input, secret)
 		const decrypted = bytes.toString(crypto.enc.Utf8)

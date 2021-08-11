@@ -16,15 +16,28 @@ export default class DES extends AstraeaCommand {
 		const text = (await args.restResult('string')).value
 		const secret = args.getOption('secret', 's')
 		const decryptFlag = args.getFlags('decrypt', 'd')
-		const tripleFlag = args.getFlags('triple')
+		const tripleFlag = args.getFlags('triple', 't')
 
 		if (!text) return await message.channel.send('No text provided.')
 		if (!secret) return await message.channel.send('No secret provided. (Hint: use --secret=<randomText> or -s=<randomText>)')
 
-		if (decryptFlag) return await this.Decrypt(message, text, secret, tripleFlag)
+		if (decryptFlag) return await this.Decrypt(message, text, secret, tripleFlag).catch(async () => await message.channel.send('Couldn\'t decrypt this text!'))
 		return await this.Encrypt(message, text, secret, tripleFlag)
 	}
 
+	/**
+	 * Normal
+	 * ---
+	 * Input: ABC
+	 * Secret: ABC
+	 * Output: U2FsdGVkX18hSOfJV6V+HZyx7Pt6sw9H
+	 * ---
+	 * TripleDES
+	 * ---
+	 * Input: ABC
+	 * Secret: ABC
+	 * Output: U2FsdGVkX1/JdlBm8M+tXszBgkrIzCjX (Output may vary)
+	 */
 	private async Encrypt (message: Message, text: string, secret: string, triple?: boolean): Promise<Message> {
 		let encrypted = crypto.DES.encrypt(text, secret).toString()
 
@@ -36,6 +49,19 @@ export default class DES extends AstraeaCommand {
 		return await message.channel.send(encrypted)
 	}
 
+	/**
+	 * Normal
+	 * ---
+	 * Input: ABC
+	 * Secret: ABC
+	 * Output: U2FsdGVkX18hSOfJV6V+HZyx7Pt6sw9H
+	 * ---
+	 * TripleDES
+	 * ---
+	 * Input: U2FsdGVkX1/JdlBm8M+tXszBgkrIzCjX
+	 * Secret: ABC
+	 * Output: ABC
+	 */
 	private async Decrypt (message: Message, text: string, secret: string, triple?: boolean): Promise<Message> {
 		let bytes = crypto.DES.decrypt(text, secret)
 		let decrypted = bytes.toString(crypto.enc.Utf8)
