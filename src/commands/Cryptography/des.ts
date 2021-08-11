@@ -19,25 +19,31 @@ export default class DES extends AstraeaCommand {
 		const tripleFlag = args.getFlags('triple', 't')
 
 		if (!text) return await message.channel.send('No text provided.')
-		if (!secret) return await message.channel.send('No secret provided. (Hint: use --secret=<randomText> or -s=<randomText>)')
+		if (!secret) {
+			return await message.channel.send('No secret provided. (Hint: use --secret=<randomText> or -s=<randomText>)')
+		}
 
-		if (decryptFlag) return await this.Decrypt(message, text, secret, tripleFlag).catch(async () => await message.channel.send('Decryption unsuccessful!'))
+		if (decryptFlag) {
+			return await this.Decrypt(message, text, secret, tripleFlag).catch(
+				async () => await message.channel.send('Decryption unsuccessful!')
+			)
+		}
 		return await this.Encrypt(message, text, secret, tripleFlag)
 	}
 
 	/**
-	 * * Normal
-	 * ---
-	 * Input: ABC
-	 * Secret: ABC
-	 * Output: U2FsdGVkX18hSOfJV6V+HZyx7Pt6sw9H
-	 * ---
-	 *  * TripleDES
-	 * ---
-	 * Input: ABC
-	 * Secret: ABC
-	 * Output: U2FsdGVkX1/JdlBm8M+tXszBgkrIzCjX (Output may vary)
-	 */
+   * * Normal
+   * ---
+   * Input: ABC
+   * Secret: ABC
+   * Output: U2FsdGVkX18hSOfJV6V+HZyx7Pt6sw9H
+   * ---
+   *  * TripleDES
+   * ---
+   * Input: ABC
+   * Secret: ABC
+   * Output: U2FsdGVkX1/JdlBm8M+tXszBgkrIzCjX (Output may vary)
+   */
 	private async Encrypt (message: Message, text: string, secret: string, triple?: boolean): Promise<Message> {
 		let encrypted: string
 
@@ -52,18 +58,18 @@ export default class DES extends AstraeaCommand {
 	}
 
 	/**
-	 * * Normal
-	 * ---
-	 * Input: ABC
-	 * Secret: ABC
-	 * Output: U2FsdGVkX18hSOfJV6V+HZyx7Pt6sw9H
-	 * ---
-	 * * TripleDES
-	 * ---
-	 * Input: U2FsdGVkX1/JdlBm8M+tXszBgkrIzCjX
-	 * Secret: ABC
-	 * Output: ABC
-	 */
+   * * Normal
+   * ---
+   * Input: ABC
+   * Secret: ABC
+   * Output: U2FsdGVkX18hSOfJV6V+HZyx7Pt6sw9H
+   * ---
+   * * TripleDES
+   * ---
+   * Input: U2FsdGVkX1/JdlBm8M+tXszBgkrIzCjX
+   * Secret: ABC
+   * Output: ABC
+   */
 	private async Decrypt (message: Message, text: string, secret: string, triple?: boolean): Promise<Message> {
 		let decrypted: string
 

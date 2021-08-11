@@ -13,10 +13,7 @@ export abstract class AstraeaCommand extends Command {
 		const path = this.path
 
 		const splittedPath = path.split(sep)
-		const finalPath = splittedPath.slice(
-			splittedPath.indexOf('commands') + 1,
-			-1
-		)
+		const finalPath = splittedPath.slice(splittedPath.indexOf('commands') + 1, -1)
 
 		return finalPath[0]
 	}

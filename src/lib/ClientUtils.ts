@@ -29,7 +29,10 @@ export default class Utils {
 	public async fetch (url: string | URL, type: FetchResultTypes.Buffer): Promise<Buffer>
 	public async fetch (url: string | URL, type: FetchResultTypes.Text): Promise<string>
 	public async fetch (url: string | URL, type: FetchResultTypes.Result): Promise<Response>
-	public async fetch<R = unknown, T extends FetchResultTypes = FetchResultTypes.JSON>(url: string | URL, type: T): Promise<Response | Buffer | string | R> {
+	public async fetch<R = unknown, T extends FetchResultTypes = FetchResultTypes.JSON>(
+		url: string | URL,
+		type: T
+	): Promise<Response | Buffer | string | R> {
 		if (!url) throw new Error('No URL provided')
 
 		return await fetch<R>(

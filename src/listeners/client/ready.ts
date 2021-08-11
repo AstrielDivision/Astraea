@@ -20,9 +20,7 @@ export default class Ready extends Listener {
 	}
 
 	private styleStore (store: Store<any>, last: boolean): void {
-		return this.container.logger.console(
-			`${last ? '└─' : '├─'} Loaded ${store.size} ${store.name}.`
-		)
+		return this.container.logger.console(`${last ? '└─' : '├─'} Loaded ${store.size} ${store.name}.`)
 	}
 
 	public run (): void {

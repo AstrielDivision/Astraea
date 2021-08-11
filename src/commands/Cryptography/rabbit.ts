@@ -18,17 +18,25 @@ export default class Rabbit extends AstraeaCommand {
 		const secret = args.getOption('s', 'secret')
 
 		if (!text) return await message.channel.send('No text provided')
-		if (!secret) return await message.channel.send('No secret provided. (Hint: Use -s=<randomLetters> or --secret=<randomLetters>)')
+		if (!secret) {
+			return await message.channel.send(
+				'No secret provided. (Hint: Use -s=<randomLetters> or --secret=<randomLetters>)'
+			)
+		}
 
-		if (decryptFlags) return await this.decrypt(message, text, secret).catch(async () => await message.channel.send('Couldn\'t decrypt this text!'))
+		if (decryptFlags) {
+			return await this.decrypt(message, text, secret).catch(
+				async () => await message.channel.send('Couldn\'t decrypt this text!')
+			)
+		}
 		return await this.encrypt(message, text, secret)
 	}
 
 	/**
-	 * Input: ABC
-	 * Secret: ABC
-	 * Output: U2FsdGVkX1+dH8sIK4GYwBDZ2o0=
-	 */
+   * Input: ABC
+   * Secret: ABC
+   * Output: U2FsdGVkX1+dH8sIK4GYwBDZ2o0=
+   */
 	private async encrypt (message: Message, input: string, secret: string): Promise<Message> {
 		await message.delete()
 
@@ -38,10 +46,10 @@ export default class Rabbit extends AstraeaCommand {
 	}
 
 	/**
-	 * Input: U2FsdGVkX1+dH8sIK4GYwBDZ2o0=
-	 * Secret: ABC
-	 * Output: ABC
-	 */
+   * Input: U2FsdGVkX1+dH8sIK4GYwBDZ2o0=
+   * Secret: ABC
+   * Output: ABC
+   */
 	private async decrypt (message: Message, input: string, secret: string): Promise<Message> {
 		await message.delete()
 

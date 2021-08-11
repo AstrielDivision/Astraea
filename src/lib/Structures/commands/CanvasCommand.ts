@@ -6,9 +6,7 @@ import { AstraeaCommand, AstraeaCommandOptions } from '../Command'
 export abstract class AstraeaOverlayCommand extends AstraeaCommand {
 	overlay: 'gay' | 'glass' | 'wasted' | 'passed' | 'jail' | 'comrade' | 'triggered'
 	constructor (
-		{
-			overlay
-		}: { overlay: 'gay' | 'glass' | 'wasted' | 'passed' | 'jail' | 'comrade' | 'triggered' },
+		{ overlay }: { overlay: 'gay' | 'glass' | 'wasted' | 'passed' | 'jail' | 'comrade' | 'triggered' },
 		Context: PieceContext,
 		options: AstraeaCommandOptions
 	) {

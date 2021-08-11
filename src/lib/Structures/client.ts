@@ -25,7 +25,8 @@ export default class Client extends SapphireClient {
 			{
 				type: 'PLAYING',
 				name: 'あなたは大丈夫？'
-			}])
+			}
+		])
 	}
 
 	/**

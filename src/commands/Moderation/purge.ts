@@ -24,7 +24,7 @@ export default class Purge extends AstraeaCommand {
 
 		await (message.channel as TextChannel).bulkDelete(amount + 1, true)
 
-		return await message.channel.send(`Purged **${amount}** messages`).then((msg) => {
+		return await message.channel.send(`Purged **${amount}** messages`).then(msg => {
 			setTimeout(() => {
 				void msg.delete()
 			}, 2000)

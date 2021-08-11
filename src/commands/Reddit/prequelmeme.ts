@@ -11,10 +11,6 @@ import { AstraeaRedditCommand } from '../../lib/Structures/commands/RedditComman
 })
 export default class PrequelMemes extends AstraeaRedditCommand {
 	constructor (Context: PieceContext, options: AstraeaCommandOptions) {
-		super(
-			{ subreddit: 'prequelmemes', nsfw: false, colour: 'BLUE' },
-			Context,
-			options
-		)
+		super({ subreddit: 'prequelmemes', nsfw: false, colour: 'BLUE' }, Context, options)
 	}
 }

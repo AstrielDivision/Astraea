@@ -12,10 +12,6 @@ import { AstraeaRedditCommand } from '../../lib/Structures/commands/RedditComman
 })
 export default class Memes extends AstraeaRedditCommand {
 	constructor (Context: PieceContext, options: AstraeaCommandOptions) {
-		super(
-			{ subreddit: 'memes', nsfw: false, colour: 'DARK_GREEN' },
-			Context,
-			options
-		)
+		super({ subreddit: 'memes', nsfw: false, colour: 'DARK_GREEN' }, Context, options)
 	}
 }

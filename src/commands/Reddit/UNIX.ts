@@ -12,10 +12,6 @@ import { AstraeaRedditCommand } from '../../lib/Structures/commands/RedditComman
 })
 export default class UNIXPorn extends AstraeaRedditCommand {
 	constructor (Context: PieceContext, options: AstraeaCommandOptions) {
-		super(
-			{ subreddit: 'UNIXPorn', nsfw: false, colour: 'BLACK' },
-			Context,
-			options
-		)
+		super({ subreddit: 'UNIXPorn', nsfw: false, colour: 'BLACK' }, Context, options)
 	}
 }

@@ -10,10 +10,6 @@ import { AstraeaRedditCommand } from '../../lib/Structures/commands/RedditComman
 })
 export default class BeansInStrangePlaces extends AstraeaRedditCommand {
 	constructor (Context: PieceContext, options: AstraeaCommandOptions) {
-		super(
-			{ subreddit: 'BeansInStrangePlaces', nsfw: false, colour: 'BROWN' },
-			Context,
-			options
-		)
+		super({ subreddit: 'BeansInStrangePlaces', nsfw: false, colour: 'BROWN' }, Context, options)
 	}
 }

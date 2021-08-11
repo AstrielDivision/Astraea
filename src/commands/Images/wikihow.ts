@@ -1,7 +1,4 @@
-import {
-	AstraeaCommand,
-	AstraeaCommandOptions
-} from '../../lib/Structures/Command'
+import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
 import { ApplyOptions } from '@sapphire/decorators'
 import { Message, MessageEmbed } from 'discord.js'
 import { WikiHowImage } from '@aero/ksoft'
@@ -15,10 +12,7 @@ import { WikiHowImage } from '@aero/ksoft'
 })
 export default class Wikihow extends AstraeaCommand {
 	public async run (message: Message): Promise<Message> {
-		const {
-			url,
-			article
-		}: WikiHowImage = await this.container.client.ksoft.images.wikihow()
+		const { url, article }: WikiHowImage = await this.container.client.ksoft.images.wikihow()
 		const embed = new MessageEmbed()
 			.setTitle(article.title)
 			.setFooter('Powered by api.ksoft.si')

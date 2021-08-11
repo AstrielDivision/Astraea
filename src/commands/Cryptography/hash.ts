@@ -45,7 +45,9 @@ export default class Hash extends AstraeaCommand {
 		}
 
 		if (!sha1Flag && !sha256Flag && !sha512Flag && !md5Flag && !ripeMDFlag) {
-			return await message.channel.send('You must provide at least one of these flags:\n--sha1\n--sha256\n--sha512\n--md5\n--ripemd\n--all')
+			return await message.channel.send(
+				'You must provide at least one of these flags:\n--sha1\n--sha256\n--sha512\n--md5\n--ripemd\n--all'
+			)
 		}
 
 		/*
@@ -58,9 +60,7 @@ export default class Hash extends AstraeaCommand {
 			SHA512 : 397118fdac8d83ad98813c50759c85b8c47565d8268bf10da483153b747a74743a58a90e85aa9f705ce6984ffc128db567489817e4092d050d8a1cc596ddc119
 		*/
 
-		let response = '```md\n' +
-			`Hash value(s) of: ${text}\n` +
-			'---'
+		let response = '```md\n' + `Hash value(s) of: ${text}\n` + '---'
 
 		/* eslint-disable no-multi-spaces */
 		if (md5Flag)    response += `\nMD5    : ${Hash.hash(text, 'md5')}`

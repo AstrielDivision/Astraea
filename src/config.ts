@@ -59,11 +59,11 @@ convict.addFormat({
 
 const config = convict<Configuration>({
 	version: {
-		format: (v) => /(\d+\.\d+\.\d+)(-[\w\d-.]*)?/.test(v),
+		format: v => /(\d+\.\d+\.\d+)(-[\w\d-.]*)?/.test(v),
 		default: '0'
 	},
 	token: {
-		format: (v) => typeof v === 'string' && !!v && v.length < 30,
+		format: v => typeof v === 'string' && !!v && v.length < 30,
 		arg: 'token',
 		default: ''
 	},
@@ -97,9 +97,7 @@ if (existsSync(join(appRootPath.path, 'config', 'main.json'))) {
 	config.loadFile(join(appRootPath.path, 'config', 'main.json'))
 }
 
-export const pkg: PackageJson = JSON.parse(
-	readFileSync(join(appRootPath.path, 'package.json'), { encoding: 'utf-8' })
-)
+export const pkg: PackageJson = JSON.parse(readFileSync(join(appRootPath.path, 'package.json'), { encoding: 'utf-8' }))
 
 config.set('version', pkg.version)
 
