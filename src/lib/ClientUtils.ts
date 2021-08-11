@@ -1,13 +1,14 @@
-import { User, Snowflake, Guild } from 'discord.js'
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch'
-import Client from './Structures/client'
-import cfg, { pkg } from '../config'
+import { Guild, Snowflake, User } from 'discord.js'
+import { Response } from 'node-fetch'
 import { URL } from 'url'
+import cfg, { pkg } from '../config'
+import Client from './Structures/client'
 
 const userAgent = `Astraea/v${pkg.version} (github.com/AstraeaStudios/Astraea)`
 
 export default class Utils {
-	client: Client
+	client!: Client
 	constructor (client: Client) {
 		this.client = client
 	}
@@ -16,26 +17,25 @@ export default class Utils {
 		return Math.random().toString(21).substr(2, length)
 	}
 
-	public async findUser (ID: string | Snowflake): Promise<User> {
-		const user = this.client.users.cache.get(ID)
-
-		if (!user) throw Error('User not found')
-
-		return user
+	public async findUser (id: string | Snowflake): Promise<User | undefined> {
+		return await this.client.users.resolve(id)?.fetch()
 	}
 
-	public async findGuild (ID: string | Snowflake): Promise<Guild> {
-		const guild = this.client.guilds.cache.get(ID)
-
-		if (!guild) throw Error('User not found')
-
-		return guild
+	public async findGuild (id: string | Snowflake): Promise<Guild | undefined> {
+		return await this.client.guilds.resolve(id)?.fetch()
 	}
 
-	public async Fetch (url: string | URL, type?: FetchResultTypes): Promise<unknown> {
-		if (!url) throw Error('No URL provided')
+	public async fetch<R = unknown>(url: string | URL, type: FetchResultTypes.JSON): Promise<R>
+	public async fetch (url: string | URL, type: FetchResultTypes.Buffer): Promise<Buffer>
+	public async fetch (url: string | URL, type: FetchResultTypes.Text): Promise<string>
+	public async fetch (url: string | URL, type: FetchResultTypes.Result): Promise<Response>
+	public async fetch<R = unknown, T extends FetchResultTypes = FetchResultTypes.JSON>(
+		url: string | URL,
+		type: T
+	): Promise<Response | Buffer | string | R> {
+		if (!url) throw new Error('No URL provided')
 
-		const res = await fetch(
+		return await fetch<R>(
 			url,
 			{
 				method: FetchMethods.Get,
@@ -43,19 +43,11 @@ export default class Utils {
 					'User-Agent': userAgent
 				}
 			},
-			type ?? FetchResultTypes.Text
+			type
 		)
-
-		return res
 	}
 
 	public isOwner (id: string | Snowflake): boolean {
-		const isOwner = cfg.owners.includes(id)
-
-		if (isOwner) {
-			return true
-		} else {
-			return false
-		}
+		return cfg.owners.includes(id)
 	}
 }

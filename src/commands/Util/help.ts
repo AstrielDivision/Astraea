@@ -12,8 +12,7 @@ import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Comm
 	name: 'help',
 	aliases: ['h'],
 	description: 'Gives you a list of commands',
-	detailedDescription:
-    'You may also provide a command, which will return info about that command',
+	detailedDescription: 'You may also provide a command, which will return info about that command',
 	preconditions: ['GuildTextOnly'],
 	usage: '[command]'
 })
@@ -68,12 +67,19 @@ export default class Help extends AstraeaCommand {
 			categories.push(cmd.category)
 		})
 
-		categories.forEach((category) => {
+		categories.forEach(category => {
 			let commandsLine = ''
-			this.container.stores.get('commands').forEach((cmd) => {
+			this.container.stores.get('commands').forEach(cmd => {
 				if ((cmd as AstraeaCommand).category !== category) return
-				if (!this.container.client.util.isOwner(message.author.id) && (cmd as AstraeaCommand).category === 'Owner') return
-				if (!(message.member.hasPermission('BAN_MEMBERS') || message.member.hasPermission('KICK_MEMBERS')) && (cmd as AstraeaCommand).category === 'Moderation') return
+				if (!this.container.client.util.isOwner(message.author.id) && (cmd as AstraeaCommand).category === 'Owner') {
+					return
+				}
+				if (
+					!(message.member.hasPermission('BAN_MEMBERS') || message.member.hasPermission('KICK_MEMBERS')) &&
+          (cmd as AstraeaCommand).category === 'Moderation'
+				) {
+					return
+				}
 				if (!(message.channel as TextChannel).nsfw && (cmd as AstraeaCommand).category === 'NSFW') return
 				if (!(cmd as AstraeaCommand).enabled) return
 
@@ -85,10 +91,7 @@ export default class Help extends AstraeaCommand {
 			embed.addField(category, commandsLine)
 			embed.setTimestamp()
 			// embed.setThumbnail(message.author.avatarURL({ dynamic: true }))
-			embed.setFooter(
-				` - ${this.container.client.user.tag}`,
-				this.container.client.user.avatarURL({ dynamic: true })
-			)
+			embed.setFooter(` - ${this.container.client.user.tag}`, this.container.client.user.avatarURL({ dynamic: true }))
 		})
 		return await message.channel.send(embed)
 	}

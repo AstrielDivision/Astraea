@@ -10,10 +10,6 @@ import { AstraeaRedditCommand } from '../../lib/Structures/commands/RedditComman
 })
 export default class OldSchool extends AstraeaRedditCommand {
 	constructor (Context: PieceContext, options: AstraeaCommandOptions) {
-		super(
-			{ subreddit: 'oldschoolcool', nsfw: false, colour: 'GREY' },
-			Context,
-			options
-		)
+		super({ subreddit: 'oldschoolcool', nsfw: false, colour: 'GREY' }, Context, options)
 	}
 }

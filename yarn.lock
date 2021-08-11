@@ -497,6 +497,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tmware/prettier-config@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "@tmware/prettier-config@npm:1.0.3"
+  checksum: 62010822227e9cadbab32156c869e80caa78418f0b23e247a985e80eb23278bd5e9d784cb2bf0b4ed0ac0ae432bb8d7acf4a7de678d46c34d247f2078bfb273c
+  languageName: node
+  linkType: hard
+
 "@tmware/status-rotate@npm:^1.2.8":
   version: 1.2.8
   resolution: "@tmware/status-rotate@npm:1.2.8"
@@ -599,6 +606,13 @@ __metadata:
   version: 4.0.0
   resolution: "@types/parse-json@npm:4.0.0"
   checksum: fd6bce2b674b6efc3db4c7c3d336bd70c90838e8439de639b909ce22f3720d21344f52427f1d9e57b265fcb7f6c018699b99e5e0c208a1a4823014269a6bf35b
+  languageName: node
+  linkType: hard
+
+"@types/prettier@npm:^2":
+  version: 2.3.2
+  resolution: "@types/prettier@npm:2.3.2"
+  checksum: c4313e16650811f47b07a0fa7ac0742e966f61283a7292eb667fd4626d760bf3b7d896be3eaabb3354ad45fdbe3a340299b018dd3bcce1ff753d030a8cd2479c
   languageName: node
   linkType: hard
 
@@ -982,12 +996,14 @@ __metadata:
     "@sapphire/framework": 2.0.0-next.eebecfb6.0
     "@sapphire/type": ^2.0.11
     "@sapphire/utilities": ^2.0.1
+    "@tmware/prettier-config": ^1.0.3
     "@tmware/status-rotate": ^1.2.8
     "@types/app-root-path": ^1.2.4
     "@types/convict": ^6.1.1
     "@types/crypto-js": ^4
     "@types/node": ^16.4.13
     "@types/node-fetch": ^2.5.12
+    "@types/prettier": ^2
     all-contributors-cli: ^6.20.0
     app-root-path: ^3.0.0
     bufferutil: ^4.0.3
@@ -998,6 +1014,7 @@ __metadata:
     eslint: ^7.32.0
     husky: ^7.0.1
     owoify-js: ^1.0.7
+    prettier: ^2.3.2
     rimraf: ^3.0.2
     typescript: ^4.3.5
     utf-8-validate: ^5.0.5
@@ -3853,6 +3870,15 @@ __metadata:
   version: 1.2.1
   resolution: "prelude-ls@npm:1.2.1"
   checksum: cd192ec0d0a8e4c6da3bb80e4f62afe336df3f76271ac6deb0e6a36187133b6073a19e9727a1ff108cd8b9982e4768850d413baa71214dd80c7979617dca827a
+  languageName: node
+  linkType: hard
+
+"prettier@npm:^2.3.2":
+  version: 2.3.2
+  resolution: "prettier@npm:2.3.2"
+  bin:
+    prettier: bin-prettier.js
+  checksum: 17ce5784ac67621c292df58e2da60b2ee150c2d6aebea22a6ad9e52fcd6a5e66c349d0a8436ea3bd8ff9d778920a5f68000d7625b74f43558718a49755aa5259
   languageName: node
   linkType: hard
 

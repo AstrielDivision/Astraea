@@ -11,10 +11,6 @@ import { AstraeaRedditCommand } from '../../lib/Structures/commands/RedditComman
 })
 export default class FoodPorn extends AstraeaRedditCommand {
 	constructor (Context: PieceContext, options: AstraeaCommandOptions) {
-		super(
-			{ subreddit: 'foodporn', nsfw: false, colour: 'ORANGE' },
-			Context,
-			options
-		)
+		super({ subreddit: 'foodporn', nsfw: false, colour: 'ORANGE' }, Context, options)
 	}
 }

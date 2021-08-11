@@ -12,10 +12,6 @@ import { AstraeaRedditCommand } from '../../lib/Structures/commands/RedditComman
 })
 export default class DankMemes extends AstraeaRedditCommand {
 	constructor (Context: PieceContext, options: AstraeaCommandOptions) {
-		super(
-			{ subreddit: 'dankmemes', nsfw: false, colour: 'DARK_GREEN' },
-			Context,
-			options
-		)
+		super({ subreddit: 'dankmemes', nsfw: false, colour: 'DARK_GREEN' }, Context, options)
 	}
 }

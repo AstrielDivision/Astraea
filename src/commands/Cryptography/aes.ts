@@ -18,6 +18,7 @@ export default class AES extends AstraeaCommand {
 		const secret = args.getOption('s', 'secret')
 
 		if (!text) return await message.channel.send('No text provided')
+
 		if (!secret) return await message.channel.send('No secret provided. (Hint: Use -s=<randomLetters> or --secret=<randomLetters>)')
 
 		if (message.guild.me.hasPermission(Permissions.FLAGS.MANAGE_MESSAGES)) void message.delete()

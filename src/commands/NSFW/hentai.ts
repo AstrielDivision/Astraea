@@ -13,10 +13,6 @@ import { AstraeaRedditCommand } from '../../lib/Structures/commands/RedditComman
 })
 export default class Hentai extends AstraeaRedditCommand {
 	constructor (Context: PieceContext, options: AstraeaCommandOptions) {
-		super(
-			{ subreddit: 'hentai', nsfw: true, colour: 'PINK' },
-			Context,
-			options
-		)
+		super({ subreddit: 'hentai', nsfw: true, colour: 'PINK' }, Context, options)
 	}
 }

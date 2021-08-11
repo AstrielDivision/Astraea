@@ -9,17 +9,26 @@ import { pkg } from '../../config'
 })
 export default class About extends AstraeaCommand {
 	/**
-	 * * Based on https://github.com/TMUniversal/discord-bot-template/blob/master/src/commands/basic/AboutCommand.ts
-	 * * Licensed under the MIT License
-	 */
+   * * Based on https://github.com/TMUniversal/discord-bot-template/blob/master/src/commands/basic/AboutCommand.ts
+   * * Licensed under the MIT License
+   */
 	public async run (message: Message): Promise<Message> {
 		const embed = new MessageEmbed()
 			.setTitle(`${this.container.client.user.username} - About`)
-			.setDescription(`Hello! I'm ${this.container.client.user.username}.\nI am a Image discord bot with some other tools too.\n Need images? I'm the bot you need! :)`)
+			.setDescription(
+				`Hello! I'm ${this.container.client.user.username}.\nI am a Image discord bot with some other tools too.\n Need images? I'm the bot you need! :)`
+			)
 			.addFields(
-				{ name: 'Developed by', value: 'ArtieFuzzz#8298 @ [Astraea Studios](https://github.com/AstraeaStudios/Astraea)' },
+				{
+					name: 'Developed by',
+					value: 'ArtieFuzzz#8298 @ [Astraea Studios](https://github.com/AstraeaStudios/Astraea)'
+				},
 				{ name: 'Contributors', value: pkg.contributors.join('\n') },
-				{ name: 'Built With', value: '[Discord.js](https://github.com/discordjs/discord.js)\n [Sapphire/Framework](https://github.com/sapphiredev/framework)' }
+				{
+					name: 'Built With',
+					value:
+            '[Discord.js](https://github.com/discordjs/discord.js)\n [Sapphire/Framework](https://github.com/sapphiredev/framework)'
+				}
 			)
 
 			.setFooter(`v${pkg.version} - Written in TypeScript, powered by Node.js`)

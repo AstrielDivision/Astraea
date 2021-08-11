@@ -8,11 +8,7 @@ export abstract class AstraeaRedditCommand extends AstraeaCommand {
 	colour: ColorResolvable
 	nsfw: boolean
 	constructor (
-		{
-			subreddit,
-			nsfw,
-			colour
-		}: { subreddit: string, nsfw: boolean, colour: string },
+		{ subreddit, nsfw, colour }: { subreddit: string, nsfw: boolean, colour: string },
 		Context: PieceContext,
 		options: AstraeaCommandOptions
 	) {
@@ -23,18 +19,13 @@ export abstract class AstraeaRedditCommand extends AstraeaCommand {
 	}
 
 	public async run (message: Message): Promise<Message> {
-		const {
-			post,
-			url
-		}: RedditImage = await this.container.client.ksoft.images.reddit(
-			this.subreddit,
-			{ removeNSFW: !this.nsfw, span: 'week' }
-		)
+		const { post, url }: RedditImage = await this.container.client.ksoft.images.reddit(this.subreddit, {
+			removeNSFW: !this.nsfw,
+			span: 'week'
+		})
 		const embed = new MessageEmbed()
 			.setTitle(post.title)
-			.setFooter(
-				`Powered by api.ksoft.si ${post.author} | Upvotes: ${post.upvotes} | Downvotes ${post.downvotes}`
-			)
+			.setFooter(`Powered by api.ksoft.si ${post.author} | Upvotes: ${post.upvotes} | Downvotes ${post.downvotes}`)
 			.setURL(post.link)
 			.setTimestamp()
 			.setImage(url)

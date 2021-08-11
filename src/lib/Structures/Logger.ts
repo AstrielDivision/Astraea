@@ -1,10 +1,5 @@
 import { ILogger, LogLevel } from '@sapphire/framework'
-import {
-	MessageAttachment,
-	WebhookClient,
-	WebhookMessageOptions,
-	MessageEmbed
-} from 'discord.js'
+import { MessageAttachment, WebhookClient, WebhookMessageOptions, MessageEmbed } from 'discord.js'
 import { EOL } from 'os'
 import cfg from '../../config'
 
@@ -80,22 +75,13 @@ export default class AstraeaLogger implements ILogger {
 
 	protected _write (colour: RGB, level: string, ...message: unknown[]): void {
 		process.stdout.write(
-			`[${this.formatRGB(
-				this.colours.foreground,
-				this.processTag
-			)} | ${this.formatRGB(
+			`[${this.formatRGB(this.colours.foreground, this.processTag)} | ${this.formatRGB(
 				this.colours.foreground,
 				new Date().toLocaleString()
-			)} | ${this.formatRGB(
-				this.colours.foreground,
-				this.namespace
-			)} ${this.formatRGB(
+			)} | ${this.formatRGB(this.colours.foreground, this.namespace)} ${this.formatRGB(
 				this.colours.foreground,
 				'Logger'
-			)} | ${this.formatRGB(colour, level)}]: ${this.formatRGB(
-				colour,
-				message
-			)}${EOL}`
+			)} | ${this.formatRGB(colour, level)}]: ${this.formatRGB(colour, message)}${EOL}`
 		)
 
 		if (level === 'CONSOLE') return
@@ -117,9 +103,7 @@ export default class AstraeaLogger implements ILogger {
 			embed.setDescription(message.join(' '))
 		} else {
 			embed.setDescription('Message too long.')
-			options.files = [
-				new MessageAttachment(Buffer.from(message.join(' ')), 'message.txt')
-			]
+			options.files = [new MessageAttachment(Buffer.from(message.join(' ')), 'message.txt')]
 		}
 		void hook.send(options).catch(() => null)
 	}

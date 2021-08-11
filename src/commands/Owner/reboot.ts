@@ -10,9 +10,7 @@ import { Args } from '@sapphire/framework'
 export default class Reboot extends AstraeaCommand {
 	public async run (message: Message, args: Args): Promise<Message> {
 		if (!this.container.client.util.isOwner(message.author.id)) {
-			return await message.channel.send(
-				'You are not permitted to execute this command'
-			)
+			return await message.channel.send('You are not permitted to execute this command')
 		}
 		await message.channel.send('Rebooting!')
 

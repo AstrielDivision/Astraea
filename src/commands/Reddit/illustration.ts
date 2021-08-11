@@ -12,10 +12,6 @@ import { AstraeaRedditCommand } from '../../lib/Structures/commands/RedditComman
 })
 export default class Illustration extends AstraeaRedditCommand {
 	constructor (Context: PieceContext, options: AstraeaCommandOptions) {
-		super(
-			{ subreddit: 'illustration', nsfw: false, colour: 'WHITE' },
-			Context,
-			options
-		)
+		super({ subreddit: 'illustration', nsfw: false, colour: 'WHITE' }, Context, options)
 	}
 }

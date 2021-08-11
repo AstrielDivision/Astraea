@@ -19,7 +19,9 @@ export default class DES extends AstraeaCommand {
 		const tripleFlag = args.getFlags('triple', 't')
 
 		if (!text) return await message.channel.send('No text provided.')
-		if (!secret) return await message.channel.send('No secret provided. (Hint: use --secret=<randomText> or -s=<randomText>)')
+		if (!secret) {
+			return await message.channel.send('No secret provided. (Hint: use --secret=<randomText> or -s=<randomText>)')
+		}
 
 		if (message.guild.me.hasPermission(Permissions.FLAGS.MANAGE_MESSAGES)) void message.delete()
 

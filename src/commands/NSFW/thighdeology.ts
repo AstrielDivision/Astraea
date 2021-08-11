@@ -13,10 +13,6 @@ import { AstraeaRedditCommand } from '../../lib/Structures/commands/RedditComman
 })
 export default class Thighdeology extends AstraeaRedditCommand {
 	constructor (Context: PieceContext, options: AstraeaCommandOptions) {
-		super(
-			{ subreddit: 'thighdeology', nsfw: true, colour: 'BLACK' },
-			Context,
-			options
-		)
+		super({ subreddit: 'thighdeology', nsfw: true, colour: 'BLACK' }, Context, options)
 	}
 }

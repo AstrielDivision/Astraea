@@ -1,7 +1,4 @@
-import {
-	AstraeaCommand,
-	AstraeaCommandOptions
-} from '../../lib/Structures/Command'
+import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
 import { Message } from 'discord.js'
 import { ApplyOptions } from '@sapphire/decorators'
 
@@ -14,9 +11,7 @@ export default class Ping extends AstraeaCommand {
 		const ping = await message.channel.send('Pong!')
 
 		return await ping.edit(
-			`Ping: ${this.container.client.ws.ping} ms\nHeartbeat: ${
-				ping.createdTimestamp - message.createdTimestamp
-			} ms`
+			`Ping: ${this.container.client.ws.ping} ms\nHeartbeat: ${ping.createdTimestamp - message.createdTimestamp} ms`
 		)
 	}
 }
