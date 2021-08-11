@@ -9,7 +9,7 @@ import cryptoJS from 'crypto-js'
 	name: 'hash',
 	description: 'Hash your text in sha1',
 	detailedDescription: 'Hash your text in either sha1, sha256, sha512 or md5',
-	flags: ['sha1', 'sha256', 'sha512', 'md5', 'all', 'ripemd160', 'ripemd']
+	flags: ['sha1', 'sha256', 'sha512', 'md5', 'all', 'ripemd']
 })
 export default class Hash extends AstraeaCommand {
 	public static hash (str: string, algorithm: 'sha1' | 'sha256' | 'sha512' | 'md5' | 'ripemd160'): string {
