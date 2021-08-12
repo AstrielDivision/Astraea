@@ -21,7 +21,8 @@
     "upgrade": "yarn upgrade-interactive",
     "contrib:add": "all-contributors add",
     "contrib:gen": "all-contributors generate",
-    "contrib:check": "all-contributors check"
+    "contrib:check": "all-contributors check",
+    "prettiest": "prettier --write src/ && yarn lint:fix"
   },
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
