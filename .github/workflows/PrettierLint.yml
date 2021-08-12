@@ -26,7 +26,13 @@ jobs:
       - name: Install Dependencies if Cache Miss
         if: ${{ !steps.cache.outputs.cache-hit }}
         run: yarn --immutable
-      - name: Prettify and Lint code
-        run: yarn prettiest
+      - name: Prettify code
+        uses: creyD/prettier_action@v3.3
+        with:
+          commit_message: 'style: apply prettier'
+          prettier_options: --write src/
+          only_changed: True
+      - name: Lint code
+        run: yarn lint:fix
         env:
           GITHUB_TOKEN: ${{ github.token }}
