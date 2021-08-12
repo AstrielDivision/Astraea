@@ -28,3 +28,14 @@ jobs:
         run: yarn --immutable
       - name: Prettify and Lint code
         run: yarn prettiest
+      - name: Check for changed files
+        id: changed
+        run: git diff --exit-code ./src/
+      - name: Push Pretty code
+        if: steps.changed.outputs.OUTPUT == 1
+        run: |
+         git add ./src/
+         git commit . -m "style: apply ESLint and Prettier"
+         git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
