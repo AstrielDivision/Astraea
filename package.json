@@ -11,6 +11,7 @@
   "description": "Discord bot using @sapphire/framework",
   "scripts": {
     "lint": "eslint --cache --report-unused-disable-directives --ignore-path .gitignore --ext .ts src/",
+    "lint:fix": "eslint --cache --report-unused-disable-directives --ext .ts src/ --fix",
     "build": "yarn clean && yarn build:ts",
     "build:ts": "tsc -p ./",
     "clean": "rimraf ./build && mkdir build",

@@ -58,13 +58,11 @@ export default class Hash extends AstraeaCommand {
 
     let response = '```md\n' + `Hash value(s) of: ${text}\n` + '---'
 
-    /* eslint-disable no-multi-spaces */
     if (md5Flag) response += `\nMD5    : ${Hash.hash(text, 'md5')}`
     if (ripeMDFlag) response += `\nRIPEMD : ${Hash.hash(text, 'ripemd160')}`
     if (sha1Flag) response += `\nSHA1   : ${Hash.hash(text, 'sha1')}`
     if (sha256Flag) response += `\nSHA256 : ${Hash.hash(text, 'sha256')}`
     if (sha512Flag) response += `\nSHA512 : ${Hash.hash(text, 'sha512')}`
-    /* eslint-enable no-multi-spaces */
 
     response += '\n```'
 
