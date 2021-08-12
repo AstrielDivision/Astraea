@@ -2,4 +2,4 @@ name: astraea
 image: node:alpine
 sync:
   - .:/Astraea/opt
-command: apk update && apk add libtool autoconf automake g++ gcc git make && apk add --no-cache bash && git init && yarn && yarn build && yarn dlx pm2 start .
+command: yarn && yarn build && yarn dlx pm2 start .
