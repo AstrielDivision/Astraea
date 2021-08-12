@@ -4,15 +4,15 @@ import { AstraeaCommandOptions } from '../../lib/Structures/Command'
 import { AstraeaRedditCommand } from '../../lib/Structures/commands/RedditCommand'
 
 @ApplyOptions<AstraeaCommandOptions>({
-	name: 'notraps',
-	aliases: ['trap'],
-	description: 'Returns a Image from r/NoTraps',
-	cooldownLimit: 3,
-	nsfw: true,
-	cooldownDelay: 2000
+  name: 'notraps',
+  aliases: ['trap'],
+  description: 'Returns a Image from r/NoTraps',
+  cooldownLimit: 3,
+  nsfw: true,
+  cooldownDelay: 2000
 })
 export default class Femboy extends AstraeaRedditCommand {
-	constructor (Context: PieceContext, options: AstraeaCommandOptions) {
-		super({ subreddit: 'NoTraps', nsfw: true, colour: 'PINK' }, Context, options)
-	}
+  constructor(Context: PieceContext, options: AstraeaCommandOptions) {
+    super({ subreddit: 'NoTraps', nsfw: true, colour: 'PINK' }, Context, options)
+  }
 }

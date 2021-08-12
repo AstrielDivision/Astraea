@@ -3,7 +3,10 @@
   "rules": {
     "no-void": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/space-before-function-paren": "off",
     "@typescript-eslint/ban-ts-comment": "off",
-    "@typescript-eslint/prefer-ts-expect-error": "off"
+    "@typescript-eslint/prefer-ts-expect-error": "off",
+    "@typescript-eslint/indent": [2, 2],
+    "indent": "off"
   }
 }

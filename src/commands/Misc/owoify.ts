@@ -5,18 +5,18 @@ import { Args } from '@sapphire/framework'
 import owoify from 'owofire'
 
 @ApplyOptions<AstraeaCommandOptions>({
-	name: 'owoify',
-	description: 'owoify your text',
-	usage: '<text>'
+  name: 'owoify',
+  description: 'owoify your text',
+  usage: '<text>'
 })
 export default class OwOify extends AstraeaCommand {
-	public async run (message: Message, args: Args): Promise<Message> {
-		const text = (await args.restResult('string')).value
+  public async run(message: Message, args: Args): Promise<Message> {
+    const text = (await args.restResult('string')).value
 
-		if (!text) {
-			return await message.channel.send('No text provided!')
-		}
+    if (!text) {
+      return await message.channel.send('No text provided!')
+    }
 
-		return await message.channel.send(owoify(text))
-	}
+    return await message.channel.send(owoify(text))
+  }
 }

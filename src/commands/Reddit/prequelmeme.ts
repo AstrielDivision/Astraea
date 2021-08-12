@@ -4,13 +4,13 @@ import { AstraeaCommandOptions } from '../../lib/Structures/Command'
 import { AstraeaRedditCommand } from '../../lib/Structures/commands/RedditCommand'
 
 @ApplyOptions<AstraeaCommandOptions>({
-	name: 'prequelmemes',
-	description: 'Returns a Image from r/prequelmemes',
-	cooldownLimit: 3,
-	cooldownDelay: 2000
+  name: 'prequelmemes',
+  description: 'Returns a Image from r/prequelmemes',
+  cooldownLimit: 3,
+  cooldownDelay: 2000
 })
 export default class PrequelMemes extends AstraeaRedditCommand {
-	constructor (Context: PieceContext, options: AstraeaCommandOptions) {
-		super({ subreddit: 'prequelmemes', nsfw: false, colour: 'BLUE' }, Context, options)
-	}
+  constructor(Context: PieceContext, options: AstraeaCommandOptions) {
+    super({ subreddit: 'prequelmemes', nsfw: false, colour: 'BLUE' }, Context, options)
+  }
 }

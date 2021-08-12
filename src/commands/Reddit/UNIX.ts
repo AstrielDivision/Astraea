@@ -4,14 +4,14 @@ import { AstraeaCommandOptions } from '../../lib/Structures/Command'
 import { AstraeaRedditCommand } from '../../lib/Structures/commands/RedditCommand'
 
 @ApplyOptions<AstraeaCommandOptions>({
-	name: 'unix',
-	aliases: ['linux'],
-	description: 'Returns a Image from r/UNIXPorn',
-	cooldownLimit: 3,
-	cooldownDelay: 2000
+  name: 'unix',
+  aliases: ['linux'],
+  description: 'Returns a Image from r/UNIXPorn',
+  cooldownLimit: 3,
+  cooldownDelay: 2000
 })
 export default class UNIXPorn extends AstraeaRedditCommand {
-	constructor (Context: PieceContext, options: AstraeaCommandOptions) {
-		super({ subreddit: 'UNIXPorn', nsfw: false, colour: 'BLACK' }, Context, options)
-	}
+  constructor(Context: PieceContext, options: AstraeaCommandOptions) {
+    super({ subreddit: 'UNIXPorn', nsfw: false, colour: 'BLACK' }, Context, options)
+  }
 }

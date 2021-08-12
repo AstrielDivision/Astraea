@@ -4,15 +4,15 @@ import { AstraeaCommandOptions } from '../../lib/Structures/Command'
 import { AstraeaRedditCommand } from '../../lib/Structures/commands/RedditCommand'
 
 @ApplyOptions<AstraeaCommandOptions>({
-	name: 'helplesshentai',
-	aliases: ['hh'],
-	description: 'Returns a Image from r/helplesshentai',
-	cooldownLimit: 3,
-	cooldownDelay: 2000,
-	nsfw: true
+  name: 'helplesshentai',
+  aliases: ['hh'],
+  description: 'Returns a Image from r/helplesshentai',
+  cooldownLimit: 3,
+  cooldownDelay: 2000,
+  nsfw: true
 })
 export default class HelplessHentai extends AstraeaRedditCommand {
-	constructor (Context: PieceContext, options: AstraeaCommandOptions) {
-		super({ subreddit: 'helplesshentai', nsfw: true, colour: 'BLACK' }, Context, options)
-	}
+  constructor(Context: PieceContext, options: AstraeaCommandOptions) {
+    super({ subreddit: 'helplesshentai', nsfw: true, colour: 'BLACK' }, Context, options)
+  }
 }

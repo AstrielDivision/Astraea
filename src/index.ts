@@ -3,10 +3,10 @@ import Logger from './lib/Structures/Logger'
 import cfg from './config'
 
 const client = new Client({
-	defaultPrefix: cfg.prefix,
-	caseInsensitivePrefixes: true,
-	caseInsensitiveCommands: true,
-	logger: { instance: new Logger('Astraea') }
+  defaultPrefix: cfg.prefix,
+  caseInsensitivePrefixes: true,
+  caseInsensitiveCommands: true,
+  logger: { instance: new Logger('Astraea') }
 })
 
 void client.start()

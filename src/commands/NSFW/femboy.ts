@@ -4,13 +4,13 @@ import { AstraeaCommandOptions } from '../../lib/Structures/Command'
 import { AstraeaRedditCommand } from '../../lib/Structures/commands/RedditCommand'
 
 @ApplyOptions<AstraeaCommandOptions>({
-	name: 'femboy',
-	aliases: ['femboy', 'femboys', 'femboi', 'fembois'],
-	description: 'Returns a Image from r/FemBoys',
-	nsfw: true
+  name: 'femboy',
+  aliases: ['femboy', 'femboys', 'femboi', 'fembois'],
+  description: 'Returns a Image from r/FemBoys',
+  nsfw: true
 })
 export default class Femboy extends AstraeaRedditCommand {
-	constructor (Context: PieceContext, options: AstraeaCommandOptions) {
-		super({ subreddit: 'femboys', nsfw: true, colour: 'PINK' }, Context, options)
-	}
+  constructor(Context: PieceContext, options: AstraeaCommandOptions) {
+    super({ subreddit: 'femboys', nsfw: true, colour: 'PINK' }, Context, options)
+  }
 }
