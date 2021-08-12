@@ -1,0 +1,25 @@
+name: Prettier
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+  workflow_dispatch:
+
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Prettify code
+        uses: creyD/prettier_action@v3.3
+        with:
+          commit_message: 'style: apply prettier'
+          prettier_options: --write src/
+          only_changed: True
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
