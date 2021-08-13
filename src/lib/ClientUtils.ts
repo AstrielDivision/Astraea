@@ -1,6 +1,5 @@
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch'
 import { Guild, Snowflake, User } from 'discord.js'
-import { Response } from 'node-fetch'
 import { URL } from 'url'
 import cfg, { pkg } from '../config'
 import Client from './Structures/client'
@@ -27,12 +26,13 @@ export default class Utils {
 
   public async fetch<R = unknown>(url: string | URL, type: FetchResultTypes.JSON): Promise<R>
   public async fetch(url: string | URL, type: FetchResultTypes.Buffer): Promise<Buffer>
+  public async fetch(url: string | URL, type: FetchResultTypes.Blob): Promise<Blob>
   public async fetch(url: string | URL, type: FetchResultTypes.Text): Promise<string>
-  public async fetch(url: string | URL, type: FetchResultTypes.Result): Promise<Response>
+  public async fetch(url: string | URL, type: FetchResultTypes.Result): Promise<unknown>
   public async fetch<R = unknown, T extends FetchResultTypes = FetchResultTypes.JSON>(
     url: string | URL,
     type: T
-  ): Promise<Response | Buffer | string | R> {
+  ): Promise<Response | Buffer | Blob | string | R> {
     if (!url) throw new Error('No URL provided')
 
     return await fetch<R>(

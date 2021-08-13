@@ -422,13 +422,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sapphire/fetch@npm:^1.0.5":
-  version: 1.0.5
-  resolution: "@sapphire/fetch@npm:1.0.5"
+"@sapphire/fetch@npm:next":
+  version: 2.0.0-next.6e8314f3.0
+  resolution: "@sapphire/fetch@npm:2.0.0-next.6e8314f3.0"
   dependencies:
-    node-fetch: ^2.6.1
-    tslib: 2.x
-  checksum: 9a945ff5a7765ce4b77117218393a36345e8385a7983c5e3405704e348cfdfcaf245c0e855a5b5bf89e6c479fa956fa4fc67a8b8519dd7f2c16d14eba1f3a360
+    cross-fetch: ^3.1.4
+  checksum: ab76eb2ae3ae785c5ead5b7ef224a5b0191739b5009d90b952b1b0e06d1d488c3e3d90e6faac0822e287ce5c5680c2f9bd5b26255de1d4c912ebd31ac8dfa895
   languageName: node
   linkType: hard
 
@@ -591,16 +590,6 @@ __metadata:
   version: 1.2.2
   resolution: "@types/minimist@npm:1.2.2"
   checksum: b8da83c66eb4aac0440e64674b19564d9d86c80ae273144db9681e5eeff66f238ade9515f5006ffbfa955ceff8b89ad2bd8ec577d7caee74ba101431fb07045d
-  languageName: node
-  linkType: hard
-
-"@types/node-fetch@npm:^2.5.12":
-  version: 2.5.12
-  resolution: "@types/node-fetch@npm:2.5.12"
-  dependencies:
-    "@types/node": "*"
-    form-data: ^3.0.0
-  checksum: ad63c85ba6a9477b8e057ec8682257738130d98e8ece4e31141789bd99df9d9147985cc8bc0cb5c8983ed5aa6bb95d46df23d1e055f4ad5cf8b82fc69cf626c7
   languageName: node
   linkType: hard
 
@@ -1016,7 +1005,7 @@ __metadata:
     "@sapphire/decorators": next
     "@sapphire/discord-utilities": ^2.1.5
     "@sapphire/discord.js-utilities": next
-    "@sapphire/fetch": ^1.0.5
+    "@sapphire/fetch": next
     "@sapphire/framework": next
     "@sapphire/type": ^2.0.11
     "@sapphire/utilities": ^2.0.1
@@ -1026,7 +1015,6 @@ __metadata:
     "@types/convict": ^6.1.1
     "@types/crypto-js": ^4
     "@types/node": ^16.4.13
-    "@types/node-fetch": ^2.5.12
     "@types/prettier": ^2
     all-contributors-cli: ^6.20.0
     app-root-path: ^3.0.0
@@ -1454,6 +1442,15 @@ __metadata:
     path-type: ^4.0.0
     yaml: ^1.10.0
   checksum: 6801feaa0249e9b9fdde5b3d70dc33b4f9c69095bec94d67e3fe08b66eac24dc7e2099f053597cfbc94b743de269aa5d2cfa7da3fde765433423b06bd122941a
+  languageName: node
+  linkType: hard
+
+"cross-fetch@npm:^3.1.4":
+  version: 3.1.4
+  resolution: "cross-fetch@npm:3.1.4"
+  dependencies:
+    node-fetch: 2.6.1
+  checksum: 2107e5e633aa327bdacab036b1907c7ddd28651ede0c1d4fd14db04510944d56849a8255e2f5b8f9a1da0e061b6cee943f6819fe29ed9a130195e7fadd82a4ff
   languageName: node
   linkType: hard
 
@@ -2281,17 +2278,6 @@ __metadata:
     debug:
       optional: true
   checksum: 7381a55bdc6951c5c1ab73a8da99d9fa4c0496ce72dba92cd2ac2babe0e3ebde9b81c5bca889498ad95984bc773d713284ca2bb17f1b1e1416e5f6531e39a488
-  languageName: node
-  linkType: hard
-
-"form-data@npm:^3.0.0":
-  version: 3.0.1
-  resolution: "form-data@npm:3.0.1"
-  dependencies:
-    asynckit: ^0.4.0
-    combined-stream: ^1.0.8
-    mime-types: ^2.1.12
-  checksum: b019e8d35c8afc14a2bd8a7a92fa4f525a4726b6d5a9740e8d2623c30e308fbb58dc8469f90415a856698933c8479b01646a9dff33c87cc4e76d72aedbbf860d
   languageName: node
   linkType: hard
 
@@ -3492,7 +3478,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-fetch@npm:^2.6.0, node-fetch@npm:^2.6.1":
+"node-fetch@npm:2.6.1, node-fetch@npm:^2.6.0, node-fetch@npm:^2.6.1":
   version: 2.6.1
   resolution: "node-fetch@npm:2.6.1"
   checksum: 91075bedd57879117e310fbcc36983ad5d699e522edb1ebcdc4ee5294c982843982652925c3532729fdc86b2d64a8a827797a745f332040d91823c8752ee4d7c
