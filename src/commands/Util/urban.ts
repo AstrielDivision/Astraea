@@ -26,6 +26,8 @@ export default class UrbanDictionary extends AstraeaCommand {
         `Author: ${word.author} | ID: ${word.defid} | Upvotes: ${word.thumbs_up} | Downvotes: ${word.thumbs_down}`
       )
 
-    return await message.channel.send(embed)
+    return await message.channel.send({
+      embeds: [embed]
+    })
   }
 }

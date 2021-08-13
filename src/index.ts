@@ -6,7 +6,8 @@ const client = new Client({
   defaultPrefix: cfg.prefix,
   caseInsensitivePrefixes: true,
   caseInsensitiveCommands: true,
-  logger: { instance: new Logger('Astraea') }
+  logger: { instance: new Logger('Astraea') },
+  intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_BANS', 'GUILD_WEBHOOKS']
 })
 
 void client.start()

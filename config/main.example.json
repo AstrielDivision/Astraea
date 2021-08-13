@@ -1,13 +1,7 @@
 {
   "token": "",
-  "webhook": {
-    "id": "",
-    "secret": ""
-  },
+  "webhook": "Discord Webhook URL",
   "prefix": "a/",
   "owners": [""],
-  "ksoft": "Get your token > https://api.ksoft.si/dashboard/",
-  "api": {
-    "port": 80
-  }
+  "ksoft": "Get your token > https://api.ksoft.si/dashboard/"
 }

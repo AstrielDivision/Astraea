@@ -8,7 +8,7 @@ export abstract class AstraeaRedditCommand extends AstraeaCommand {
   colour: ColorResolvable
   nsfw: boolean
   constructor(
-    { subreddit, nsfw, colour }: { subreddit: string, nsfw: boolean, colour: string },
+    { subreddit, nsfw, colour }: { subreddit: string, nsfw: boolean, colour: ColorResolvable },
     Context: PieceContext,
     options: AstraeaCommandOptions
   ) {
@@ -30,6 +30,6 @@ export abstract class AstraeaRedditCommand extends AstraeaCommand {
       .setTimestamp()
       .setImage(url)
       .setColor(this.colour)
-    return await message.channel.send(embed)
+    return await message.channel.send({ embeds: [embed] })
   }
 }

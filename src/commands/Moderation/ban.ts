@@ -1,6 +1,6 @@
 import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
 import { Message } from 'discord.js'
-import { ApplyOptions, RequiresPermissions } from '@sapphire/decorators'
+import { ApplyOptions, RequiresUserPermissions } from '@sapphire/decorators'
 import { Args } from '@sapphire/framework'
 
 @ApplyOptions<AstraeaCommandOptions>({
@@ -13,7 +13,7 @@ import { Args } from '@sapphire/framework'
   usage: '<@user | userID> [reason] [-s or --soft]'
 })
 export default class Ban extends AstraeaCommand {
-  @RequiresPermissions('BAN_MEMBERS')
+  @RequiresUserPermissions('BAN_MEMBERS')
   public async run(message: Message, args: Args): Promise<Message> {
     const member = (await args.pickResult('member')).value
     const reason = (await args.restResult('string')).value

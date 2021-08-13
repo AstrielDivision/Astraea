@@ -35,6 +35,6 @@ export default class About extends AstraeaCommand {
       .setTimestamp()
       .setThumbnail(this.container.client.user.avatarURL())
 
-    return await message.channel.send(embed)
+    return await message.channel.send({ embeds: [embed] })
   }
 }

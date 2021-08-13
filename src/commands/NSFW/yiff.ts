@@ -17,7 +17,9 @@ export default class YiffFloofyDev extends AstraeaCommand {
 
     const embed = new MessageEmbed().setImage(req.url).setColor('RANDOM')
 
-    return await message.channel.send(embed)
+    return await message.channel.send({
+      embeds: [embed]
+    })
   }
 }
 

@@ -86,11 +86,11 @@ export default class AstraeaLogger implements ILogger {
 
     if (level === 'CONSOLE') return
 
-    const hook = new WebhookClient(cfg.webhook.id, cfg.webhook.secret)
+    const hook = new WebhookClient({ url: cfg.webhook })
 
     const embed: MessageEmbed = new MessageEmbed()
       .setTimestamp()
-      .setColor('FFFF00')
+      .setColor('YELLOW')
       .setFooter(this.processTag)
       .setTitle('Log')
     const options: WebhookMessageOptions = {

@@ -22,6 +22,6 @@ export default class Cat extends AstraeaCommand {
       .setColor('WHITE')
       .setTimestamp()
       .setImage(url)
-    return await message.channel.send(embed)
+    return await message.channel.send({ embeds: [embed] })
   }
 }

@@ -11,6 +11,6 @@ import { AstraeaRedditCommand } from '../../lib/Structures/commands/RedditComman
 })
 export default class Femboy extends AstraeaRedditCommand {
   constructor(Context: PieceContext, options: AstraeaCommandOptions) {
-    super({ subreddit: 'femboys', nsfw: true, colour: 'PINK' }, Context, options)
+    super({ subreddit: 'femboys', nsfw: true, colour: 'DARK_VIVID_PINK' }, Context, options)
   }
 }

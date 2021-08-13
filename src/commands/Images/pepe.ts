@@ -19,9 +19,9 @@ export default class Fox extends AstraeaCommand {
       .setTitle('Pepe the Frog')
       .setFooter('Powered by api.ksoft.si')
       .setURL(url)
-      .setColor('BROWN')
+      .setColor('DARK_GREEN')
       .setTimestamp()
       .setImage(url)
-    return await message.channel.send(embed)
+    return await message.channel.send({ embeds: [embed] })
   }
 }

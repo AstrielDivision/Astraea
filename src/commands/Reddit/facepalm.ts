@@ -12,6 +12,6 @@ import { AstraeaRedditCommand } from '../../lib/Structures/commands/RedditComman
 })
 export default class FacePalm extends AstraeaRedditCommand {
   constructor(Context: PieceContext, options: AstraeaCommandOptions) {
-    super({ subreddit: 'facepalm', nsfw: false, colour: 'PINK' }, Context, options)
+    super({ subreddit: 'facepalm', nsfw: false, colour: 'DARK_VIVID_PINK' }, Context, options)
   }
 }

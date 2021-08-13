@@ -10,6 +10,6 @@ import { AstraeaRedditCommand } from '../../lib/Structures/commands/RedditComman
 })
 export default class Bondage extends AstraeaRedditCommand {
   constructor(Context: PieceContext, options: AstraeaCommandOptions) {
-    super({ subreddit: 'bondage', nsfw: true, colour: 'BLACK' }, Context, options)
+    super({ subreddit: 'bondage', nsfw: true, colour: 'DARK_BUT_NOT_BLACK' }, Context, options)
   }
 }

@@ -26,6 +26,8 @@ export default class Stats extends AstraeaCommand {
       )
       .setColor('YELLOW')
 
-    return await message.channel.send(embed)
+    return await message.channel.send({
+      embeds: [embed]
+    })
   }
 }

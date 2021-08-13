@@ -20,31 +20,35 @@ export default class Corona extends AstraeaCommand {
 
       embed.setTitle(`${res.country} COVID-19 Stats`)
       embed.addFields([
-        { name: 'Active Cases', value: res.active },
-        { name: 'Today Cases', value: res.todayCases },
-        { name: 'Cases Per Million', value: res.casesPerOneMillion },
-        { name: 'Deaths', value: res.deaths },
-        { name: 'Today Deaths', value: res.todayDeaths },
-        { name: 'Critical Cases', value: res.critical },
-        { name: 'Total Tests', value: res.tests },
-        { name: 'Tests Per Million', value: res.testsPerOneMillion }
+        { name: 'Active Cases', value: `${res.active}` },
+        { name: 'Today Cases', value: `${res.todayCases}` },
+        { name: 'Cases Per Million', value: `${res.casesPerOneMillion}` },
+        { name: 'Deaths', value: `${res.deaths}` },
+        { name: 'Today Deaths', value: `${res.todayDeaths}` },
+        { name: 'Critical Cases', value: `${res.critical}` },
+        { name: 'Total Tests', value: `${res.tests}` },
+        { name: 'Tests Per Million', value: `${res.testsPerOneMillion}` }
       ])
       embed.setThumbnail(res.countryInfo.flag)
 
-      return await message.channel.send(embed)
+      return await message.channel.send({
+        embeds: [embed]
+      })
     }
     const res = await CoronaFetch.all()
 
     embed.setTitle('Global COVID-19 Stats')
     embed.addFields([
-      { name: 'Active Cases', value: res.active },
-      { name: 'Today Cases', value: res.todayCases },
-      { name: 'Deaths', value: res.deaths },
-      { name: 'Today Deaths', value: res.todayDeaths },
-      { name: 'Critical Cases', value: res.critical },
-      { name: 'Affected Countries', value: res.affectedCountries }
+      { name: 'Active Cases', value: `${res.active}` },
+      { name: 'Today Cases', value: `${res.todayCases}` },
+      { name: 'Deaths', value: `${res.deaths}` },
+      { name: 'Today Deaths', value: `${res.todayDeaths}` },
+      { name: 'Critical Cases', value: `${res.critical}` },
+      { name: 'Affected Countries', value: `${res.affectedCountries}` }
     ])
 
-    return await message.channel.send(embed)
+    return await message.channel.send({
+      embeds: [embed]
+    })
   }
 }

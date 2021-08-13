@@ -7,13 +7,11 @@ import convict from 'convict'
 import { Snowflake } from 'discord.js'
 import { existsSync, readFileSync } from 'fs'
 import { join } from 'path'
+
 interface Configuration {
   version?: string | number
   token: string
-  webhook: {
-    id: Snowflake
-    secret: string
-  }
+  webhook: string
   ksoft: string
   prefix: string
   owners: Snowflake | Snowflake[]
@@ -68,15 +66,8 @@ const config = convict<Configuration>({
     default: ''
   },
   webhook: {
-    format: 'webhook',
-    id: {
-      format: String,
-      default: ''
-    },
-    secret: {
-      format: String,
-      default: ''
-    }
+    format: String,
+    default: ''
   },
   prefix: {
     format: String,
