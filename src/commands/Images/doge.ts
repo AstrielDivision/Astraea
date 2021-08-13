@@ -19,9 +19,9 @@ export default class DogeWow extends AstraeaCommand {
       .setTitle('Wow')
       .setFooter('Powered by api.ksoft.si')
       .setURL(url)
-      .setColor('BROWN')
+      .setColor('ORANGE')
       .setTimestamp()
       .setImage(url)
-    return await message.channel.send(embed)
+    return await message.channel.send({ embeds: [embed] })
   }
 }

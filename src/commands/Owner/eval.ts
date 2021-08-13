@@ -34,7 +34,8 @@ export default class extends AstraeaCommand {
     const typeFooter = `**Type**: ${codeBlock('typescript', type)}`
 
     if (output.length > 2000) {
-      return await message.channel.send(`Output was too long... sent the result as a file.\n\n${typeFooter}`, {
+      return await message.channel.send({
+        content: `Output was too long... sent the result as a file.\n\n${typeFooter}`,
         files: [{ attachment: Buffer.from(output), name: 'output.txt' }]
       })
     }

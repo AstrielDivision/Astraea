@@ -5,7 +5,7 @@ import { Image } from '@aero/ksoft'
 
 @ApplyOptions<AstraeaCommandOptions>({
   name: 'kappa',
-  description: 'Returns an image of a cat',
+  description: 'Returns an image of kappa',
   cooldownLimit: 3,
   cooldownDelay: 2000
 })
@@ -18,9 +18,9 @@ export default class Fox extends AstraeaCommand {
       .setTitle('Kappa lul')
       .setFooter('Powered by api.ksoft.si')
       .setURL(url)
-      .setColor('BROWN')
+      .setColor('NOT_QUITE_BLACK')
       .setTimestamp()
       .setImage(url)
-    return await message.channel.send(embed)
+    return await message.channel.send({ embeds: [embed] })
   }
 }

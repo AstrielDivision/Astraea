@@ -20,6 +20,6 @@ export default class Wikihow extends AstraeaCommand {
       .setColor('GREEN')
       .setTimestamp()
       .setImage(url)
-    return await message.channel.send(embed)
+    return await message.channel.send({ embeds: [embed] })
   }
 }

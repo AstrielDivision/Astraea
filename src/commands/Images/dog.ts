@@ -19,9 +19,9 @@ export default class Dog extends AstraeaCommand {
       .setTitle('Catt')
       .setFooter('Powered by api.ksoft.si')
       .setURL(url)
-      .setColor('BROWN')
+      .setColor('DARK_GREY')
       .setTimestamp()
       .setImage(url)
-    return await message.channel.send(embed)
+    return await message.channel.send({ embeds: [embed] })
   }
 }

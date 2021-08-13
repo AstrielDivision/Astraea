@@ -23,7 +23,7 @@ export default class DES extends AstraeaCommand {
       return await message.channel.send('No secret provided. (Hint: use --secret=<randomText> or -s=<randomText>)')
     }
 
-    if (message.guild.me.hasPermission(Permissions.FLAGS.MANAGE_MESSAGES)) void message.delete()
+    if (message.guild.me.permissions.has(Permissions.FLAGS.MANAGE_MESSAGES)) void message.delete()
 
     const result = decryptFlag ? this.decrypt(text, secret, tripleFlag) : this.encrypt(text, secret, tripleFlag)
 

@@ -13,7 +13,7 @@ import { Image } from '@aero/ksoft'
 export default class Aww extends AstraeaCommand {
   public async run(message: Message): Promise<Message> {
     const { url }: Image = await this.container.client.ksoft.images.aww()
-    const embed = new MessageEmbed().setFooter('Powered by api.ksoft.si').setTimestamp().setImage(url).setColor('PINK')
-    return await message.channel.send(embed)
+    const embed = new MessageEmbed().setFooter('Powered by api.ksoft.si').setTimestamp().setImage(url).setColor('AQUA')
+    return await message.channel.send({ embeds: [embed] })
   }
 }

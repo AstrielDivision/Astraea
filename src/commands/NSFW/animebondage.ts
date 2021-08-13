@@ -17,6 +17,8 @@ export default class AnimeBondage extends AstraeaCommand {
 
     const embed = new MessageEmbed().setTitle(':smirk: Bondage').setImage(res.url).setURL(res.url)
 
-    return await message.channel.send(embed)
+    return await message.channel.send({
+      embeds: [embed]
+    })
   }
 }

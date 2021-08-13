@@ -18,9 +18,9 @@ export default class BirbCommand extends AstraeaCommand {
     const embed = new MessageEmbed()
       .setFooter('Powered by api.ksoft.si')
       .setURL(url)
-      .setColor('LIME')
+      .setColor('DARK_GREEN')
       .setTimestamp()
       .setImage(url)
-    return await message.channel.send(embed)
+    return await message.channel.send({ embeds: [embed] })
   }
 }

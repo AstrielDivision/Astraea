@@ -22,7 +22,9 @@ export default class Ass extends AstraeaCommand {
       .setURL(url)
       .setTimestamp()
       .setImage(url)
-      .setColor('BLACK')
-    return await message.channel.send(embed)
+      .setColor('DARK_BUT_NOT_BLACK')
+    return await message.channel.send({
+      embeds: [embed]
+    })
   }
 }

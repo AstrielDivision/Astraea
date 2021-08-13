@@ -31,7 +31,7 @@ export default class Help extends AstraeaCommand {
       return await message.channel.send('Couldn\'t find that command!')
     }
     const embed = new MessageEmbed()
-      .setColor('dee29a')
+      .setColor('BLUE')
       .setFooter(
         `${message.author.tag} | Parameter Key: <> Required, [] Optional`,
         message.author.avatarURL({ dynamic: true })
@@ -51,7 +51,9 @@ export default class Help extends AstraeaCommand {
       embed.addField('Usage', `${cfg.prefix}${(command as AstraeaCommand).usage}`)
     }
 
-    return await message.channel.send(embed)
+    return await message.channel.send({
+      embeds: [embed]
+    })
   }
 
   private async commands(message: Message): Promise<Message> {
@@ -75,7 +77,7 @@ export default class Help extends AstraeaCommand {
           return
         }
         if (
-          !(message.member.hasPermission('BAN_MEMBERS') || message.member.hasPermission('KICK_MEMBERS')) &&
+          !(message.member.permissions.has('BAN_MEMBERS') || message.member.permissions.has('KICK_MEMBERS')) &&
           (cmd as AstraeaCommand).category === 'Moderation'
         ) {
           return
@@ -93,6 +95,8 @@ export default class Help extends AstraeaCommand {
       // embed.setThumbnail(message.author.avatarURL({ dynamic: true }))
       embed.setFooter(` - ${this.container.client.user.tag}`, this.container.client.user.avatarURL({ dynamic: true }))
     })
-    return await message.channel.send(embed)
+    return await message.channel.send({
+      embeds: [embed]
+    })
   }
 }

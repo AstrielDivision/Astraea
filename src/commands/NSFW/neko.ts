@@ -18,9 +18,11 @@ export default class Neko extends AstraeaCommand {
     const embed = new MessageEmbed()
       .setFooter('Powered by api.ksoft.si')
       .setURL(url)
-      .setColor('PINK')
+      .setColor('DARK_VIVID_PINK')
       .setTimestamp()
       .setImage(url)
-    return await message.channel.send(embed)
+    return await message.channel.send({
+      embeds: [embed]
+    })
   }
 }

@@ -24,7 +24,7 @@ export default class Rabbit extends AstraeaCommand {
       )
     }
 
-    if (message.guild.me.hasPermission(Permissions.FLAGS.MANAGE_MESSAGES)) void message.delete()
+    if (message.guild.me.permissions.has(Permissions.FLAGS.MANAGE_MESSAGES)) void message.delete()
 
     const result = decryptFlag ? this.decrypt(text, secret) : this.encrypt(text, secret)
 
