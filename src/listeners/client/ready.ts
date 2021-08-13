@@ -24,10 +24,14 @@ export default class Ready extends Listener {
   }
 
   public run(): void {
+    this.container.client.guilds.cache.map(async guild => {
+      if (guild.available) return await guild.members.fetch()
+    })
+
     this.printStoreDebugInformation()
     void this.container.client.statusUpdater.updateStatus()
     return this.container.logger.info(
-      `Ready! Logged in as ${this.container.client.user?.tag} serving ${this.container.client.guilds.cache.size} Guilds and ${this.container.client.users.cache.size} Users`
+      `Ready! Logged in as ${this.container.client.user?.tag} serving ${this.container.client.guilds.cache.size} Guilds`
     )
   }
 }

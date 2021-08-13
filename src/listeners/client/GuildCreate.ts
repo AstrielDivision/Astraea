@@ -7,6 +7,7 @@ import { Guild } from 'discord.js'
 })
 export default class GuildCreate extends Listener {
   public run(guild: Guild): void {
+    void guild.members.fetch()
     return this.container.logger.info(`Joined ${guild.name} (${guild.id})`)
   }
 }
