@@ -13,7 +13,7 @@ import { Args } from '@sapphire/framework'
   usage: '<amount>'
 })
 export default class Purge extends AstraeaCommand {
-  @RequiresUserPermissions('BAN_MEMBERS')
+  @RequiresUserPermissions('MANAGE_MESSAGES')
   // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
   public async run(message: Message, args: Args): Promise<void | Message> {
     const amount = (await args.pickResult('number')).value
