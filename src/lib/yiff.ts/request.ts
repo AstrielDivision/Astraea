@@ -6,8 +6,8 @@ export default async function request(options: Config): Promise<unknown> {
   switch (options.site) {
     case 'e621': {
       if (!options.limit) throw Error('No tags provided')
-      const res = await fetch(
-        `${c.defaults.killswitch}${c.killswitch.e621}?limit=${options.limit}&tags=${options.tags}&useragent${c.defaults.useragent}`,
+      const { posts }: { posts: Record<string, unknown> } = await fetch(
+        `https://e621.net/posts.json?tags=limit:${options.limit} order:random -young ${options.tags}`,
         {
           method: FetchMethods.Get,
           headers: {
@@ -16,11 +16,11 @@ export default async function request(options: Config): Promise<unknown> {
         },
         FetchResultTypes.JSON
       )
-      return res
+      return posts
     }
     case 'floofy': {
       const res = await fetch(
-        `${c.defaults.killswitch}${c.killswitch.floofy}`,
+        'https://api.floofy.dev/yiff',
         {
           method: FetchMethods.Get,
           headers: {
