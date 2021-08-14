@@ -13,6 +13,9 @@ declare module '@sapphire/framework' {
     // eslint-disable-next-line @typescript-eslint/method-signature-style
     console(...message: unknown[]): void
   }
+  interface Preconditions {
+    OwnerOnly: never
+  }
 }
 declare module 'discord.js' {
   interface ClientOptions extends SapphireClientOptions {}
