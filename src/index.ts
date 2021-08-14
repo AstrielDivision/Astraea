@@ -7,7 +7,7 @@ const client = new Client({
   caseInsensitivePrefixes: true,
   caseInsensitiveCommands: true,
   logger: { instance: new Logger('Astraea') },
-  intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_BANS', 'GUILD_WEBHOOKS', 'GUILD_MEMBERS']
+  intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_BANS', 'GUILD_WEBHOOKS', 'GUILD_MEMBERS', 'GUILD_MESSAGE_REACTIONS']
 })
 
 void client.start()

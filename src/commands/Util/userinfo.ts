@@ -10,7 +10,7 @@ import dayjs from 'dayjs'
   description: 'Fetch a discord user\'s info.',
   usage: '[userID | @user]'
 })
-export default class example extends AstraeaCommand {
+export default class UserInfo extends AstraeaCommand {
   public async run(message: Message, args: Args): Promise<Message> {
     const member = (await args.pickResult('member')).value
 
