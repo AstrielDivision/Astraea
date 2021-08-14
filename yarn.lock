@@ -572,7 +572,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/crypto-js@npm:^4":
+"@types/crypto-js@npm:^4.0.2":
   version: 4.0.2
   resolution: "@types/crypto-js@npm:4.0.2"
   checksum: b9d03b6cc1152f0c817b3555e0638d87b62dcc4edfd886d409b50aa68dbe3017727f8fed634b8b4b10b0796e0cdd35379c50abfb28d3226666fdc908844e5934
@@ -600,10 +600,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^16.4.13":
-  version: 16.4.13
-  resolution: "@types/node@npm:16.4.13"
-  checksum: 071e86a1d196cf72928a7109e99769dffed93db481032b9ca2f52e6f3ced432e2a179849c85e587e67409202e1ed37bffd0c7a31d38adf35a385d327dfe8bd72
+"@types/node@npm:^16.6.1":
+  version: 16.6.1
+  resolution: "@types/node@npm:16.6.1"
+  checksum: c13aa0da0c2bf9070e521d1b537ba38f64b213dd1b8aeec66c279fc21f8c0ccaf380364f6dc2ec8f84440c4cd1460b67dfe47de2cafcb6eaf4b648817cb27dc4
   languageName: node
   linkType: hard
 
@@ -621,7 +621,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/prettier@npm:^2":
+"@types/prettier@npm:^2.3.2":
   version: 2.3.2
   resolution: "@types/prettier@npm:2.3.2"
   checksum: c4313e16650811f47b07a0fa7ac0742e966f61283a7292eb667fd4626d760bf3b7d896be3eaabb3354ad45fdbe3a340299b018dd3bcce1ff753d030a8cd2479c
@@ -1013,9 +1013,9 @@ __metadata:
     "@tmware/status-rotate": ^1.2.8
     "@types/app-root-path": ^1.2.4
     "@types/convict": ^6.1.1
-    "@types/crypto-js": ^4
-    "@types/node": ^16.4.13
-    "@types/prettier": ^2
+    "@types/crypto-js": ^4.0.2
+    "@types/node": ^16.6.1
+    "@types/prettier": ^2.3.2
     all-contributors-cli: ^6.20.0
     app-root-path: ^3.0.0
     bufferutil: ^4.0.3
