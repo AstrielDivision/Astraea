@@ -1,4 +1,4 @@
-import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
+import { AstraeaCommand, AstraeaCommandOptions } from '#lib/Structures/BaseCommand'
 import { ApplyOptions } from '@sapphire/decorators'
 import { Message, MessageEmbed } from 'discord.js'
 import { WikiHowImage } from '@aero/ksoft'

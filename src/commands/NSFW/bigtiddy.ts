@@ -1,7 +1,7 @@
 import { ApplyOptions } from '@sapphire/decorators'
 import { PieceContext } from '@sapphire/framework'
-import { AstraeaCommandOptions } from '../../lib/Structures/Command'
-import { AstraeaRedditCommand } from '../../lib/Structures/commands/RedditCommand'
+import { AstraeaCommandOptions } from '#lib/Structures/BaseCommand'
+import { AstraeaRedditCommand } from '#lib/Structures/commands/RedditCommand'
 
 @ApplyOptions<AstraeaCommandOptions>({
   name: 'bigtiddy',

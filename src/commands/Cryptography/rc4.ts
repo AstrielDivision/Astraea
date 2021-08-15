@@ -2,7 +2,7 @@ import { ApplyOptions } from '@sapphire/decorators'
 import { Args } from '@sapphire/framework'
 import crypto from 'crypto-js'
 import { Message, Permissions } from 'discord.js'
-import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
+import { AstraeaCommand, AstraeaCommandOptions } from '#lib/Structures/BaseCommand'
 
 @ApplyOptions<AstraeaCommandOptions>({
   name: 'rc4',

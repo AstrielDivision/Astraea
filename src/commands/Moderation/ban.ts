@@ -1,4 +1,4 @@
-import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
+import { AstraeaCommand, AstraeaCommandOptions } from '#lib/Structures/BaseCommand'
 import { Message } from 'discord.js'
 import { ApplyOptions, RequiresUserPermissions } from '@sapphire/decorators'
 import { Args } from '@sapphire/framework'

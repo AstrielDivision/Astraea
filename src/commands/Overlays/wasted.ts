@@ -1,7 +1,7 @@
 import { ApplyOptions } from '@sapphire/decorators'
 import { PieceContext } from '@sapphire/framework'
-import { AstraeaCommandOptions } from '../../lib/Structures/Command'
-import { AstraeaOverlayCommand } from '../../lib/Structures/commands/CanvasCommand'
+import { AstraeaCommandOptions } from '#lib/Structures/BaseCommand'
+import { AstraeaOverlayCommand } from '#lib/Structures/commands/CanvasCommand'
 
 @ApplyOptions<AstraeaCommandOptions>({
   name: 'wasted',

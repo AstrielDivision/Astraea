@@ -1,6 +1,6 @@
 import { ApplyOptions } from '@sapphire/decorators'
 import { Args } from '@sapphire/framework'
-import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
+import { AstraeaCommand, AstraeaCommandOptions } from '#lib/Structures/BaseCommand'
 import { Type } from '@sapphire/type'
 import { codeBlock, isThenable } from '@sapphire/utilities'
 import type { Message } from 'discord.js'
