@@ -1,5 +1,5 @@
 import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
-import { Message, MessageEmbed } from 'discord.js'
+import { ColorResolvable, Message, MessageEmbed } from 'discord.js'
 import { ApplyOptions } from '@sapphire/decorators'
 import { Args } from '@sapphire/framework'
 import { FetchResultTypes } from '@sapphire/fetch'
@@ -15,13 +15,26 @@ export default class MDN extends AstraeaCommand {
 
     if (!query) return await message.channel.send('I cannot search for nothing in the MDN Docs!')
 
-    const res = await this.container.client.util.fetch(
-      `https://mdn.gideonbot.com/embed?q=${query}`,
-      FetchResultTypes.JSON
+    const embed = new MessageEmbed(
+      await this.container.client.util.fetch<MDNResponse>(
+        `https://mdn.gideonbot.com/embed?q=${query}`,
+        FetchResultTypes.JSON
+      )
     )
-
-    const embed = new MessageEmbed(res)
 
     return await message.channel.send({ embeds: [embed] })
   }
+}
+
+interface MDNResponse {
+  color: ColorResolvable
+  title: string
+  url: string
+  author: {
+    name: string
+  }
+  icon_url: {
+    url: string
+  }
+  description: string
 }
