@@ -1,19 +1,17 @@
-import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
-import { Message } from 'discord.js'
+import { AstraeaCommand, AstraeaCommandOptions } from '#lib/Structures/BaseCommand'
+import type { Message } from 'discord.js'
 import { ApplyOptions } from '@sapphire/decorators'
-import { Args } from '@sapphire/framework'
+import type { Args } from '@sapphire/framework'
 
 @ApplyOptions<AstraeaCommandOptions>({
   name: 'stores',
   description: 'Enable or disable certain stores',
   flags: ['c', 'command', 'listener', 'l'],
-  usage: '<Store> [--command or -c | --listener or -l]'
+  usage: '<Store> [--command or -c | --listener or -l]',
+  preconditions: ['OwnerOnly']
 })
 export default class Enable extends AstraeaCommand {
   public async run(message: Message, args: Args): Promise<Message> {
-    if (!this.container.client.util.isOwner(message.author.id)) {
-      return await message.channel.send('You are not permitted to execute this command')
-    }
     const store = (await args.pickResult('string')).value
     const commandFlag = args.getFlags('c', 'command')
     const listenerFlag = args.getFlags('l', 'listener')

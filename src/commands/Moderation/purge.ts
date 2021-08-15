@@ -1,7 +1,7 @@
-import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
-import { Message, TextChannel } from 'discord.js'
+import { AstraeaCommand, AstraeaCommandOptions } from '#lib/Structures/BaseCommand'
+import type { Message, TextChannel } from 'discord.js'
 import { ApplyOptions, RequiresUserPermissions } from '@sapphire/decorators'
-import { Args } from '@sapphire/framework'
+import type { Args } from '@sapphire/framework'
 
 @ApplyOptions<AstraeaCommandOptions>({
   name: 'purge',
@@ -20,7 +20,6 @@ export default class Purge extends AstraeaCommand {
 
     if (!amount) return await message.channel.send('You didn\'t provide an amount!')
     if (amount > 100) return await message.channel.send('I can only purge 100 messages!')
-    if (amount < 1) return await message.channel.send('I can\'t just delete nothing :\\')
 
     await (message.channel as TextChannel).bulkDelete(amount + 1, true)
 

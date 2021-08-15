@@ -3,10 +3,10 @@
  * Licensed under the MIT License.
  */
 import { ApplyOptions } from '@sapphire/decorators'
-import { Args, Command } from '@sapphire/framework'
+import type { Args, Command } from '@sapphire/framework'
 import { Message, MessageEmbed, TextChannel } from 'discord.js'
 import cfg from '../../config'
-import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
+import { AstraeaCommand, AstraeaCommandOptions } from '#lib/Structures/BaseCommand'
 
 @ApplyOptions<AstraeaCommandOptions>({
   name: 'help',

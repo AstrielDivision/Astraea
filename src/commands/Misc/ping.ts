@@ -1,5 +1,5 @@
-import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
-import { Message } from 'discord.js'
+import { AstraeaCommand, AstraeaCommandOptions } from '#lib/Structures/BaseCommand'
+import type { Message } from 'discord.js'
 import { ApplyOptions } from '@sapphire/decorators'
 
 @ApplyOptions<AstraeaCommandOptions>({

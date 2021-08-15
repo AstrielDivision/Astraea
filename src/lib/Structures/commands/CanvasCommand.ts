@@ -1,4 +1,4 @@
-import { Args, PieceContext } from '@sapphire/framework'
+import type { Args, PieceContext } from '@sapphire/framework'
 import { Message, MessageAttachment } from 'discord.js'
 import canvas from '../../Canvas-SRA/requests'
 import { AstraeaCommand, AstraeaCommandOptions } from '../Command'
@@ -29,7 +29,7 @@ export abstract class AstraeaOverlayCommand extends AstraeaCommand {
       return await wait.delete()
     }
 
-    buffer = await canvas(this.overlay, message.author.avatarURL({ format: 'png', size: 256 }))
+    buffer = await canvas(this.overlay, message.member?.user.displayAvatarURL({ format: 'png', size: 256 }))
 
     const image = new MessageAttachment(buffer, 'img.png')
 

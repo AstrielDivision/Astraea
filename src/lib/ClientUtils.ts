@@ -1,8 +1,8 @@
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch'
-import { Guild, Snowflake, User } from 'discord.js'
-import { URL } from 'url'
+import type { Guild, Snowflake, User } from 'discord.js'
+import type { URL } from 'url'
 import cfg, { pkg } from '../config'
-import Client from './Structures/client'
+import type Client from './Structures/client'
 
 const userAgent = `Astraea/v${pkg.version} (github.com/AstraeaStudios/Astraea)`
 

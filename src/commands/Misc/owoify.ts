@@ -1,7 +1,7 @@
-import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
-import { Message } from 'discord.js'
+import { AstraeaCommand, AstraeaCommandOptions } from '#lib/Structures/BaseCommand'
+import type { Message } from 'discord.js'
 import { ApplyOptions } from '@sapphire/decorators'
-import { Args } from '@sapphire/framework'
+import type { Args } from '@sapphire/framework'
 import owoify from 'owofire'
 
 @ApplyOptions<AstraeaCommandOptions>({

@@ -1,7 +1,7 @@
-import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
+import { AstraeaCommand, AstraeaCommandOptions } from '#lib/Structures/BaseCommand'
 import { ApplyOptions } from '@sapphire/decorators'
 import { Message, MessageEmbed } from 'discord.js'
-import { Image } from '@aero/ksoft'
+import type { Image } from '@aero/ksoft'
 
 @ApplyOptions<AstraeaCommandOptions>({
   name: 'neko',

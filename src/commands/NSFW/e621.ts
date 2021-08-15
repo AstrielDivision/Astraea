@@ -1,8 +1,8 @@
-import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
+import { AstraeaCommand, AstraeaCommandOptions } from '#lib/Structures/BaseCommand'
 import { ApplyOptions } from '@sapphire/decorators'
 import { Message, MessageEmbed } from 'discord.js'
 import Yiff from '../../lib/yiff.ts/Yiff'
-import { Args } from '@sapphire/framework'
+import type { Args } from '@sapphire/framework'
 
 @ApplyOptions<AstraeaCommandOptions>({
   name: 'e621',

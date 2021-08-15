@@ -6,7 +6,6 @@ export default {
     floofy: '/floofydev'
   },
   defaults: {
-    killswitch: 'https://killswitch-artiefuzzz.cloud.okteto.net',
     useragent: `Astraea/v${pkg.version} (github.com/AstraeaStudios/Astraea)`
   }
 }

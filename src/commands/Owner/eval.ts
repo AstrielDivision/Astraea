@@ -1,6 +1,6 @@
 import { ApplyOptions } from '@sapphire/decorators'
-import { Args } from '@sapphire/framework'
-import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
+import type { Args } from '@sapphire/framework'
+import { AstraeaCommand, AstraeaCommandOptions } from '#lib/Structures/BaseCommand'
 import { Type } from '@sapphire/type'
 import { codeBlock, isThenable } from '@sapphire/utilities'
 import type { Message } from 'discord.js'
@@ -13,14 +13,14 @@ import { inspect } from 'util'
   quotes: [],
   flags: ['async', 'hidden', 'showHidden', 'silent', 's'],
   options: ['depth'],
-  usage: '<expression | JavaScript> [--async, --hidden | --showhidden, --silent | -s]'
+  usage: '<expression | JavaScript> [--async, --hidden | --showhidden, --silent | -s]',
+  preconditions: ['OwnerOnly']
 })
 export default class extends AstraeaCommand {
   public async run(message: Message, args: Args): Promise<Message> {
-    if (!this.container.client.util.isOwner(message.author.id)) {
-      return await message.channel.send('You are not permitted to execute this command')
-    }
-    const code = await args.rest('string')
+    const code = (await args.restResult('string')).value
+
+    if (!code) return await message.channel.send('I cannot evaluate nothingness!')
 
     const { result, success, type } = await this.eval(message, code, {
       async: args.getFlags('async'),
@@ -44,13 +44,11 @@ export default class extends AstraeaCommand {
   }
 
   private async eval(
-    message: Message,
+    _message: Message,
     code: string,
     flags: { async: boolean, depth: number, showHidden: boolean }
   ): Promise<{ result: string, success: boolean, type: string }> {
     if (flags.async) code = `(async () => {\n${code}\n})();`
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
-    const msg = message
 
     let success = true
     let result = null

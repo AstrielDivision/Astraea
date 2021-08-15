@@ -1,7 +1,7 @@
-import { AstraeaCommand, AstraeaCommandOptions } from '../../lib/Structures/Command'
+import { AstraeaCommand, AstraeaCommandOptions } from '#lib/Structures/BaseCommand'
 import { Message, MessageEmbed } from 'discord.js'
 import { ApplyOptions } from '@sapphire/decorators'
-import { Args } from '@sapphire/framework'
+import type { Args } from '@sapphire/framework'
 import Urban from '../../lib/UrbanFetch'
 
 @ApplyOptions<AstraeaCommandOptions>({
