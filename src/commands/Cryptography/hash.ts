@@ -1,7 +1,7 @@
 import { ApplyOptions } from '@sapphire/decorators'
-import { Args } from '@sapphire/framework'
+import type { Args } from '@sapphire/framework'
 import * as crypto from 'crypto'
-import { Message } from 'discord.js'
+import type { Message } from 'discord.js'
 import { AstraeaCommand, AstraeaCommandOptions } from '#lib/Structures/BaseCommand'
 import cryptoJS from 'crypto-js'
 

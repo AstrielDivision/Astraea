@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import request from './request'
-import { All, Country } from './types'
+import type { All, Country } from './types'
 
 class CoronaFetch {
   public async all(): Promise<All> {

@@ -1,5 +1,5 @@
 import { Precondition, PreconditionResult } from '@sapphire/framework'
-import { Message } from 'discord.js'
+import type { Message } from 'discord.js'
 import cfg from '../config'
 
 export default class OwnerOnly extends Precondition {

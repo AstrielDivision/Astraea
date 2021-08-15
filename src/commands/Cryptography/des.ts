@@ -1,5 +1,5 @@
 import { ApplyOptions } from '@sapphire/decorators'
-import { Args } from '@sapphire/framework'
+import type { Args } from '@sapphire/framework'
 import crypto from 'crypto-js'
 import { Message, Permissions } from 'discord.js'
 import { AstraeaCommand, AstraeaCommandOptions } from '#lib/Structures/BaseCommand'

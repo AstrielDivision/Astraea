@@ -1,5 +1,5 @@
-import { RedditImage } from '@aero/ksoft'
-import { PieceContext } from '@sapphire/framework'
+import type { RedditImage } from '@aero/ksoft'
+import type { PieceContext } from '@sapphire/framework'
 import { ColorResolvable, Message, MessageEmbed } from 'discord.js'
 import { AstraeaCommand, AstraeaCommandOptions } from '../Command'
 

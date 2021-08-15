@@ -1,4 +1,4 @@
-import { ILogger, LogLevel } from '@sapphire/framework'
+import type { ILogger, LogLevel } from '@sapphire/framework'
 import { MessageAttachment, WebhookClient, WebhookMessageOptions, MessageEmbed } from 'discord.js'
 import { EOL } from 'os'
 import cfg from '../../config'

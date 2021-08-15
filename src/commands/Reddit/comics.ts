@@ -1,6 +1,6 @@
 import { ApplyOptions } from '@sapphire/decorators'
-import { PieceContext } from '@sapphire/framework'
-import { AstraeaCommandOptions } from '#lib/Structures/BaseCommand'
+import type { PieceContext } from '@sapphire/framework'
+import type { AstraeaCommandOptions } from '#lib/Structures/BaseCommand'
 import { AstraeaRedditCommand } from '#lib/Structures/commands/RedditCommand'
 
 @ApplyOptions<AstraeaCommandOptions>({

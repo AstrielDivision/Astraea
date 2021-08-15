@@ -3,7 +3,7 @@ import { KSoftClient } from '@aero/ksoft'
 import StatusUpdater from '@tmware/status-rotate'
 import ClientUtils from '../ClientUtils'
 import cfg from '../../config'
-import { ClientOptions } from 'discord.js'
+import type { ClientOptions } from 'discord.js'
 
 export default class Client extends SapphireClient {
   ksoft: KSoftClient

@@ -1,7 +1,7 @@
 import { AstraeaCommand, AstraeaCommandOptions } from '#lib/Structures/BaseCommand'
 import { Message, MessageEmbed } from 'discord.js'
 import { ApplyOptions } from '@sapphire/decorators'
-import { Args } from '@sapphire/framework'
+import type { Args } from '@sapphire/framework'
 import CoronaFetch from '../../lib/corona-fetch/corona'
 
 @ApplyOptions<AstraeaCommandOptions>({

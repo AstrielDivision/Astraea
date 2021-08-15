@@ -1,7 +1,7 @@
 import { AstraeaCommand, AstraeaCommandOptions } from '#lib/Structures/BaseCommand'
 import { Message, GuildMember, MessageEmbed } from 'discord.js'
 import { ApplyOptions } from '@sapphire/decorators'
-import { Args } from '@sapphire/framework'
+import type { Args } from '@sapphire/framework'
 import dayjs from 'dayjs'
 
 @ApplyOptions<AstraeaCommandOptions>({

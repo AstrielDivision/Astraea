@@ -1,7 +1,7 @@
 import { AstraeaCommand, AstraeaCommandOptions } from '#lib/Structures/BaseCommand'
-import { Message } from 'discord.js'
+import type { Message } from 'discord.js'
 import { ApplyOptions, RequiresUserPermissions } from '@sapphire/decorators'
-import { Args } from '@sapphire/framework'
+import type { Args } from '@sapphire/framework'
 
 @ApplyOptions<AstraeaCommandOptions>({
   name: 'kick',

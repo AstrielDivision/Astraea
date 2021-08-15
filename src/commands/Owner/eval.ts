@@ -1,5 +1,5 @@
 import { ApplyOptions } from '@sapphire/decorators'
-import { Args } from '@sapphire/framework'
+import type { Args } from '@sapphire/framework'
 import { AstraeaCommand, AstraeaCommandOptions } from '#lib/Structures/BaseCommand'
 import { Type } from '@sapphire/type'
 import { codeBlock, isThenable } from '@sapphire/utilities'
@@ -44,13 +44,11 @@ export default class extends AstraeaCommand {
   }
 
   private async eval(
-    message: Message,
+    _message: Message,
     code: string,
     flags: { async: boolean, depth: number, showHidden: boolean }
   ): Promise<{ result: string, success: boolean, type: string }> {
     if (flags.async) code = `(async () => {\n${code}\n})();`
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
-    const msg = message
 
     let success = true
     let result = null

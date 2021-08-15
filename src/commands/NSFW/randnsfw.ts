@@ -1,7 +1,7 @@
 import { AstraeaCommand, AstraeaCommandOptions } from '#lib/Structures/BaseCommand'
 import { ApplyOptions } from '@sapphire/decorators'
 import { Message, MessageEmbed } from 'discord.js'
-import { RedditImage } from '@aero/ksoft'
+import type { RedditImage } from '@aero/ksoft'
 
 @ApplyOptions<AstraeaCommandOptions>({
   name: 'randnsfw',

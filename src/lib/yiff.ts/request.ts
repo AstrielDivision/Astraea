@@ -1,6 +1,6 @@
 import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch'
 import c from './constants'
-import { Config } from './types'
+import type { Config } from './types'
 
 export default async function request(options: Config): Promise<unknown> {
   switch (options.site) {
