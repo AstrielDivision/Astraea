@@ -2,6 +2,7 @@ import { fetch, FetchMethods, FetchResultTypes } from '@sapphire/fetch'
 import type Client from 'lib/Structures/client'
 import c from './constants'
 import type { Config } from './types'
+import cfg from '../../config'
 
 export default async function request(client: Client, options: Config): Promise<unknown> {
   switch (options.site) {
@@ -13,7 +14,10 @@ export default async function request(client: Client, options: Config): Promise<
           method: FetchMethods.Get,
           headers: {
             'User-Agent': `${c.defaults.useragent} [ID: ${client.id}]`,
-            Authorization: options?.apiKey ? options?.apiKey : ''
+            authorization:
+              cfg.e621?.username && cfg.e621?.api_key
+                ? `Basic ${Buffer.from(`${cfg.e621?.username}:${cfg.e621.api_key}`, 'base64').toString()}`
+                : ''
           }
         },
         FetchResultTypes.JSON
