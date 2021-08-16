@@ -5,6 +5,7 @@ import { Type } from '@sapphire/type'
 import { codeBlock, isThenable } from '@sapphire/utilities'
 import type { Message } from 'discord.js'
 import { inspect } from 'util'
+import { FetchResultTypes, FetchMethods, fetch } from '@sapphire/fetch'
 
 @ApplyOptions<AstraeaCommandOptions>({
   name: 'eval',
@@ -34,10 +35,21 @@ export default class extends AstraeaCommand {
     const typeFooter = `**Type**: ${codeBlock('typescript', type)}`
 
     if (output.length > 2000) {
-      return await message.channel.send({
-        content: `Output was too long... sent the result as a file.\n\n${typeFooter}`,
-        files: [{ attachment: Buffer.from(output), name: 'output.txt' }]
-      })
+      const { payload } = await fetch<SpaceBinResponse>(
+        'https://spaceb.in/api/v1/documents',
+        {
+          method: FetchMethods.Post,
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            content: result,
+            extension: 'js'
+          })
+        },
+        FetchResultTypes.JSON
+      )
+      return await message.channel.send(`The output was too long! https://spaceb.in/${payload.id}`)
     }
 
     return await message.channel.send(`${output}\n${typeFooter}`)
@@ -77,4 +89,13 @@ export default class extends AstraeaCommand {
 
     return { result, success, type }
   }
+}
+
+interface SpaceBinResponse {
+  error: string
+  payload: {
+    content_hash: string
+    id: string
+  }
+  status: number
 }
