@@ -2,7 +2,7 @@ import { KSoftClient } from '@aero/ksoft'
 import StatusUpdater from '@tmware/status-rotate'
 import ClientUtils from './ClientUtils'
 import { SapphireClientOptions } from '@sapphire/framework'
-import Yiff from './yiff.ts/Yiff'
+import Yiff from './yiff.ts/index'
 
 declare module '@sapphire/framework' {
   interface SapphireClient {
