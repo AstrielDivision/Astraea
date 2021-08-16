@@ -3,5 +3,6 @@
   "webhook": "Discord Webhook URL",
   "prefix": "a/",
   "owners": [""],
-  "ksoft": "Get your token > https://api.ksoft.si/dashboard/"
+  "ksoft": "Get your token > https://api.ksoft.si/dashboard/",
+  "e6token": "This is optional"
 }
