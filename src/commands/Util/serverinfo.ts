@@ -26,6 +26,8 @@ export default class example extends AstraeaCommand {
         { name: 'Owner', value: `<@!${(await guild.fetchOwner()).id}>`, inline: true },
         { name: 'Channels', value: guild.channels.cache.size.toString(), inline: true },
         { name: 'Member Count', value: guild.memberCount.toString(), inline: true },
+        { name: 'Human Members', value: guild.members.cache.filter(member => !member.user.bot).size.toString() },
+        { name: 'Verification Level', value: verificationLevels[guild.verificationLevel], inline: true },
         { name: 'Created At', value: dayjs(guild.createdTimestamp).format('MM/DD/YYYY'), inline: true },
         {
           name: `Roles (${guild.roles.cache.size})`,
@@ -47,4 +49,12 @@ export default class example extends AstraeaCommand {
 
     return arr
   }
+}
+
+const verificationLevels = {
+  NONE: 'None',
+  LOW: 'Low',
+  MEDIUM: 'Medium',
+  HIGH: '(╯°□°）╯︵ ┻━┻',
+  VERY_HIGH: '┻━┻ ︵ヽ(`□´)ﾉ︵ ┻━┻'
 }
