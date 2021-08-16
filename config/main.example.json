@@ -4,5 +4,8 @@
   "prefix": "a/",
   "owners": [""],
   "ksoft": "Get your token > https://api.ksoft.si/dashboard/",
-  "e6token": "This is optional"
+  "e621": {
+    "username": "Username",
+    "api_key": "api_key"
+  }
 }
