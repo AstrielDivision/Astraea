@@ -1,5 +1,5 @@
 import { AstraeaCommand, AstraeaCommandOptions } from '#lib/Structures/BaseCommand'
-import { Message, MessageEmbed } from 'discord.js'
+import { Message, MessageEmbed, Permissions } from 'discord.js'
 import { ApplyOptions, RequiresUserPermissions } from '@sapphire/decorators'
 import type { Args } from '@sapphire/framework'
 
@@ -19,6 +19,8 @@ export default class Poll extends AstraeaCommand {
       .setTitle('Poll!')
       .setFooter(message.author.tag, message.author.avatarURL({ dynamic: true }))
       .setDescription(description)
+
+    if (message.guild.me.permissions.has(Permissions.FLAGS.MANAGE_MESSAGES)) await message.delete()
 
     return await message.channel.send({ embeds: [embed] }).then(m => {
       void m.react('👍')
