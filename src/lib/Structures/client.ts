@@ -4,16 +4,19 @@ import StatusUpdater from '@tmware/status-rotate'
 import ClientUtils from '../ClientUtils'
 import cfg from '../../config'
 import type { ClientOptions } from 'discord.js'
+import Yiff from '#lib/yiff.ts/index'
 
 export default class Client extends SapphireClient {
   ksoft: KSoftClient
   statusUpdater: StatusUpdater
   util: ClientUtils
+  Yiff: Yiff
   constructor(options: ClientOptions) {
     super(options)
 
     this.ksoft = new KSoftClient(cfg.ksoft)
     this.util = new ClientUtils(this)
+    this.Yiff = new Yiff(this)
     this.statusUpdater = new StatusUpdater(this, [
       {
         type: 'LISTENING',

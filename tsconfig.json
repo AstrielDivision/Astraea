@@ -26,7 +26,8 @@
     "paths": {
       "#lib/Structures/BaseCommand": ["lib/Structures/Command.ts"],
       "#lib/Structures/commands/CanvasCommand": ["lib/Structures/commands/CanvasCommand.ts"],
-      "#lib/Structures/commands/RedditCommand": ["lib/Structures/commands/RedditCommand.ts"]
+      "#lib/Structures/commands/RedditCommand": ["lib/Structures/commands/RedditCommand.ts"],
+      "#lib/*": ["lib/*"]
     }
   },
   "exclude": ["node_modules"],

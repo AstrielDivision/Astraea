@@ -3,4 +3,5 @@ export interface Config {
   site: Sites
   tags?: string
   limit?: number
+  apiKey?: string
 }

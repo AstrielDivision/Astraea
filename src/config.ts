@@ -15,6 +15,7 @@ interface Configuration {
   ksoft: string
   prefix: string
   owners: Snowflake | Snowflake[]
+  e6token?: string
 }
 
 export interface PackageJson {
@@ -79,6 +80,10 @@ const config = convict<Configuration>({
     default: []
   },
   ksoft: {
+    format: String,
+    default: ''
+  },
+  e6token: {
     format: String,
     default: ''
   }
