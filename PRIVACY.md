@@ -1,4 +1,4 @@
-# Privacy Policy of Astraea
+# Privacy Policy
 
 ## Application Detail
 
