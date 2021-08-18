@@ -1,5 +1,6 @@
 name: astraea
-image: node:alpine
+command: sh
 sync:
-  - .:/Astraea/opt
-command: yarn && yarn build && yarn dlx pm2 start .
+- .:/opt/Astraea/build
+forward:
+- 9229:9229
