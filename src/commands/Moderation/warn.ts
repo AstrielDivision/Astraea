@@ -24,8 +24,9 @@ export default class Warn extends AstraeaCommand {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   private async Warn(message: Message, moderator: User, user: User, case_reason?: string): Promise<Message> {
     const Warn = await new CaseModel({
-      moderator: moderator.tag,
-      user: user.tag,
+      moderator: moderator.username,
+      moderator_id: moderator.id,
+      user: user.username,
       user_id: user.id,
       guild: message.guild.id,
       case_reason: case_reason
