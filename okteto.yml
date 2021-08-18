@@ -1,5 +1,0 @@
-name: astraea
-image: node:alpine
-sync:
-  - .:/Astraea/opt
-command: yarn && yarn build && yarn dlx pm2 start .
