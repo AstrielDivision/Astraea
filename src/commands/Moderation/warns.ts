@@ -26,9 +26,10 @@ export default class Warns extends AstraeaCommand {
 
       const embed = new MessageEmbed()
         .setTitle(`Case ${c.case_id}`)
-        .addField('Warned User ID', c.user_id, true)
-        .addField('Reason', c.case_reason, true)
+        .addField('User ID', c.user_id, true)
+        .addField('Moderator ID', c.moderator_id, true)
         .addField('Moderator', c.moderator, true)
+        .addField('Reason', c.case_reason, true)
         .addField('Pardoned?', c.pardoned ? 'Yes' : 'No')
 
       return await message.channel.send({ embeds: [embed] })
