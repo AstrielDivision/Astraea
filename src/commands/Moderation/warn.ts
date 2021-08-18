@@ -12,12 +12,13 @@ import CaseModel from '#lib/Models/WarnCase'
 export default class Warn extends AstraeaCommand {
   @RequiresUserPermissions('BAN_MEMBERS' || 'KICK_MEMBERS')
   public async run(message: Message, args: Args): Promise<Message> {
-    const user = (await args.pickResult('member')).value
+    const { user } = (await args.pickResult('member')).value
     const reason = (await args.restResult('string')).value
 
     if (!user) return await message.channel.send('You didn\'t provide a user!')
+    if (user.id === message.author.id) return await message.channel.send('You can\'t warn yourself!')
 
-    return await this.Warn(message, message.author, user.user, reason)
+    return await this.Warn(message, message.author, user, reason)
   }
 
   // eslint-disable-next-line @typescript-eslint/naming-convention
