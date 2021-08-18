@@ -22,7 +22,7 @@ export default class UserInfo extends AstraeaCommand {
     const isBot = member.user.bot
 
     const embed = new MessageEmbed()
-      .setTitle(`${member.user.tag}'s Info`)
+      .setTitle(`<@${member.user.id}>'s Info`)
       .setColor('BLURPLE')
       .setTimestamp()
       .setThumbnail(member.user.avatarURL({ dynamic: true }))
