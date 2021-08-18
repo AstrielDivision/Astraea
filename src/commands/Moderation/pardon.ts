@@ -1,6 +1,6 @@
 import { AstraeaCommand, AstraeaCommandOptions } from '#lib/Structures/BaseCommand'
 import type { Guild, Message, User } from 'discord.js'
-import { ApplyOptions } from '@sapphire/decorators'
+import { ApplyOptions, RequiresUserPermissions } from '@sapphire/decorators'
 import type { Args } from '@sapphire/framework'
 import CaseModel from '#lib/Models/WarnCase'
 
@@ -9,6 +9,7 @@ import CaseModel from '#lib/Models/WarnCase'
   usage: '<@user | userID> <caseID>'
 })
 export default class Pardon extends AstraeaCommand {
+  @RequiresUserPermissions('BAN_MEMBERS' || 'KICK_MEMBERS')
   public async run(message: Message, args: Args): Promise<Message> {
     const { user } = (await args.pickResult('member')).value
     const caseID = (await args.pickResult('string')).value
