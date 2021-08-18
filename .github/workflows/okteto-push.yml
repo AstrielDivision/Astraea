@@ -23,8 +23,7 @@ jobs:
           namespace: artiefuzzz
       - name: Configuration
         run: echo -n "${{ secrets.CONFIG }}" | base64 -d > config/main.json
-      - name: Push
-        uses: okteto/push@master
+      - name: Deploy Stack
+        uses: okteto/deploy-stack@master
         with:
-          namespace: artiefuzzz
-          name: astraea
+          build: true
