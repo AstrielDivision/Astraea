@@ -1,0 +1,6 @@
+name: astraea
+command: sh
+sync:
+- .:/opt/Astraea/build
+forward:
+- 9229:9229
