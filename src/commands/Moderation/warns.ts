@@ -31,6 +31,7 @@ export default class Warns extends AstraeaCommand {
         .addField('Moderator', moderator.username, true)
         .addField('Reason', c.case_reason, true)
         .addField('Pardoned?', c.pardoned ? 'Yes' : 'No')
+        .setColor(c.pardoned ? 'GREEN' : 'RED')
 
       return await message.channel.send({ embeds: [embed] })
     }
