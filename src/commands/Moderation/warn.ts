@@ -17,6 +17,7 @@ export default class Warn extends AstraeaCommand {
 
     if (!user) return await message.channel.send('You didn\'t provide a user!')
     if (user.id === message.author.id) return await message.channel.send('You can\'t warn yourself!')
+    if (user.id === this.container.client.id) return await message.channel.send('Did I do something?')
 
     return await this.Warn(message, message.author, user, reason)
   }
