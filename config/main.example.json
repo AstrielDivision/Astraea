@@ -8,5 +8,5 @@
     "username": "Username",
     "api_key": "api_key"
   },
-  "mongoURI": "mongodb+srv://"
+  "mongoURI": "mongodb://"
 }
