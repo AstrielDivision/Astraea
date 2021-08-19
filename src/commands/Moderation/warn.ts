@@ -24,9 +24,7 @@ export default class Warn extends AstraeaCommand {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   private async Warn(message: Message, moderator: User, user: User, case_reason?: string): Promise<Message> {
     const Warn = await new CaseModel({
-      moderator: moderator.username,
       moderator_id: moderator.id,
-      user: user.username,
       user_id: user.id,
       guild: message.guild.id,
       case_reason: case_reason
@@ -34,8 +32,8 @@ export default class Warn extends AstraeaCommand {
 
     const embed = new MessageEmbed()
       .setTitle(`Warn | Case ${Warn.case_id}`)
+      .addField('Moderator', message.author.username)
       .addField('Reason', Warn.case_reason)
-      .addField('Moderator', Warn.moderator)
       .setColor('RED')
 
     return await message.channel.send({ embeds: [embed] })

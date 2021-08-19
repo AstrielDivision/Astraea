@@ -24,11 +24,11 @@ export default class Warns extends AstraeaCommand {
 
       if (!c) return await message.channel.send('I didn\'t find a case with that ID')
 
+      const moderator = await this.container.client.util.findUser(c.moderator_id)
+
       const embed = new MessageEmbed()
         .setTitle(`Case ${c.case_id}`)
-        .addField('User ID', c.user_id, true)
-        .addField('Moderator ID', c.moderator_id, true)
-        .addField('Moderator', c.moderator, true)
+        .addField('Moderator', moderator.username, true)
         .addField('Reason', c.case_reason, true)
         .addField('Pardoned?', c.pardoned ? 'Yes' : 'No')
 
@@ -39,7 +39,7 @@ export default class Warns extends AstraeaCommand {
 
     const embed = new MessageEmbed()
       .setTitle(`${user.id === message.author.id ? 'Your' : user.username + '\'s'} warns [${count}]`)
-      .setDescription(`Cases:\n${warns.map(c => `\`${c.case_id}\``).join(', ')}`)
+      .setDescription(`Cases:\n${count ? warns.map(c => `\`${c.case_id}\``).join(', ') : 'This user has no cases.'}`)
 
     return await message.channel.send({ embeds: [embed] })
   }
@@ -53,11 +53,10 @@ export default class Warns extends AstraeaCommand {
 
   private async FetchWarns(user: string, guildID: string): Promise<{ warns: Case[], count: number }> {
     const Warns = await WarnCase.find({ user_id: user, guild: guildID })
-    const Count = await WarnCase.find({ user_id: user, guild: guildID }).countDocuments()
 
     return {
       warns: Warns,
-      count: Count
+      count: Warns.length
     }
   }
 }
