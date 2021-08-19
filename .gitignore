@@ -8,7 +8,8 @@ build
 .eslintcache
 
 ## Configuration
-config/main.json
+!config.json/main.example.json
+config/*.json
 
 ## Yarn
 .yarn/*
