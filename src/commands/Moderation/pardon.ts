@@ -9,7 +9,7 @@ import CaseModel from '#lib/Models/WarnCase'
   usage: '<@user | userID> <caseID>'
 })
 export default class Pardon extends AstraeaCommand {
-  @RequiresUserPermissions('BAN_MEMBERS' || 'KICK_MEMBERS')
+  @RequiresUserPermissions('KICK_MEMBERS')
   public async run(message: Message, args: Args): Promise<Message> {
     const { user } = (await args.pickResult('member')).value
     const caseID = (await args.pickResult('string')).value
