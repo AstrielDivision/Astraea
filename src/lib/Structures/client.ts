@@ -46,16 +46,15 @@ export default class Client extends SapphireClient {
   }
 
   private async init(): Promise<void> {
-    await mongoose.connect(
-      cfg.mongoURI,
-      {
+    await mongoose
+      .connect(cfg.mongoURI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useFindAndModify: false,
         useCreateIndex: true
-      },
-      () => this.logger.info('Connected to MongoDB')
-    )
+      })
+      .then(() => this.logger.info('Connected to the Database'))
+      .catch((err: Error) => this.logger.error('Could not connect to the Database\n' + err.stack))
 
     // Automate status change
     setInterval(() => {

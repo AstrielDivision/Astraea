@@ -11,7 +11,7 @@ import type { Args } from '@sapphire/framework'
   usage: '<@user | userID> [reason]'
 })
 export default class Kick extends AstraeaCommand {
-  @RequiresUserPermissions('BAN_MEMBERS')
+  @RequiresUserPermissions('KICK_MEMBERS')
   public async run(message: Message, args: Args): Promise<Message> {
     const member = (await args.pickResult('member')).value
     const reason = (await args.restResult('string')).value

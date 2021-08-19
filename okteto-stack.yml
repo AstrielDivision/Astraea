@@ -9,6 +9,8 @@ services:
       - 27017
     volumes:
       - data:/bitnami/mongodb
+    environment:
+      MONGODB_DATABASE: andromeda
 
 volumes:
   data:

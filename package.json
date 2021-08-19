@@ -10,6 +10,8 @@
   "private": true,
   "description": "Discord bot using @sapphire/framework",
   "scripts": {
+    "start": "NODE_ENV=\"production\" && node .",
+    "start:dev": "node .",
     "lint": "eslint --cache --report-unused-disable-directives --ignore-path .gitignore --ext .ts src/",
     "lint:fix": "eslint --cache --report-unused-disable-directives --ext .ts src/ --fix",
     "build": "yarn clean && yarn build:ts",
