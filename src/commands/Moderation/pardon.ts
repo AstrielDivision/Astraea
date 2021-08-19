@@ -26,16 +26,18 @@ export default class Pardon extends AstraeaCommand {
 
   private async pardon(message: Message, user: User, caseID: string, remove: boolean): Promise<Message> {
     if (remove) {
-      await CaseModel.findOneAndRemove({ user_id: user.id, guild: message.guild.id, case_id: caseID }).catch(
-        () => void message.channel.send(`A case with the ID ${caseID} doesn't exist.`)
-      )
+      const removed = await CaseModel.findOneAndRemove({ user_id: user.id, guild: message.guild.id, case_id: caseID })
+
+      if (removed === null) return await message.channel.send('Could not find a case with that ID')
 
       return await message.channel.send(`${user.toString()}'s case has been pardoned and removed (irreversible)`)
     }
-    await CaseModel.findOneAndUpdate(
+    const updated = await CaseModel.findOneAndUpdate(
       { user_id: user.id, guild: message.guild.id, case_id: caseID },
       { pardoned: true }
-    ).catch(() => void message.channel.send(`A case with the ID ${caseID} doesn't exist.`))
+    )
+
+    if (updated === null) return await message.channel.send('Could not find a case with that ID')
 
     return await message.channel.send(`${user.toString()}'s case has been pardoned`)
   }
