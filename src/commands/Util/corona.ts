@@ -39,12 +39,12 @@ export default class Corona extends AstraeaCommand {
 
     embed.setTitle('Global COVID-19 Stats')
     embed.addFields([
-      { name: 'Active Cases', value: `${res.active}` },
-      { name: 'Today Cases', value: `${res.todayCases}` },
-      { name: 'Deaths', value: `${res.deaths}` },
-      { name: 'Today Deaths', value: `${res.todayDeaths}` },
-      { name: 'Critical Cases', value: `${res.critical}` },
-      { name: 'Affected Countries', value: `${res.affectedCountries}` }
+      { name: 'Active Cases', value: `${res.active}`, inline: true },
+      { name: 'Today Cases', value: `${res.todayCases}`, inline: true },
+      { name: 'Deaths', value: `${res.deaths}`, inline: true },
+      { name: 'Today Deaths', value: `${res.todayDeaths}`, inline: true },
+      { name: 'Critical Cases', value: `${res.critical}`, inline: true },
+      { name: 'Affected Countries', value: `${res.affectedCountries}`, inline: true }
     ])
 
     return await message.channel.send({
