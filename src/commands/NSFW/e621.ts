@@ -38,7 +38,8 @@ export default class E621 extends AstraeaCommand {
           }`
         )
         .setColor('RANDOM')
-      if (re.tags.lore.length > 0) embed.setDescription(re.tags.lore)
+      if (re.tags.lore.length > 0) embed.setDescription(`Lore: ${re.tags.lore[0]}`)
+      if (re.description) embed.setDescription(re.description)
 
       await message.channel.send({
         embeds: [embed]
@@ -64,7 +65,7 @@ interface YiffTags {
   copyright: string[]
   artist: string[]
   invalid: string[]
-  lore?: string
+  lore?: string[]
 }
 interface YiffStruct {
   id: number
@@ -73,4 +74,5 @@ interface YiffStruct {
   tags: YiffTags
   rating: string
   sources: string[]
+  description: string
 }

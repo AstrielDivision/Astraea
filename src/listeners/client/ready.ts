@@ -3,10 +3,9 @@ import { Listener, ListenerOptions, Events, Store } from '@sapphire/framework'
 import { ApplyOptions } from '@sapphire/decorators'
 
 @ApplyOptions<ListenerOptions>({
-  once: true,
-  event: Events.ClientReady
+  once: true
 })
-export default class Ready extends Listener {
+export default class Ready extends Listener<typeof Events.ClientReady> {
   private printStoreDebugInformation(): void {
     const { client } = this.container
     const stores = [...client.stores.values()]
