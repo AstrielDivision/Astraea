@@ -7,6 +7,7 @@ import type { AstraeaCommand } from '#lib/Structures/BaseCommand'
 })
 export default class UserEvent extends Listener {
   public async run(error: Error, { message, piece }: CommandErrorPayload): Promise<unknown> {
+    if (typeof error === 'string') return await message.channel.send(error)
     if (error instanceof UserError) return await message.channel.send(error.message)
 
     const command = piece as AstraeaCommand
