@@ -1,6 +1,7 @@
 services:
   astraea:
-    build: .
+    build:
+      dockerfile: prod.Dockerfile
     depends_on:
       - mongodb
   mongodb:
