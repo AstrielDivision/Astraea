@@ -20,14 +20,14 @@ export default class Corona extends AstraeaCommand {
 
       embed.setTitle(`${res.country} COVID-19 Stats`)
       embed.addFields([
-        { name: 'Active Cases', value: `${res.active}` },
-        { name: 'Today Cases', value: `${res.todayCases}` },
-        { name: 'Cases Per Million', value: `${res.casesPerOneMillion}` },
+        { name: 'Active Cases', value: `${res.active}`, inline: true },
+        { name: 'Today Cases', value: `${res.todayCases}`, inline: true },
+        { name: 'Cases Per Million', value: `${res.casesPerOneMillion}, inline: true` },
         { name: 'Deaths', value: `${res.deaths}` },
-        { name: 'Today Deaths', value: `${res.todayDeaths}` },
-        { name: 'Critical Cases', value: `${res.critical}` },
-        { name: 'Total Tests', value: `${res.tests}` },
-        { name: 'Tests Per Million', value: `${res.testsPerOneMillion}` }
+        { name: 'Today Deaths', value: `${res.todayDeaths}`, inline: true },
+        { name: 'Critical Cases', value: `${res.critical}`, inline: true },
+        { name: 'Total Tests', value: `${res.tests}`, inline: true },
+        { name: 'Tests Per Million', value: `${res.testsPerOneMillion}`, inline: true }
       ])
       embed.setThumbnail(res.countryInfo.flag)
 
