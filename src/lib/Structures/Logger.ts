@@ -45,7 +45,7 @@ export default class AstraeaLogger implements ILogger {
    * @param message Message to log
    */
   console(...message: unknown[]): void {
-    this._write('CONSOLE', message)
+    this._write('LOG', message)
   }
 
   protected _write(level: string, ...values: readonly unknown[]): void {
@@ -56,7 +56,7 @@ export default class AstraeaLogger implements ILogger {
       ](level)}]: ${values.join(' ')} ${EOL}`
     )
 
-    if (level === 'CONSOLE') return
+    if (level === 'LOG') return
 
     const hook = new WebhookClient({ url: cfg.webhook })
 
