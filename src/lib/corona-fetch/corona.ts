@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import request from './request'
 import type { All, Country } from './types'
 

@@ -2,67 +2,42 @@ import type { ILogger, LogLevel } from '@sapphire/framework'
 import { MessageAttachment, WebhookClient, WebhookMessageOptions, MessageEmbed } from 'discord.js'
 import { EOL } from 'os'
 import cfg from '../../config'
-
-type RGB = [number, number, number]
+import colorette from 'colorette'
 
 export default class AstraeaLogger implements ILogger {
   private readonly loglevel: LogLevel
   constructor(private readonly namespace: string) {}
-
-  private formatRGB([r, g, b]: RGB, ...str): string {
-    return `\x1b[38;2;${r};${g};${b}m${str.join(' ')}\x1b[0m`
-  }
-
-  protected get processTag(): string {
-    if (process.env.SHARDS) return `SHARD ${process.env.SHARDS}`
-    if (process.env.SHARDING_MANAGER) return 'MANAGER'
-    return 'GLOBAL'
-  }
-
-  private readonly colours: {
-    info: RGB
-    debug: RGB
-    error: RGB
-    warn: RGB
-    foreground: RGB
-  } = {
-    info: [204, 249, 207],
-    debug: [137, 161, 188],
-    error: [220, 50, 48],
-    warn: [229, 136, 36],
-    foreground: [89, 74, 80]
-  }
 
   has(level: LogLevel): boolean {
     return level >= this.loglevel
   }
 
   trace(...message: unknown[]): void {
-    this._write(this.colours.info, 'TRACE', message)
+    this._write('TRACE', message)
   }
 
   info(...message: unknown[]): void {
-    this._write(this.colours.info, 'INFO', message)
+    this._write('INFO', message)
   }
 
   debug(...message: unknown[]): void {
-    this._write(this.colours.debug, 'DEBUG', message)
+    this._write('DEBUG', message)
   }
 
   warn(...message: unknown[]): void {
-    this._write(this.colours.warn, 'WARN', message)
+    this._write('WARN', message)
   }
 
   error(...message: unknown[]): void {
-    this._write(this.colours.error, 'ERROR', message)
+    this._write('ERROR', message)
   }
 
   fatal(...message: unknown[]): void {
-    this._write(this.colours.error, 'FATAL', message)
+    this._write('FATAL', message)
   }
 
   write(...message: unknown[]): void {
-    this._write(this.colours.info, 'WRITE', message)
+    this._write('WRITE', message)
   }
 
   /**
@@ -70,41 +45,65 @@ export default class AstraeaLogger implements ILogger {
    * @param message Message to log
    */
   console(...message: unknown[]): void {
-    this._write(this.colours.info, 'CONSOLE', message)
+    this._write('LOG', message)
   }
 
-  protected _write(colour: RGB, level: string, ...message: unknown[]): void {
+  protected _write(level: Levels, ...values: readonly unknown[]): void {
     process.stdout.write(
-      `[${this.formatRGB(this.colours.foreground, this.processTag)} | ${this.formatRGB(
-        this.colours.foreground,
-        new Date().toLocaleString()
-      )} | ${this.formatRGB(this.colours.foreground, this.namespace)} ${this.formatRGB(
-        this.colours.foreground,
-        'Logger'
-      )} | ${this.formatRGB(colour, level)}]: ${this.formatRGB(colour, message)}${EOL}`
+      `[${this.formatLevel('foreground', new Date().toLocaleString())} | ${this.formatLevel(
+        'foreground',
+        this.namespace + ' Logger'
+      )} | ${this.formatLevel(level, level)}]: ${values.join(' ')} ${EOL}`
     )
 
-    if (level === 'CONSOLE') return
+    if (level === 'LOG') return
 
     const hook = new WebhookClient({ url: cfg.webhook })
 
-    const embed: MessageEmbed = new MessageEmbed()
-      .setTimestamp()
-      .setColor('YELLOW')
-      .setFooter(this.processTag)
-      .setTitle('Log')
+    const embed: MessageEmbed = new MessageEmbed().setTimestamp().setColor('YELLOW')
     const options: WebhookMessageOptions = {
       embeds: [embed],
       username: this.namespace + ' Logger',
       avatarURL: 'https://lazy.devswhofuckdevs.xyz/55vQ3rlwU.png'
     }
 
-    if (message.length < 2048) {
-      embed.setDescription(message.join(' '))
+    if (values.length < 2048) {
+      embed.setDescription(values.join(' '))
     } else {
       embed.setDescription('Message too long.')
-      options.files = [new MessageAttachment(Buffer.from(message.join(' ')), 'message.txt')]
+      options.files = [new MessageAttachment(Buffer.from(values.join(' ')), 'message.txt')]
     }
     void hook.send(options).catch(() => null)
   }
+
+  formatLevel(level: Levels, text: string): string {
+    switch (level) {
+      case 'TRACE': {
+        return colorette.gray(text)
+      }
+      case 'INFO': {
+        return colorette.greenBright(text)
+      }
+      case 'DEBUG': {
+        return colorette.cyan(text)
+      }
+      case 'WARN': {
+        return colorette.yellow(text)
+      }
+      case 'ERROR': {
+        return colorette.bgRed(text)
+      }
+      case 'LOG': {
+        return colorette.magenta(text)
+      }
+      case 'foreground': {
+        return colorette.gray(text)
+      }
+      case 'WRITE': {
+        return colorette.dim(text)
+      }
+    }
+  }
 }
+
+type Levels = 'TRACE' | 'INFO' | 'DEBUG' | 'WARN' | 'ERROR' | 'FATAL' | 'LOG' | 'foreground' | 'WRITE'

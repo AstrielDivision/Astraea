@@ -20,6 +20,7 @@ interface Configuration {
     api_key: string
   }
   mongoURI: string
+  sentry: string
 }
 
 export interface PackageJson {
@@ -98,6 +99,10 @@ const config = convict<Configuration>({
     }
   },
   mongoURI: {
+    format: String,
+    default: ''
+  },
+  sentry: {
     format: String,
     default: ''
   }
