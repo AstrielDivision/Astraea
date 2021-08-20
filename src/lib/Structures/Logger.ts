@@ -48,19 +48,19 @@ export default class AstraeaLogger implements ILogger {
     this._write('LOG', message)
   }
 
-  protected _write(level: string, ...values: readonly unknown[]): void {
+  protected _write(level: Levels, ...values: readonly unknown[]): void {
     process.stdout.write(
-      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-      `[${levels.foreground(new Date().toLocaleString())} | ${levels.foreground(this.namespace + ' Logger')} | ${levels[
-        level
-      ](level)}]: ${values.join(' ')} ${EOL}`
+      `[${this.formatLevel('foreground', new Date().toLocaleString())} | ${this.formatLevel(
+        'foreground',
+        this.namespace + ' Logger'
+      )} | ${this.formatLevel(level, level)}]: ${values.join(' ')} ${EOL}`
     )
 
     if (level === 'LOG') return
 
     const hook = new WebhookClient({ url: cfg.webhook })
 
-    const embed: MessageEmbed = new MessageEmbed().setTimestamp().setColor('YELLOW').setTitle('Log')
+    const embed: MessageEmbed = new MessageEmbed().setTimestamp().setColor('YELLOW')
     const options: WebhookMessageOptions = {
       embeds: [embed],
       username: this.namespace + ' Logger',
@@ -75,15 +75,35 @@ export default class AstraeaLogger implements ILogger {
     }
     void hook.send(options).catch(() => null)
   }
+
+  formatLevel(level: Levels, text: string): string {
+    switch (level) {
+      case 'TRACE': {
+        return colorette.gray(text)
+      }
+      case 'INFO': {
+        return colorette.greenBright(text)
+      }
+      case 'DEBUG': {
+        return colorette.cyan(text)
+      }
+      case 'WARN': {
+        return colorette.yellow(text)
+      }
+      case 'ERROR': {
+        return colorette.bgRed(text)
+      }
+      case 'LOG': {
+        return colorette.magenta(text)
+      }
+      case 'foreground': {
+        return colorette.gray(text)
+      }
+      case 'WRITE': {
+        return colorette.dim(text)
+      }
+    }
+  }
 }
 
-const levels = {
-  TRACE: colorette.gray,
-  INFO: colorette.greenBright,
-  DEBUG: colorette.cyan,
-  WARN: colorette.yellow,
-  ERROR: colorette.bgRedBright,
-  FATAL: colorette.bgRed,
-  CONSOLE: colorette.magenta,
-  foreground: colorette.gray
-}
+type Levels = 'TRACE' | 'INFO' | 'DEBUG' | 'WARN' | 'ERROR' | 'FATAL' | 'LOG' | 'foreground' | 'WRITE'
