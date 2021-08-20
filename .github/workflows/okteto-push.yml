@@ -17,12 +17,7 @@ jobs:
       - name: Get version
         id: pkg-version
         run: |
-          PKG_VERSION=$(cat package.json \
-          | grep version \
-          | head -1 \
-          | awk -F: '{ print $2 }' \
-          | sed 's/[",]//g' \
-          | tr -d '[[:space:]]')
+          PKG_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[",]//g' | tr -d '[[:space:]]')
 
           echo "::set-output name=pkgVersion::$PKG_VERSION"
       - name: Sentry Release
@@ -33,7 +28,7 @@ jobs:
           SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
         with:
           environment: 'production'
-          version: ${{ steps.pkg-version.outputs.* }}
+          version: ${{ steps.pkg-version.outputs.pkgVersion }}
 
   push:
     runs-on: ubuntu-latest
