@@ -1,1 +1,13 @@
-* @ArtieFuzzz
+/src/ @ArtieFuzzz
+/.eslintrc @ArtieFuzzz
+/.vscode/ @ArtieFuzzz
+/.all-contributors @ArtieFuzzz
+/docker/ @ArtieFuzzz
+/.github/workflows @ArtieFuzzz
+/prod.Dockerfile
+
+/.prettierrc @TMUniversal
+/.prettierignore @TMUniversal
+/.editorconfig @TMUniversal
+/.vscode/settings.json @ArtieFuzzz @TMUniversal
+/.gitignore @ArtieFuzzz @TMUniversal
