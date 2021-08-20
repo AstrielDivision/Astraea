@@ -8,6 +8,7 @@
     "@typescript-eslint/prefer-ts-expect-error": "off",
     "@typescript-eslint/indent": [2, 2],
     "indent": "off",
-    "no-new": "off"
+    "no-new": "off",
+    "no-console": "off"
   }
 }
