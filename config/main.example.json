@@ -8,5 +8,6 @@
     "username": "Username",
     "api_key": "api_key"
   },
-  "mongoURI": "mongodb://"
+  "mongoURI": "mongodb://",
+  "sentry": "https://"
 }
