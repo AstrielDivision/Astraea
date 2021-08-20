@@ -6,7 +6,7 @@ import Sentry from '@sentry/minimal'
 @ApplyOptions<ListenerOptions>({
   event: Events.CommandError
 })
-export default class UserEvent extends Listener {
+export default class CommandError extends Listener {
   public async run(error: Error, { message, piece }: CommandErrorPayload): Promise<unknown> {
     if (typeof error === 'string') return await message.channel.send(error)
     if (error instanceof UserError) return await message.channel.send(error.message)
