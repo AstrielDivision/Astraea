@@ -15,7 +15,7 @@ export default class CommandError extends Listener {
 
     this.container.logger.fatal(`[COMMAND] ${command.path}\n${error.stack || error.message}`)
 
-    captureException(error, { tags: { name: piece.name } })
+    captureException(error.stack || error.message, { tags: { name: piece.name } })
 
     return undefined
   }

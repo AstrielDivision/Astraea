@@ -9,7 +9,7 @@ export default class ErrorListener extends Listener {
   public async run(error: Error): Promise<unknown> {
     this.container.logger.error(error.stack || error.message)
 
-    captureException(error)
+    captureException(error.stack || error.message)
 
     return undefined
   }
