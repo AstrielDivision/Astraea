@@ -4,9 +4,10 @@ import type { AstraeaCommand } from '#lib/Structures/BaseCommand'
 import { captureException } from '@sentry/minimal'
 
 @ApplyOptions<ListenerOptions>({
+  name: 'CoreCommandError',
   event: Events.CommandError
 })
-export default class CommandError extends Listener {
+export default class CoreEvent extends Listener {
   public async run(error: Error, { message, piece }: CommandErrorPayload): Promise<unknown> {
     if (typeof error === 'string') return await message.channel.send(error)
     if (error instanceof UserError) return await message.channel.send(error.message)

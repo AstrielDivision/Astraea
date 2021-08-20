@@ -3,9 +3,10 @@ import { ApplyOptions } from '@sapphire/decorators'
 import { captureException } from '@sentry/minimal'
 
 @ApplyOptions<ListenerOptions>({
+  name: 'CoreEventError',
   event: Events.ListenerError
 })
-export default class ErrorListener extends Listener {
+export default class CoreEvent extends Listener {
   public async run(error: Error, { piece }: ListenerErrorPayload): Promise<unknown> {
     this.container.logger.fatal(`[LISTENER] ${piece.path}\n${error.stack || error.message}`)
 
