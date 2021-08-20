@@ -64,7 +64,7 @@ export default class Client extends SapphireClient {
     })
     Sentry.setTags({
       'discord.js': pkg.dependencies['discord.js'],
-      '@sapphire/framework': version,
+      'sapphire/framework': version,
       version: pkg.version
     })
 
