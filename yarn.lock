@@ -457,6 +457,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sapphire/plugin-subcommands@npm:next":
+  version: 2.0.0-next.5e97bc7.0
+  resolution: "@sapphire/plugin-subcommands@npm:2.0.0-next.5e97bc7.0"
+  dependencies:
+    tslib: ^2.3.0
+  checksum: 56b4da65c2ace52e00fe532ca14140e08c993cebb0e0e58ece076c82a1f92b212808f60751a34862051af9e7ccd5f06dd207e6fdfd5999288c502ebea5174590
+  languageName: node
+  linkType: hard
+
 "@sapphire/ratelimits@npm:^2.0.1":
   version: 2.0.1
   resolution: "@sapphire/ratelimits@npm:2.0.1"
@@ -1108,6 +1117,7 @@ __metadata:
     "@sapphire/discord.js-utilities": next
     "@sapphire/fetch": next
     "@sapphire/framework": next
+    "@sapphire/plugin-subcommands": next
     "@sapphire/type": ^2.0.11
     "@sapphire/utilities": ^2.0.1
     "@sentry/node": ^6.11.0

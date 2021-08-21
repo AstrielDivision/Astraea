@@ -1,7 +1,8 @@
-import { Command, CommandOptions, PieceContext } from '@sapphire/framework'
+import type { PieceContext, Args } from '@sapphire/framework'
+import { SubCommandPluginCommand } from '@sapphire/plugin-subcommands'
 import { sep } from 'path'
 
-export abstract class AstraeaCommand extends Command {
+export abstract class AstraeaCommand extends SubCommandPluginCommand<Args, AstraeaCommand> {
   public usage?: string
   constructor(Context: PieceContext, options: AstraeaCommandOptions) {
     super(Context, options)
@@ -19,6 +20,6 @@ export abstract class AstraeaCommand extends Command {
   }
 }
 
-export interface AstraeaCommandOptions extends CommandOptions {
+export interface AstraeaCommandOptions extends SubCommandPluginCommand.Options {
   usage?: string
 }
