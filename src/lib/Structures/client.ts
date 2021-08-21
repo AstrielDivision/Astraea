@@ -3,7 +3,7 @@ import { KSoftClient } from '@aero/ksoft'
 import StatusUpdater from '@tmware/status-rotate'
 import ClientUtils from '../ClientUtils'
 import cfg, { pkg } from '../../config'
-import type { ClientOptions } from 'discord.js'
+import { ClientOptions, version as djs } from 'discord.js'
 import Yiff from '#lib/yiff.ts/index'
 import mongoose from 'mongoose'
 import * as Sentry from '@sentry/node'
@@ -63,8 +63,8 @@ export default class Client extends SapphireClient {
       tracesSampleRate: 1.0
     })
     Sentry.setTags({
-      'discord.js': pkg.dependencies['discord.js'],
-      'sapphire/framework': version,
+      'discord.js': djs,
+      framework: version,
       version: pkg.version
     })
 
