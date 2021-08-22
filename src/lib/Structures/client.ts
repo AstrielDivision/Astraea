@@ -1,11 +1,12 @@
-import { SapphireClient } from '@sapphire/framework'
+import { SapphireClient, version } from '@sapphire/framework'
 import { KSoftClient } from '@aero/ksoft'
 import StatusUpdater from '@tmware/status-rotate'
 import ClientUtils from '../ClientUtils'
-import cfg from '../../config'
-import type { ClientOptions } from 'discord.js'
+import cfg, { pkg } from '../../config'
+import { ClientOptions, version as djs } from 'discord.js'
 import Yiff from '#lib/yiff.ts/index'
 import mongoose from 'mongoose'
+import * as Sentry from '@sentry/node'
 
 export default class Client extends SapphireClient {
   ksoft: KSoftClient
@@ -55,6 +56,17 @@ export default class Client extends SapphireClient {
       })
       .then(() => this.logger.info('Connected to the Database'))
       .catch((err: Error) => this.logger.error('Could not connect to the Database\n' + err.stack))
+
+    Sentry.init({
+      dsn: cfg.sentry,
+      release: `Astraea@${pkg.version}`,
+      tracesSampleRate: 1.0
+    })
+    Sentry.setTags({
+      'discord.js': djs,
+      framework: version,
+      version: pkg.version
+    })
 
     // Automate status change
     setInterval(() => {
