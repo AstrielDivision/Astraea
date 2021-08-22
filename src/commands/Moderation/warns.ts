@@ -2,7 +2,8 @@ import { AstraeaCommand, AstraeaCommandOptions } from '#lib/Structures/BaseComma
 import { Message, User, MessageEmbed } from 'discord.js'
 import { ApplyOptions } from '@sapphire/decorators'
 import type { Args } from '@sapphire/framework'
-import WarnCase, { Case } from '#lib/Models/WarnCase'
+import WarnCase from '#lib/Models/WarnCase'
+import type { Case } from '#lib/Models/types'
 
 @ApplyOptions<AstraeaCommandOptions>({
   name: 'warns',

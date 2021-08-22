@@ -1,4 +1,5 @@
-import { model, Schema, Document } from 'mongoose'
+import { model, Schema } from 'mongoose'
+import type { Case } from './types'
 
 const schema = new Schema({
   case_id: { type: String, default: Date.now().toString(36).toUpperCase() },
@@ -10,12 +11,3 @@ const schema = new Schema({
 })
 
 export default model<Case>('WarnCase', schema)
-
-export interface Case extends Document {
-  case_id?: string
-  case_reason: string
-  moderator_id: string
-  user_id: string
-  guild: string
-  pardoned: boolean
-}
