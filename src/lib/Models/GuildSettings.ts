@@ -11,6 +11,9 @@ const schema = new Schema({
       prefix: null,
       anti: {
         unmentionable: false
+      },
+      mute: {
+        role_id: null
       }
     }
   }

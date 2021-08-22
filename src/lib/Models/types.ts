@@ -8,6 +8,9 @@ export interface Settings extends Document {
     anti?: {
       unmentionable?: boolean
     }
+    mute?: {
+      role_id?: string | null
+    }
   }
 }
 
