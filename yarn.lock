@@ -22,6 +22,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@aero/sanitizer@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "@aero/sanitizer@npm:1.2.0"
+  dependencies:
+    latinize: ^0.4.1
+    remove-accents: ^0.4.2
+    unidecode: ^0.1.8
+    unorm: ^1.6.0
+  checksum: 9cc6d4a4330b5075b30712bcb209db95b31349ff4f1602730f636b8cc07e8c58bb7a6d1d32eff663001fe1dafc7ecc66948618c26683abaadcab26d386d6913d
+  languageName: node
+  linkType: hard
+
 "@babel/code-frame@npm:7.12.11":
   version: 7.12.11
   resolution: "@babel/code-frame@npm:7.12.11"
@@ -1109,6 +1121,7 @@ __metadata:
   resolution: "astraea@workspace:."
   dependencies:
     "@aero/ksoft": ^4.0.0-rc1
+    "@aero/sanitizer": ^1.2.0
     "@commitlint/cli": ^13.1.0
     "@commitlint/config-conventional": ^13.1.0
     "@hidden-umbrella/eslint-config": ^1.0.2
@@ -3296,6 +3309,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"latinize@npm:^0.4.1":
+  version: 0.4.1
+  resolution: "latinize@npm:0.4.1"
+  checksum: e6b5b6e81bd1c039320f9e8b6c8617efd1dffdb685cc7af545f549ff83a0f5e0203d602f2dfee32dd34db681682d4492dbcfea532f6c3604953154b034268c31
+  languageName: node
+  linkType: hard
+
 "levn@npm:^0.4.1":
   version: 0.4.1
   resolution: "levn@npm:0.4.1"
@@ -4503,6 +4523,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"remove-accents@npm:^0.4.2":
+  version: 0.4.2
+  resolution: "remove-accents@npm:0.4.2"
+  checksum: 84a6988555dea24115e2d1954db99509588d43fe55a1590f0b5894802776f7b488b3151c37ceb9e4f4b646f26b80b7325dcea2fae58bc3865df146e1fa606711
+  languageName: node
+  linkType: hard
+
 "require-at@npm:^1.0.6":
   version: 1.0.6
   resolution: "require-at@npm:1.0.6"
@@ -5305,6 +5332,13 @@ typescript@^4.3.5:
   languageName: node
   linkType: hard
 
+"unidecode@npm:^0.1.8":
+  version: 0.1.8
+  resolution: "unidecode@npm:0.1.8"
+  checksum: 8d07a15a28e6d2b3fb595aa3439d710c968b98a6d7fa5b2d5fdbd3498042f27e1ba1d5925541912ee14368b8a2d35767d66e3f56199f8cde1feafd62a8acd6a2
+  languageName: node
+  linkType: hard
+
 "unique-filename@npm:^1.1.1":
   version: 1.1.1
   resolution: "unique-filename@npm:1.1.1"
@@ -5334,6 +5368,13 @@ typescript@^4.3.5:
   version: 2.0.0
   resolution: "universalify@npm:2.0.0"
   checksum: 2406a4edf4a8830aa6813278bab1f953a8e40f2f63a37873ffa9a3bc8f9745d06cc8e88f3572cb899b7e509013f7f6fcc3e37e8a6d914167a5381d8440518c44
+  languageName: node
+  linkType: hard
+
+"unorm@npm:^1.6.0":
+  version: 1.6.0
+  resolution: "unorm@npm:1.6.0"
+  checksum: 9a86546256a45f855b6cfe719086785d6aada94f63778cecdecece8d814ac26af76cb6da70130da0a08b8803bbf0986e56c7ec4249038198f3de02607fffd811
   languageName: node
   linkType: hard
 

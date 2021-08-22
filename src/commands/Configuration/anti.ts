@@ -4,54 +4,57 @@ import { ApplyOptions, RequiresUserPermissions } from '@sapphire/decorators'
 import type { Args } from '@sapphire/framework'
 import GuildSettingsModel from '#lib/Models/GuildSettings'
 import type { Settings as GuildSettings } from '#lib/Models/types'
+import cfg from '../../config'
 
 @ApplyOptions<AstraeaCommandOptions>({
   description: 'Settings per guild',
-  usage: '[list | reset | set] [new value]',
-  subCommands: ['set', 'reset', { input: 'list', default: true }]
+  usage: '[list | enable | disable] [new value]',
+  subCommands: ['enable', 'disable', { input: 'list', default: true }]
 })
 export default class Settings extends AstraeaCommand {
   public async list(message: Message): Promise<Message> {
-    const settings = await this.GetSettings(message.guild.id)
+    const anti = await this.GetAntiSettings(message.guild.id)
 
     const embed = new MessageEmbed()
       .setTitle(`Guild Settings | ${message.guild.name}`)
-      .setDescription(`**Prefix:** ${settings.prefix}`)
-      .setFooter(`To reset a setting run ${settings.prefix}settings reset <setting>`)
+      .setDescription(`**Anti-Unmentionable:** ${anti.unmentionable ? 'Enabled' : 'Disabled'}`)
+      .setFooter(`To disable these options use ${cfg.prefix}anti `)
 
     return await message.channel.send({ embeds: [embed] })
   }
 
   @RequiresUserPermissions('MANAGE_GUILD')
-  public async set(message: Message, args: Args): Promise<Message> {
+  public async enable(message: Message, args: Args): Promise<Message> {
     const setting = await args.pick('string')
-    const val = await args.pick('string')
 
     if (!setting) return await message.channel.send('A setting was not provided.')
-    if (!val) return await message.channel.send('A value was not provided.')
 
     const embed = new MessageEmbed()
 
     switch (setting.toLowerCase()) {
-      case 'prefix': {
-        await this.SetSetting(message.guild.id, setting, val).catch(
+      case 'unmentionable': {
+        if (!message.guild.me.permissions.has('MANAGE_NICKNAMES')) {
+          return await message.channel.send('I don\'t have the `MANAGE_NICKNAMES` permission!')
+        }
+
+        await this.EnableAnti(message.guild.id, setting).catch(
           async () => await message.channel.send('Something went wrong')
         )
 
-        embed.setTitle('Updated!')
-        embed.setDescription(`Successfully updated the prefix to ${val}`)
+        embed.setTitle('Enabled!')
+        embed.setDescription('anti.unmentionable has been enabled')
 
         return await message.channel.send({ embeds: [embed] })
       }
 
       default: {
-        return await message.channel.send('Available options: prefix')
+        return await message.channel.send('Available options: unmentionable')
       }
     }
   }
 
   @RequiresUserPermissions('MANAGE_GUILD')
-  public async reset(message: Message, args: Args): Promise<Message> {
+  public async disable(message: Message, args: Args): Promise<Message> {
     const setting = await args.pick('string')
 
     if (!setting) return await message.channel.send('No setting was provided.\nAvailable: prefix')
@@ -59,8 +62,8 @@ export default class Settings extends AstraeaCommand {
     const embed = new MessageEmbed()
 
     switch (setting.toLowerCase()) {
-      case 'prefix': {
-        await this.ResetSetting(message.guild.id, setting).catch(
+      case 'unmentionable': {
+        await this.DisableAnti(message.guild.id, setting).catch(
           async () => await message.channel.send('Something went wrong')
         )
 
@@ -76,24 +79,25 @@ export default class Settings extends AstraeaCommand {
     }
   }
 
-  private async GetSettings(guildID: Snowflake): Promise<GuildSettings['settings']> {
+  private async GetAntiSettings(guildID: Snowflake): Promise<GuildSettings['settings']['anti']> {
     if (!guildID) throw Error('No guild given')
 
-    const { settings } = await GuildSettingsModel.findOne({ guild_id: guildID })
+    const {
+      settings: { anti }
+    } = await GuildSettingsModel.findOne({ guild_id: guildID })
 
-    return settings
+    return anti
   }
 
-  private async SetSetting(guild: Snowflake, setting: string, newVal: string): Promise<GuildSettings['settings']> {
+  private async EnableAnti(guild: Snowflake, anti: string): Promise<GuildSettings['settings']> {
     if (!guild) throw Error('No guild given')
-    if (!setting) throw Error('No setting given')
-    if (!newVal) throw Error('No new value given')
+    if (!anti) throw Error('No setting given')
 
-    switch (setting) {
-      case 'prefix': {
+    switch (anti) {
+      case 'unmentionable': {
         const { settings } = await GuildSettingsModel.findOneAndUpdate(
           { guild_id: guild },
-          { settings: { prefix: newVal } }
+          { settings: { anti: { unmentionable: true } } }
         )
 
         return settings
@@ -101,17 +105,16 @@ export default class Settings extends AstraeaCommand {
     }
   }
 
-  private async ResetSetting(guild: Snowflake, setting: string): Promise<GuildSettings['settings']> {
+  private async DisableAnti(guild: Snowflake, anti: string): Promise<GuildSettings['settings']> {
     if (!guild) throw Error('No guild given')
-    if (!setting) throw Error('No setting given')
+    if (!anti) throw Error('No setting given')
 
-    switch (setting) {
-      case 'prefix': {
+    switch (anti) {
+      case 'unmentionable': {
         const { settings } = await GuildSettingsModel.findOneAndUpdate(
           { guild_id: guild },
-          { settings: { prefix: null } }
+          { settings: { anti: { unmentionable: false } } }
         )
-
         return settings
       }
     }

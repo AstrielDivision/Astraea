@@ -8,7 +8,10 @@ const schema = new Schema({
     required: false,
     type: Object,
     default: {
-      prefix: undefined
+      prefix: null,
+      anti: {
+        unmentionable: false
+      }
     }
   }
 })

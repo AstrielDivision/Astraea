@@ -4,7 +4,10 @@ export interface Settings extends Document {
   registeredAt: Date
   guild_id: string
   settings: {
-    prefix: string | null
+    prefix?: string | null
+    anti?: {
+      unmentionable?: boolean
+    }
   }
 }
 
