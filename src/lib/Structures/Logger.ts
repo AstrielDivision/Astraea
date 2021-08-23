@@ -90,6 +90,7 @@ export default class AstraeaLogger implements ILogger {
       case 'WARN': {
         return colorette.yellow(text)
       }
+      case 'FATAL':
       case 'ERROR': {
         return colorette.bgRed(text)
       }

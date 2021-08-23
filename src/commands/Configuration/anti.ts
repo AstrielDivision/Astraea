@@ -1,9 +1,9 @@
 import { AstraeaCommand, AstraeaCommandOptions } from '#lib/Structures/BaseCommand'
-import { Message, MessageEmbed, Snowflake } from 'discord.js'
+import { Message, MessageEmbed } from 'discord.js'
 import { ApplyOptions, RequiresUserPermissions } from '@sapphire/decorators'
 import type { Args } from '@sapphire/framework'
-import GuildSettingsModel from '#lib/Models/GuildSettings'
-import type { Settings as GuildSettings } from '#lib/Models/types'
+import db from '#database'
+import type { GuildSettings } from '#types'
 import cfg from '../../config'
 
 @ApplyOptions<AstraeaCommandOptions>({
@@ -13,11 +13,18 @@ import cfg from '../../config'
 })
 export default class Settings extends AstraeaCommand {
   public async list(message: Message): Promise<Message> {
-    const anti = await this.GetAntiSettings(message.guild.id)
+    const { data: guild_data } = await db
+      .from<GuildSettings>('guilds')
+      .select()
+      .eq('guild_id', message.guild.id)
+      .single()
 
     const embed = new MessageEmbed()
       .setTitle(`Guild Settings | ${message.guild.name}`)
-      .setDescription(`**Anti-Unmentionable:** ${anti.unmentionable ? 'Enabled' : 'Disabled'}`)
+      .setDescription(
+        `**Anti-Unmentionable:** ${guild_data['anti-unmentionable'] ? 'Enabled' : 'Disabled'}\n` +
+          `**Anti-Invites:** ${guild_data['anti-invites'] ? 'Enabled' : 'Disabled'}`
+      )
       .setFooter(`To disable these options use ${cfg.prefix}anti `)
 
     return await message.channel.send({ embeds: [embed] })
@@ -27,8 +34,6 @@ export default class Settings extends AstraeaCommand {
   public async enable(message: Message, args: Args): Promise<Message> {
     const setting = await args.pick('string')
 
-    if (!setting) return await message.channel.send('A setting was not provided.')
-
     const embed = new MessageEmbed()
 
     switch (setting.toLowerCase()) {
@@ -37,18 +42,19 @@ export default class Settings extends AstraeaCommand {
           return await message.channel.send('I don\'t have the `MANAGE_NICKNAMES` permission!')
         }
 
-        await this.EnableAnti(message.guild.id, setting).catch(
-          async () => await message.channel.send('Something went wrong')
-        )
+        return await this.EnableAnti(message, 'unmentionable')
+      }
 
-        embed.setTitle('Enabled!')
-        embed.setDescription('anti.unmentionable has been enabled')
+      case 'invites': {
+        if (!message.guild.me.permissions.has('MANAGE_MESSAGES')) {
+          return await message.channel.send('I don\'t have the `MANAGE_MESSAGES` permission!')
+        }
 
-        return await message.channel.send({ embeds: [embed] })
+        return await this.EnableAnti(message, 'invites')
       }
 
       default: {
-        return await message.channel.send('Available options: unmentionable')
+        embed.setDescription('You can enable: anti `unmentionable` names and anti discord `invites`')
       }
     }
   }
@@ -57,65 +63,49 @@ export default class Settings extends AstraeaCommand {
   public async disable(message: Message, args: Args): Promise<Message> {
     const setting = await args.pick('string')
 
-    if (!setting) return await message.channel.send('No setting was provided.\nAvailable: prefix')
-
     const embed = new MessageEmbed()
 
     switch (setting.toLowerCase()) {
       case 'unmentionable': {
-        await this.DisableAnti(message.guild.id, setting).catch(
-          async () => await message.channel.send('Something went wrong')
-        )
+        return await this.DisableAnti(message, 'unmentionable')
+      }
 
-        embed.setTitle('Success!')
-        embed.setDescription('Successfully reset the prefix')
-
-        return await message.channel.send({ embeds: [embed] })
+      case 'invites': {
+        return await this.DisableAnti(message, 'invites')
       }
 
       default: {
-        return await message.channel.send('Available options: prefix')
+        embed.setDescription('You can disable: anti `unmentionable` names and anti discord `invites`')
       }
     }
   }
 
-  private async GetAntiSettings(guildID: Snowflake): Promise<GuildSettings['settings']['anti']> {
-    if (!guildID) throw Error('No guild given')
-
-    const {
-      settings: { anti }
-    } = await GuildSettingsModel.findOne({ guild_id: guildID })
-
-    return anti
-  }
-
-  private async EnableAnti(guild: Snowflake, anti: string): Promise<GuildSettings['settings']> {
-    if (!guild) throw Error('No guild given')
-    if (!anti) throw Error('No setting given')
-
+  private async EnableAnti(message: Message, anti: string): Promise<Message> {
     switch (anti) {
       case 'unmentionable': {
-        const { settings } = await GuildSettingsModel.findOneAndUpdate(
-          { guild_id: guild },
-          { settings: { anti: { unmentionable: true } } }
-        )
+        await db.from<GuildSettings>('guilds').update({ 'anti-unmentionable': true }).eq('guild_id', message.guild.id)
 
-        return settings
+        return await message.channel.send('Now filtering unmentionable names')
+      }
+      case 'invites': {
+        await db.from<GuildSettings>('guilds').update({ 'anti-invites': true }).eq('guild_id', message.guild.id)
+
+        return await message.channel.send('Now filtering discord invites')
       }
     }
   }
 
-  private async DisableAnti(guild: Snowflake, anti: string): Promise<GuildSettings['settings']> {
-    if (!guild) throw Error('No guild given')
-    if (!anti) throw Error('No setting given')
-
+  private async DisableAnti(message: Message, anti: string): Promise<Message> {
     switch (anti) {
       case 'unmentionable': {
-        const { settings } = await GuildSettingsModel.findOneAndUpdate(
-          { guild_id: guild },
-          { settings: { anti: { unmentionable: false } } }
-        )
-        return settings
+        await db.from<GuildSettings>('guilds').update({ 'anti-unmentionable': false }).eq('guild_id', message.guild.id)
+
+        return await message.channel.send('No longer filtering unmentionable names')
+      }
+      case 'invites': {
+        await db.from<GuildSettings>('guilds').update({ 'anti-invites': false }).eq('guild_id', message.guild.id)
+
+        return await message.channel.send('No longer filtering discord invites')
       }
     }
   }

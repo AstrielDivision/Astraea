@@ -76,6 +76,7 @@
     "@sapphire/type": "^2.0.11",
     "@sapphire/utilities": "^2.0.1",
     "@sentry/node": "^6.11.0",
+    "@supabase/supabase-js": "^1.22.2",
     "@tmware/status-rotate": "^1.2.8",
     "app-root-path": "^3.0.0",
     "bufferutil": "^4.0.3",
@@ -84,7 +85,6 @@
     "crypto-js": "^4.1.1",
     "dayjs": "^1.10.6",
     "discord.js": "^13.1.0",
-    "mongoose": "^5.13.7",
     "owofire": "^1.0.4",
     "utf-8-validate": "^5.0.5"
   },
@@ -92,6 +92,8 @@
     "#lib/Structures/BaseCommand": "./build/lib/Structures/Command.js",
     "#lib/Structures/commands/CanvasCommand": "./build/lib/Structures/commands/CanvasCommand.js",
     "#lib/Structures/commands/RedditCommand": "./build/lib/Structures/commands/RedditCommand.js",
+    "#database": "./build/lib/database.js",
+    "#types": "/build/lib/types.js",
     "#lib/*": "./build/lib/*.js"
   },
   "lint-staged": {

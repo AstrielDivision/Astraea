@@ -2,7 +2,8 @@ import { AstraeaCommand, AstraeaCommandOptions } from '#lib/Structures/BaseComma
 import { Message, MessageEmbed } from 'discord.js'
 import { ApplyOptions, RequiresUserPermissions } from '@sapphire/decorators'
 import type { Args } from '@sapphire/framework'
-import CaseModel from '#lib/Models/WarnCase'
+import db from '#database'
+import type { Case as CaseType } from '#types'
 
 @ApplyOptions<AstraeaCommandOptions>({
   description: 'Set a case reason for a warning',
@@ -14,16 +15,23 @@ export default class Case extends AstraeaCommand {
     const caseID = (await args.pickResult('string')).value
     const reason = (await args.restResult('string')).value
 
-    const guild = message.guild
-
     if (!caseID) return await message.channel.send('No case ID provided')
     if (!reason) return await message.channel.send('No reason provided')
 
-    const before = await CaseModel.findOne({ case_id: caseID, guild: guild.id })
+    const { data: before } = await db
+      .from<CaseType>('warns')
+      .select()
+      .eq('guild', message.guild.id)
+      .eq('case_id', caseID)
+      .single()
 
-    await CaseModel.findOneAndUpdate({ case_id: caseID, guild: guild.id }, { case_reason: reason }).catch(
-      () => void message.channel.send(`I couldn't find a case with the ID ${caseID}`)
-    )
+    try {
+      await db.from<CaseType>('warns').update({ case_reason: reason }).eq('guild', message.guild.id)
+    } catch {
+      return await message.channel.send(
+        'Something went wrong...\nIt was most likely because we didn\'t find a case with that ID'
+      )
+    }
 
     const embed = new MessageEmbed()
       .setTitle(`Updated case ${caseID}`)

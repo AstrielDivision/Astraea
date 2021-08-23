@@ -19,7 +19,10 @@ interface Configuration {
     username: string
     api_key: string
   }
-  mongoURI: string
+  supabase: {
+    url: string
+    key: string
+  }
   sentry: string
 }
 
@@ -98,9 +101,15 @@ const config = convict<Configuration>({
       default: ''
     }
   },
-  mongoURI: {
-    format: String,
-    default: ''
+  supabase: {
+    url: {
+      format: String,
+      default: ''
+    },
+    key: {
+      format: String,
+      default: ''
+    }
   },
   sentry: {
     format: String,
