@@ -40,7 +40,9 @@ export default class Warns extends AstraeaCommand {
 
     const embed = new MessageEmbed()
       .setTitle(`${user.id === message.author.id ? 'Your' : user.username + '\'s'} warns [${warns.length}]`)
-      .setDescription(`Cases:\n${warns ? warns.map(c => `\`${c.case_id}\``).join(', ') : 'This user has no cases.'}`)
+      .setDescription(
+        `Cases:\n${warns.length ? warns.map(c => `\`${c.case_id}\``).join(', ') : 'This user has no cases.'}`
+      )
 
     return await message.channel.send({ embeds: [embed] })
   }
