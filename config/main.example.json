@@ -10,7 +10,7 @@
   },
   "sentry": "https://",
   "supabase": {
-    "url": "",
+    "url": "https://some-string.supabase.co",
     "key": ""
   }
 }
