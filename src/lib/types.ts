@@ -4,6 +4,7 @@ export interface GuildSettings {
   prefix: string | null
   'anti-unmentionable': boolean
   'anti-invites': boolean
+  'anti-gifts': boolean
 }
 
 export interface Case {

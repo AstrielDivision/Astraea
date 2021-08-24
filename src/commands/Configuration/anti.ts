@@ -23,7 +23,8 @@ export default class Settings extends AstraeaCommand {
       .setTitle(`Guild Settings | ${message.guild.name}`)
       .setDescription(
         `**Anti-Unmentionable:** ${guild_data['anti-unmentionable'] ? 'Enabled' : 'Disabled'}\n` +
-          `**Anti-Invites:** ${guild_data['anti-invites'] ? 'Enabled' : 'Disabled'}`
+          `**Anti-Invites:** ${guild_data['anti-invites'] ? 'Enabled' : 'Disabled'}` +
+          `**Anti-Gifts:** ${guild_data['anti-gifts'] ? 'Enabled' : 'Disabled'}`
       )
       .setFooter(`To disable these options use ${cfg.prefix}anti `)
 
@@ -45,12 +46,22 @@ export default class Settings extends AstraeaCommand {
         return await this.EnableAnti(message, 'unmentionable')
       }
 
+      case 'invite':
       case 'invites': {
         if (!message.guild.me.permissions.has('MANAGE_MESSAGES')) {
           return await message.channel.send('I don\'t have the `MANAGE_MESSAGES` permission!')
         }
 
         return await this.EnableAnti(message, 'invites')
+      }
+
+      case 'gift':
+      case 'gifts': {
+        if (!message.guild.me.permissions.has('MANAGE_MESSAGES')) {
+          return await message.channel.send('I don\'t have the `MANAGE_MESSAGES` permission!')
+        }
+
+        return await this.EnableAnti(message, 'gifts')
       }
 
       default: {
@@ -70,8 +81,14 @@ export default class Settings extends AstraeaCommand {
         return await this.DisableAnti(message, 'unmentionable')
       }
 
+      case 'invite':
       case 'invites': {
         return await this.DisableAnti(message, 'invites')
+      }
+
+      case 'gift':
+      case 'gifts': {
+        return await this.DisableAnti(message, 'gifts')
       }
 
       default: {
@@ -87,10 +104,18 @@ export default class Settings extends AstraeaCommand {
 
         return await message.channel.send('Now filtering unmentionable names')
       }
+      case 'invite':
       case 'invites': {
         await db.from<GuildSettings>('guilds').update({ 'anti-invites': true }).eq('guild_id', message.guild.id)
 
         return await message.channel.send('Now filtering discord invites')
+      }
+
+      case 'gift':
+      case 'gifts': {
+        await db.from<GuildSettings>('guilds').update({ 'anti-gifts': true }).eq('guild_id', message.guild.id)
+
+        return await message.channel.send('Now filtering discord gifts')
       }
     }
   }
@@ -102,10 +127,18 @@ export default class Settings extends AstraeaCommand {
 
         return await message.channel.send('No longer filtering unmentionable names')
       }
+      case 'invite':
       case 'invites': {
         await db.from<GuildSettings>('guilds').update({ 'anti-invites': false }).eq('guild_id', message.guild.id)
 
         return await message.channel.send('No longer filtering discord invites')
+      }
+
+      case 'gift':
+      case 'gifts': {
+        await db.from<GuildSettings>('guilds').update({ 'anti-invites': false }).eq('guild_id', message.guild.id)
+
+        return await message.channel.send('Now filtering discord gifts')
       }
     }
   }
