@@ -2,7 +2,8 @@ import { AstraeaCommand, AstraeaCommandOptions } from '#lib/Structures/BaseComma
 import type { Guild, Message, User } from 'discord.js'
 import { ApplyOptions, RequiresUserPermissions } from '@sapphire/decorators'
 import type { Args } from '@sapphire/framework'
-import CaseModel from '#lib/Models/WarnCase'
+import db from '#database'
+import type { Case as CaseType } from '#types'
 
 @ApplyOptions<AstraeaCommandOptions>({
   description: 'Pardon a warn case of a user',
@@ -26,34 +27,60 @@ export default class Pardon extends AstraeaCommand {
 
   private async pardon(message: Message, user: User, caseID: string, remove: boolean): Promise<Message> {
     if (remove) {
-      const removed = await CaseModel.findOneAndRemove({ user_id: user.id, guild: message.guild.id, case_id: caseID })
+      try {
+        await db
+          .from<CaseType>('warns')
+          .delete()
+          .eq('guild', message.guild.id)
+          .eq('case_id', caseID)
+          .eq('user_id', user.id)
 
-      if (removed === null) return await message.channel.send('Could not find a case with that ID')
-
-      return await message.channel.send(`${user.toString()}'s case has been pardoned and removed (irreversible)`)
+        return await message.channel.send(`${user.toString()}'s case has been pardoned and removed (irreversible)`)
+      } catch {
+        return await message.channel.send(
+          'Something went wrong...\nIt was most likely because we didn\'t find a case with that ID'
+        )
+      }
     }
-    const updated = await CaseModel.findOneAndUpdate(
-      { user_id: user.id, guild: message.guild.id, case_id: caseID },
-      { pardoned: true }
-    )
-
-    if (updated === null) return await message.channel.send('Could not find a case with that ID')
+    try {
+      await db
+        .from<CaseType>('warns')
+        .update({ pardoned: true })
+        .eq('guild', message.guild.id)
+        .eq('case_id', caseID)
+        .eq('user_id', user.id)
+        .single()
+    } catch (err) {
+      this.container.client.emit('error', err.stack)
+      return await message.channel.send(
+        'Something went wrong...\nIt was most likely because we didn\'t find a case with that ID'
+      )
+    }
 
     return await message.channel.send(`${user.toString()}'s case has been pardoned`)
   }
 
   private async unPardon(message: Message, user: User, caseID: string): Promise<Message> {
-    await CaseModel.findOneAndUpdate(
-      { user_id: user.id, guild: message.guild.id, case_id: caseID },
-      { pardoned: false }
-    ).catch(() => void message.channel.send(`A case with the ID ${caseID} doesn't exist.`))
+    await db
+      .from<CaseType>('warns')
+      .update({ pardoned: false })
+      .eq('guild', message.guild.id)
+      .eq('case_id', caseID)
+      .eq('user_id', user.id)
+      .limit(1)
 
     return await message.channel.send(`${user.toString()}'s case is no longer pardoned`)
   }
 
   private async isPardoned(user: User, guild: Guild, caseID: string): Promise<boolean> {
-    const { pardoned } = await CaseModel.findOne({ user_id: user.id, guild: guild.id, case_id: caseID })
+    const { data: foundCase } = await db
+      .from<CaseType>('warns')
+      .select()
+      .eq('guild', guild.id)
+      .eq('case_id', caseID)
+      .eq('user_id', user.id)
+      .single()
 
-    return pardoned
+    return foundCase.pardoned
   }
 }

@@ -38,13 +38,19 @@ export default class E621 extends AstraeaCommand {
           }`
         )
         .setColor('RANDOM')
-      if (re.tags.lore.length > 0) embed.setDescription(`Lore: ${re.tags.lore[0]}`)
-      if (re.description) embed.setDescription(re.description)
+      // if (re.tags.lore.length > 0) embed.setDescription(`Lore: ${re.tags.lore[0]}`)
+      if (re.description) embed.setDescription(this.trimDescription(re.description))
 
       await message.channel.send({
         embeds: [embed]
       })
     }
+  }
+
+  private trimDescription(description: string, max = 4048): string {
+    if (description.length < max) return description
+
+    return description.slice(0, max)
   }
 }
 

@@ -8,6 +8,9 @@
     "username": "Username",
     "api_key": "api_key"
   },
-  "mongoURI": "mongodb://",
-  "sentry": "https://"
+  "sentry": "https://",
+  "supabase": {
+    "url": "https://some-string.supabase.co",
+    "key": ""
+  }
 }

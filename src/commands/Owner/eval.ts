@@ -56,7 +56,8 @@ export default class extends AstraeaCommand {
   }
 
   private async eval(
-    _message: Message,
+    // @ts-ignore
+    message: Message,
     code: string,
     flags: { async: boolean, depth: number, showHidden: boolean }
   ): Promise<{ result: string, success: boolean, type: string }> {

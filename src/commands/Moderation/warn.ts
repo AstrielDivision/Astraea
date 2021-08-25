@@ -2,7 +2,8 @@ import { AstraeaCommand, AstraeaCommandOptions } from '#lib/Structures/BaseComma
 import { Message, MessageEmbed, User } from 'discord.js'
 import { ApplyOptions, RequiresUserPermissions } from '@sapphire/decorators'
 import type { Args } from '@sapphire/framework'
-import CaseModel from '#lib/Models/WarnCase'
+import db from '#database'
+import type { Case } from '#types'
 
 @ApplyOptions<AstraeaCommandOptions>({
   name: 'warn',
@@ -22,19 +23,22 @@ export default class Warn extends AstraeaCommand {
     return await this.Warn(message, message.author, user, reason)
   }
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   private async Warn(message: Message, moderator: User, user: User, case_reason?: string): Promise<Message> {
-    const Warn = await new CaseModel({
-      moderator_id: moderator.id,
-      user_id: user.id,
-      guild: message.guild.id,
-      case_reason: case_reason
-    }).save()
+    const { data: response } = await db
+      .from<Case>('warns')
+      .insert({
+        case_id: Date.now().toString(36).toUpperCase(),
+        moderator_id: moderator.id,
+        user_id: user.id,
+        guild: message.guild.id,
+        case_reason: case_reason
+      })
+      .single()
 
     const embed = new MessageEmbed()
-      .setTitle(`Warn | Case ${Warn.case_id}`)
+      .setTitle(`Warn | Case ${response.case_id}`)
       .addField('Moderator', message.author.username)
-      .addField('Reason', Warn.case_reason)
+      .addField('Reason', response.case_reason)
       .setColor('RED')
 
     return await message.channel.send({ embeds: [embed] })

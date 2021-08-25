@@ -2,8 +2,8 @@ import { AstraeaCommand, AstraeaCommandOptions } from '#lib/Structures/BaseComma
 import { Message, User, MessageEmbed } from 'discord.js'
 import { ApplyOptions } from '@sapphire/decorators'
 import type { Args } from '@sapphire/framework'
-import WarnCase from '#lib/Models/WarnCase'
-import type { Case } from '#lib/Models/types'
+import db from '#database'
+import type { Case } from '#types'
 
 @ApplyOptions<AstraeaCommandOptions>({
   name: 'warns',
@@ -18,7 +18,6 @@ export default class Warns extends AstraeaCommand {
     return await this.Warns(message, user, caseID)
   }
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   private async Warns(message: Message, user: User, case_id?: string): Promise<Message> {
     if (case_id) {
       const c = await this.FetchWarn(user, message.guild.id, case_id)
@@ -37,28 +36,34 @@ export default class Warns extends AstraeaCommand {
       return await message.channel.send({ embeds: [embed] })
     }
 
-    const { warns, count } = await this.FetchWarns(user.id, message.guild.id)
+    const { warns } = await this.FetchWarns(user.id, message.guild.id)
 
     const embed = new MessageEmbed()
-      .setTitle(`${user.id === message.author.id ? 'Your' : user.username + '\'s'} warns [${count}]`)
-      .setDescription(`Cases:\n${count ? warns.map(c => `\`${c.case_id}\``).join(', ') : 'This user has no cases.'}`)
+      .setTitle(`${user.id === message.author.id ? 'Your' : user.username + '\'s'} warns [${warns.length}]`)
+      .setDescription(
+        `Cases:\n${warns.length ? warns.map(c => `\`${c.case_id}\``).join(', ') : 'This user has no cases.'}`
+      )
 
     return await message.channel.send({ embeds: [embed] })
   }
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   private async FetchWarn(user: User, guildID: string, case_id: string): Promise<Case> {
-    const Warns = await WarnCase.findOne({ user_id: user.id, guild: guildID, case_id })
+    const { data: warn } = await db
+      .from<Case>('warns')
+      .select()
+      .eq('user_id', user.id)
+      .eq('guild', guildID)
+      .eq('case_id', case_id)
+      .single()
 
-    return Warns
+    return warn
   }
 
-  private async FetchWarns(user: string, guildID: string): Promise<{ warns: Case[], count: number }> {
-    const Warns = await WarnCase.find({ user_id: user, guild: guildID })
+  private async FetchWarns(user: string, guildID: string): Promise<{ warns: Case[] }> {
+    const { data: warnings } = await db.from<Case>('warns').select().eq('user_id', user).eq('guild', guildID)
 
     return {
-      warns: Warns,
-      count: Warns.length
+      warns: warnings
     }
   }
 }

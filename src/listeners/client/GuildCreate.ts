@@ -6,8 +6,8 @@ import type { Guild } from 'discord.js'
   event: Events.GuildCreate
 })
 export default class GuildCreate extends Listener {
-  public run(guild: Guild): void {
-    void guild.members.fetch()
+  public async run(guild: Guild): Promise<void> {
+    await guild.members.fetch()
     return this.container.logger.info(`Joined ${guild.name} (${guild.id})`)
   }
 }

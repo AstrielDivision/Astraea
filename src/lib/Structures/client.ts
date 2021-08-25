@@ -5,7 +5,6 @@ import ClientUtils from '../ClientUtils'
 import cfg, { pkg } from '../../config'
 import { ClientOptions, version as djs } from 'discord.js'
 import Yiff from '#lib/yiff.ts/index'
-import mongoose from 'mongoose'
 import * as Sentry from '@sentry/node'
 
 export default class Client extends SapphireClient {
@@ -47,16 +46,6 @@ export default class Client extends SapphireClient {
   }
 
   private async init(): Promise<void> {
-    await mongoose
-      .connect(cfg.mongoURI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useFindAndModify: false,
-        useCreateIndex: true
-      })
-      .then(() => this.logger.info('Connected to the Database'))
-      .catch((err: Error) => this.logger.error('Could not connect to the Database\n' + err.stack))
-
     Sentry.init({
       dsn: cfg.sentry,
       release: `Astraea@${pkg.version}`,
