@@ -8,7 +8,7 @@ import cfg from '../../config'
 
 @ApplyOptions<AstraeaCommandOptions>({
   description: 'Set the discord bot\'s prefix',
-  usage: '[set | show | reset] [new prefix]',
+  usage: '[set | reset | show: default] [new prefix]',
   subCommands: ['reset', 'set', { input: 'show', default: true }]
 })
 export default class Prefix extends AstraeaCommand {

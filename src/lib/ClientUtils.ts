@@ -50,9 +50,4 @@ export default class Utils {
   public isOwner(id: string | Snowflake): boolean {
     return cfg.owners.includes(id)
   }
-
-  public async sleep(time: number): Promise<void> {
-    if (!time) throw new Error('No time given')
-    return await new Promise(resolve => setTimeout(resolve, time))
-  }
 }

@@ -8,7 +8,7 @@ import cfg from '../../config'
 
 @ApplyOptions<AstraeaCommandOptions>({
   description: 'Settings per guild',
-  usage: '[list | enable | disable] [new value]',
+  usage: '<enable | disable | list: default> [new value]',
   subCommands: ['enable', 'disable', { input: 'list', default: true }]
 })
 export default class Settings extends AstraeaCommand {
