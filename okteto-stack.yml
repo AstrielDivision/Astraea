@@ -1,18 +1,3 @@
 services:
   astraea:
     build: .
-    depends_on:
-      - mongodb
-  mongodb:
-    image: bitnami/mongodb:latest
-    ports:
-      - 27017
-    volumes:
-      - data:/bitnami/mongodb
-    environment:
-      MONGODB_DATABASE: andromeda
-
-volumes:
-  data:
-    driver_opts:
-      size: 2Gi
