@@ -76,7 +76,6 @@
     "@sapphire/type": "^2.1.0",
     "@sapphire/utilities": "^2.0.1",
     "@sentry/node": "^6.11.0",
-    "@supabase/supabase-js": "^1.22.2",
     "@tmware/status-rotate": "^1.2.8",
     "app-root-path": "^3.0.0",
     "bufferutil": "^4.0.3",
@@ -86,6 +85,7 @@
     "dayjs": "^1.10.6",
     "discord.js": "^13.1.0",
     "owofire": "^1.0.4",
+    "ravendb": "^5.0.3",
     "utf-8-validate": "^5.0.5"
   },
   "imports": {

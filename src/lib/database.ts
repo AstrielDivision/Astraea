@@ -1,6 +1,7 @@
 import cfg from '../config'
-import { createClient } from '@supabase/supabase-js'
+import { DocumentStore } from 'ravendb'
 
-const supabase = createClient(cfg.supabase.url, cfg.supabase.key)
+const store = new DocumentStore(cfg.raven.host, cfg.raven.db)
+const session = store.initialize()
 
-export default supabase
+export default session.openSession()

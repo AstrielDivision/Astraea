@@ -10,7 +10,7 @@ import cfg from '../../config'
 })
 export default class Example extends Listener {
   public async run(message: Message): Promise<Message> {
-    const { data: settings } = await db.from<GuildSettings>('guilds').select().eq('guild_id', message.guild.id).single()
+    const settings = await db.load<GuildSettings>(message.guild.id)
 
     return await message.channel.send(`This guilds current prefix is: ${settings.prefix ?? cfg.prefix}`)
   }

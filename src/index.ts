@@ -12,9 +12,23 @@ const client = new Client({
   logger: { instance: new Logger('Astraea') },
   intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_BANS', 'GUILD_WEBHOOKS', 'GUILD_MEMBERS', 'GUILD_MESSAGE_REACTIONS'],
   fetchPrefix: async (message: Message) => {
-    const { data: settings } = await db.from<GuildSettings>('guilds').select().eq('guild_id', message.guild.id).single()
+    const settings = await db.load<GuildSettings>(message.guild.id)
 
-    return settings.prefix ?? cfg.prefix
+    if (!settings?.prefix || !settings) {
+      await db.store({
+        id: message.guild.id,
+        registeredAt: Date.now().toString(),
+        guild_id: message.guild.id,
+        prefix: cfg.prefix,
+        anti: {
+          unmentionable: false,
+          invites: false,
+          gifts: false
+        }
+      })
+    }
+
+    return settings.prefix
   }
 })
 

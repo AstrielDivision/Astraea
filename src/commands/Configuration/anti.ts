@@ -13,18 +13,14 @@ import cfg from '../../config'
 })
 export default class Settings extends AstraeaCommand {
   public async list(message: Message): Promise<Message> {
-    const { data: guild_data } = await db
-      .from<GuildSettings>('guilds')
-      .select()
-      .eq('guild_id', message.guild.id)
-      .single()
+    const settings = await db.load<GuildSettings>(message.guild.id)
 
     const embed = new MessageEmbed()
       .setTitle(`Guild Settings | ${message.guild.name}`)
       .setDescription(
-        `**Anti-Unmentionable:** ${guild_data['anti-unmentionable'] ? 'Enabled' : 'Disabled'}\n` +
-          `**Anti-Invites:** ${guild_data['anti-invites'] ? 'Enabled' : 'Disabled'}` +
-          `**Anti-Gifts:** ${guild_data['anti-gifts'] ? 'Enabled' : 'Disabled'}`
+        `**Anti-Unmentionable:** ${settings.anti.unmentionable ? 'Enabled' : 'Disabled'}\n` +
+          `**Anti-Invites:** ${settings.anti.invites ? 'Enabled' : 'Disabled'}` +
+          `**Anti-Gifts:** ${settings.anti.gifts ? 'Enabled' : 'Disabled'}`
       )
       .setFooter(`To disable these options use ${cfg.prefix}anti `)
 
@@ -100,20 +96,32 @@ export default class Settings extends AstraeaCommand {
   private async EnableAnti(message: Message, anti: string): Promise<Message> {
     switch (anti) {
       case 'unmentionable': {
-        await db.from<GuildSettings>('guilds').update({ 'anti-unmentionable': true }).eq('guild_id', message.guild.id)
+        const settings = await db.load<GuildSettings>(message.guild.id)
+
+        settings.anti.unmentionable = true
+
+        await db.saveChanges()
 
         return await message.channel.send('Now filtering unmentionable names')
       }
       case 'invite':
       case 'invites': {
-        await db.from<GuildSettings>('guilds').update({ 'anti-invites': true }).eq('guild_id', message.guild.id)
+        const settings = await db.load<GuildSettings>(message.guild.id)
+
+        settings.anti.invites = true
+
+        await db.saveChanges()
 
         return await message.channel.send('Now filtering discord invites')
       }
 
       case 'gift':
       case 'gifts': {
-        await db.from<GuildSettings>('guilds').update({ 'anti-gifts': true }).eq('guild_id', message.guild.id)
+        const settings = await db.load<GuildSettings>(message.guild.id)
+
+        settings.anti.gifts = true
+
+        await db.saveChanges()
 
         return await message.channel.send('Now filtering discord gifts')
       }
@@ -123,21 +131,30 @@ export default class Settings extends AstraeaCommand {
   private async DisableAnti(message: Message, anti: string): Promise<Message> {
     switch (anti) {
       case 'unmentionable': {
-        await db.from<GuildSettings>('guilds').update({ 'anti-unmentionable': false }).eq('guild_id', message.guild.id)
+        const settings = await db.load<GuildSettings>(message.guild.id)
 
+        settings.anti.unmentionable = false
+
+        await db.saveChanges()
         return await message.channel.send('No longer filtering unmentionable names')
       }
       case 'invite':
       case 'invites': {
-        await db.from<GuildSettings>('guilds').update({ 'anti-invites': false }).eq('guild_id', message.guild.id)
+        const settings = await db.load<GuildSettings>(message.guild.id)
 
+        settings.anti.invites = false
+
+        await db.saveChanges()
         return await message.channel.send('No longer filtering discord invites')
       }
 
       case 'gift':
       case 'gifts': {
-        await db.from<GuildSettings>('guilds').update({ 'anti-invites': false }).eq('guild_id', message.guild.id)
+        const settings = await db.load<GuildSettings>(message.guild.id)
 
+        settings.anti.gifts = false
+
+        await db.saveChanges()
         return await message.channel.send('Now filtering discord gifts')
       }
     }

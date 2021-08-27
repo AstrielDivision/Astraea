@@ -10,9 +10,10 @@ import type { GuildSettings } from '#types'
 })
 export default class guildMemberAdd extends Listener {
   public async run(member: GuildMember): Promise<GuildMember> {
-    const { data: guild } = await db.from<GuildSettings>('guilds').select().eq('guild_id', member.guild.id).single()
+    const settings = await db.load<GuildSettings>(member.guild.id)
 
-    if (guild['anti-unmentionable']) await this.cleanName(member)
+    if (settings.anti.unmentionable) await this.cleanName(member)
+
     return member
   }
 

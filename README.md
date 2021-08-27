@@ -13,15 +13,7 @@
 </div>
 <br>
 
-## Self Host
-
-- Install yarn with `npm i -g yarn` if you haven't got it already
-- Install required dependencies with `yarn`
-- Build with `yarn build`
-- Configure the bot by coping or by renaming main.example.json in the config folder to main.json and fill out all the blanks
-- You're now finished! Run the bot with `node .`
-
-Problems with self hosting join the support server [here](https://discord.gg/sb9sF2kFg8)
+I made this branch just incase I actually get RavenDB to persist but I haven't and if you do try to self host this version. Good Luck.
 
 ## License
 

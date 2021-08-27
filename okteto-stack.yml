@@ -1,3 +1,18 @@
 services:
   astraea:
     build: .
+  raven:
+    image: ravendb/ravendb
+    volumes:
+      - raven:/opt/RavenDB/Server/RavenData
+      - ravenconfig:/opt/RavenDB/config
+    labels:
+     dev.okteto.com/auto-ingress: "private"
+
+volumes:
+  raven:
+    driver_opts:
+      size: 3Gi
+  ravenconfig:
+    driver_opts:
+      size: 1Gi

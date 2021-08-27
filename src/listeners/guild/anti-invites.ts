@@ -16,9 +16,9 @@ export default class AntiInvites extends Listener {
 
     if (!this.regex.test(message.content)) return null
 
-    const { data: guild } = await db.from<GuildSettings>('guilds').select().eq('guild_id', message.guild.id).single()
+    const settings = await db.load<GuildSettings>(message.guild.id)
 
-    if (!guild['anti-invites']) return null
+    if (!settings.anti.invites) return null
 
     return await message.delete()
   }

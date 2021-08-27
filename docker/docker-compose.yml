@@ -1,0 +1,15 @@
+services:
+  astraea:
+    build: ../
+  raven:
+    image: ravendb/ravendb:latest
+    volumes:
+      - raven:/opt/RavenDB/Server/RavenData
+      - ravenconfig:/opt/RavenDB/config
+    ports:
+      - 8080:8080
+
+volumes:
+  raven:
+  ravenconfig:
+

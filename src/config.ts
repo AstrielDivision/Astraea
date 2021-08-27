@@ -19,9 +19,9 @@ interface Configuration {
     username: string
     api_key: string
   }
-  supabase: {
-    url: string
-    key: string
+  raven: {
+    host: string
+    db: string
   }
   sentry: string
 }
@@ -101,12 +101,12 @@ const config = convict<Configuration>({
       default: ''
     }
   },
-  supabase: {
-    url: {
+  raven: {
+    host: {
       format: String,
       default: ''
     },
-    key: {
+    db: {
       format: String,
       default: ''
     }

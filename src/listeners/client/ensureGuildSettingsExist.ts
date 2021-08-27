@@ -9,15 +9,19 @@ import type { GuildSettings } from '#types'
 })
 export default class GuildCreate extends Listener {
   public async run(message: Message): Promise<unknown> {
-    const { data: guild_data } = await db
-      .from<GuildSettings>('guilds')
-      .select()
-      .eq('guild_id', message.guild.id)
-      .limit(1)
+    const settings = await db.load<GuildSettings>(message.guild.id)
 
-    if (guild_data.length === 0) {
-      await db.from<GuildSettings>('guilds').insert({
-        guild_id: message.guild.id
+    if (typeof settings === null) {
+      await db.store({
+        id: message.guild.id,
+        registeredAt: Date.now().toString(),
+        guild_id: message.guild.id,
+        prefix: null,
+        anti: {
+          unmentionable: false,
+          invites: false,
+          gifts: false
+        }
       })
     }
 
