@@ -1,0 +1,80 @@
+{
+	"name": "NodeTS Dev-Container",
+	"build": {
+		"dockerfile": "dockerfile"
+	},
+	"settings": {
+		"breadcrumbs.enabled": true,
+		"diffEditor.ignoreTrimWhitespace": false,
+		"diffEditor.renderSideBySide": true,
+		"editor.codeActionsOnSave": {
+			"source.fixAll": true,
+			"source.fixAll.eslint": false,
+			"source.fixAll.tslint": true,
+			"source.organizeImports": true
+		},
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.foldingStrategy": "auto",
+		"editor.fontFamily": "Consolas, 'Courier New', monospace",
+		"editor.renderWhitespace": "all",
+		"editor.snippetSuggestions": "top",
+		"editor.suggestSelection": "first",
+		"eslint.lintTask.enable": true,
+		"eslint.packageManager": "yarn",
+		"extensions.ignoreRecommendations": false,
+		"files.associations": {
+			"*.pipeline": "groovy",
+			".all-contributorsrc": "json",
+			".yarnclean": "ignore",
+			".yarnrc": "shellscript",
+			"CODEOWNERS": "ignore"
+		},
+		"files.autoSave": "afterDelay",
+		"files.eol": "\n",
+		"git.autofetch": true,
+		"git.confirmSync": false,
+		"git.enableSmartCommit": true,
+		"gitlens.codeLens.enabled": false,
+		"gitlens.hovers.currentLine.over": "line",
+		"javascript.updateImportsOnFileMove.enabled": "always",
+		"prettier.requireConfig": true,
+		"prettier.resolveGlobalModules": true,
+		"tabnine.experimentalAutoImports": false,
+		"terminal.integrated.copyOnSelection": true,
+		"terminal.integrated.rendererType": "experimentalWebgl",
+		"typescript.tsserver.log": "off",
+		"typescript.tsserver.useSeparateSyntaxServer": true,
+		"typescript.tsserver.watchOptions": {
+			"fallbackPolling": "dynamicPriorityPolling",
+			"watchDirectory": "dynamicPriorityPolling",
+			"watchFile": "useFsEvents"
+		},
+		"typescript.updateImportsOnFileMove.enabled": "always",
+		"window.zoomLevel": 0,
+		"workbench.colorTheme": "Min Dark",
+		"workbench.editor.scrollToSwitchTabs": true,
+		"workbench.iconTheme": "fluent-icons",
+		"terminal.integrated.defaultProfile.linux": "bash",
+	},
+
+	// VSCode Extension by their IDs
+	"extensions": [
+		"dbaeumer.vscode-eslint",
+		"coenraads.bracket-pair-colorizer",
+		"bierner.github-markdown-preview",
+		"eamodio.gitlens",
+		"ldez.ignore-files",
+		"miguelsolorio.fluent-icons",
+		"eg2.vscode-npm-script",
+		"christian-kohler.npm-intellisense",
+		"christian-kohler.path-intellisense",
+		"esbenp.prettier-vscode",
+		"redhat.vscode-yaml",
+		"miguelsolorio.min-theme",
+		"aaron-bond.better-comments",
+		"editorconfig.editorconfig",
+    "streetsidesoftware.code-spell-checker",
+    "ms-vsliveshare.vsliveshare",
+    "visualstudioexptteam.vscodeintelli"
+	]
+}

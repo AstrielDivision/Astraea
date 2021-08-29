@@ -1,0 +1,12 @@
+FROM mcr.microsoft.com/vscode/devcontainers/base:alpine-3.13
+
+RUN apk update && apk add --no-cache curl ca-certificates openssl
+
+RUN curl -fsSLO --compressed "https://unofficial-builds.nodejs.org/download/release/v16.8.0/node-v16.8.0-linux-x64-musl.tar.xz"
+RUN tar -xJf "node-v16.8.0-linux-x64-musl.tar.xz" -C /usr/local --strip-components=1 --no-same-owner
+RUN ln -s /usr/local/bin/node /usr/local/bin/nodejs
+RUN rm node-v16.8.0-linux-x64-musl.tar.xz
+
+RUN npm install -g yarn commitizen eslint prettier lint-staged rimraf ts-node typescript git-cz
+
+CMD ["/usr/bin/bash"]
