@@ -13,6 +13,8 @@
 </div>
 <br>
 
+# This project has been archived and we have now moved to [Ariel](https://github.com/AstrielDivision/Ariel)
+
 ## Self Host
 
 - Install yarn with `npm i -g yarn` if you haven't got it already
